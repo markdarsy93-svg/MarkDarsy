@@ -1,0 +1,13 @@
+videos/coral-dune-hero.mp4
+images/palm-jebel-ali-villa.webp
+images/mark-darsy-authentic-advisor-v2.webp
+images/pja-connectivity-map.webp
+images/pja-fronds-masterplan.webp
+images/palm-jebel-ali-frond-villas.webp
+images/palm-jebel-ali-beach-villas.webp
+images/pja-beach-villas-frontage.webp
+images/pja-beach-villas-evening.webp
+images/pja-aerial-progress-overview-v1.webp
+images/pja-aerial-progress-fronds-v1.webp
+images/coral-dune-floorplan.jpg
+images/sunset-mirage-floorplan.jpg
