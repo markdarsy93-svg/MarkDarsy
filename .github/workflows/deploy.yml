@@ -60,6 +60,14 @@ jobs:
           name: shots
           path: shots/
 
+      - name: Rebuild for preview sub-path (only until the custom domain is live)
+        if: vars.CUSTOM_DOMAIN == ''
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}
+        run: |
+          git checkout -- site/assets/site.css
+          python3 gen.py
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

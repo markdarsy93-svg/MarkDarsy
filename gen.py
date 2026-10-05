@@ -646,4 +646,12 @@ if __name__ == "__main__":
     open(os.path.join(OUT, ".nojekyll"), "w").close()
     with open(os.path.join(OUT, "favicon.svg"), "w") as f:
         f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#1D1B18"/><rect x="5" y="5" width="54" height="54" fill="none" stroke="#A9874F" stroke-width="2"/><text x="32" y="41" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="#F3ECDF">MD</text></svg>')
-    print("built", PSF_MIN, PSF_MAX)
+    base = os.environ.get("BASE_PATH", "").rstrip("/")
+    if base:  # preview under a sub-path (e.g. github.io/MarkDarsy)
+        import glob
+        for fp in glob.glob(os.path.join(OUT, "**", "*.html"), recursive=True) + [os.path.join(OUT, "assets", "site.css")]:
+            t = open(fp, encoding="utf-8").read()
+            for a in ('href="/', 'src="/', 'poster="/', 'url(/', 'url=/', 'replace("/', 'action="/'):
+                t = t.replace(a + "/", a.replace("/", "\x00") + "/").replace(a, a[:-1] + base + "/").replace(a.replace("/", "\x00") + "/", a + "/")
+            open(fp, "w", encoding="utf-8").write(t)
+    print("built", PSF_MIN, PSF_MAX, "base=" + (base or "/"))
