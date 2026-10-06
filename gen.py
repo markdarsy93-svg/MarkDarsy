@@ -96,6 +96,7 @@ def head(path, title, desc, img, home=False, ld=None):
 <meta name="description" content="{dsc}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Mark Darsy">
+<meta name="google-site-verification" content="-I0PbMD4SNFIRL4BDhtfClWEZtkG6LBB8nvtbyLs258">
 <link rel="canonical" href="{url}">
 <meta name="theme-color" content="#FBF8F2">
 <meta property="og:type" content="website">
