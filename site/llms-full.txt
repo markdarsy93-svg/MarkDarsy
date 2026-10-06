@@ -13,7 +13,9 @@
 
 ## Pages
 
-- [Home](https://palmjebelali-resale.com/): Palm Jebel Ali resale villas with Mark Darsy: the shortlist service, featured villas, collections, construction progress and contact.
+- [Home](https://palmjebelali-resale.com/): Palm Jebel Ali resale villas with Mark Darsy: the shortlist service, featured villas, collections and a saveable contact card.
+- [Contact](https://palmjebelali-resale.com/contact): Mark Darsy's contact card (save to phone as a vCard), WhatsApp, email, office address and the shortlist brief form.
+- [Location & progress](https://palmjebelali-resale.com/palm-jebel-ali-location): Aerial construction photos, Nakheel construction figures, handover timing and drive times from Palm Jebel Ali.
 - [Villa listings (Property Atlas)](https://palmjebelali-resale.com/dubai-property-atlas): Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator.
 - [Villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices): Current Palm Jebel Ali resale asking prices by bedrooms, frond and price per square foot, with method notes.
 - [Fronds A–P](https://palmjebelali-resale.com/palm-jebel-ali-fronds): Frond-by-frond study: construction stage, resale asking prices, median price per sq ft and released designs for the twelve villa fronds.
