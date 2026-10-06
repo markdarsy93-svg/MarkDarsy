@@ -199,7 +199,7 @@ PRICE_MIN, PRICE_MAX = min(l[4] for l in LISTINGS), max(l[4] for l in LISTINGS)
 
 BEACH = [("Blue Horizon", "7,307.73"), ("Pacific Breeze", "7,676.93"), ("Cyan Sky", "7,722.35"),
          ("Bluejay", "8,293.27"), ("Ocean Whisper", "8,314.91")]
-BEACH_MORE = [("Cobalt", "approx. 7,800 · pending confirmation"), ("Baia Luna", None), ("Crystal Springs", None),
+BEACH_MORE = [("Cobalt", "approx. 7,800 sq ft · pending confirmation"), ("Baia Luna", None), ("Crystal Springs", None),
               ("Wave Crest", None), ("Indigo Ocean", None)]
 ARCH = {"Cyan Sky": "NAGA Architects", "Wave Crest": "LW Design Group", "Ocean Whisper": "SAOTA", "Bluejay": "SAOTA", "Coral Dune": "NAGA Architects", "Sunset Mirage": "NAGA Architects", "Amber Reef": "SAOTA", "Red Aurora": "SAOTA", "Redwood": "LW Design Group", "Porcelain Roses": "LOCI Architecture"}
 def arch(n): return f'<span class="small">Architect: {ARCH[n]}</span>' if n in ARCH else ''
@@ -213,7 +213,7 @@ def featured():
     for lid, im in FEATURED:
         _, fr, beds, title, price, alab, area, plot, ori = by[lid]
         msg = f"Hello Mark, please confirm availability, price and remaining developer payments for this Palm Jebel Ali villa:\nFrond {fr} · {title} · {beds} bedrooms · AED {price:,}"
-        out += f'''<a class="fv reveal" href="{wa(msg)}" target="_blank" rel="noopener"><div class="ph">{img(im, "Palm Jebel Ali collection imagery")}<span class="fv-tag">Frond {fr} · {beds} bedrooms</span></div>
+        out += f'''<a class="fv reveal" href="{wa(msg)}" target="_blank" rel="noopener"><div class="ph">{img(im, f"Developer imagery of the Palm Jebel Ali collection, shown for a Frond {fr} {beds}-bedroom villa")}<span class="fv-tag">Frond {fr} · {beds} bedrooms</span></div>
  <div class="fv-body"><h3>{esc(title)}</h3><div class="price">AED {price:,}</div>
  <div class="fv-spec"><span>{f"{area:,} sq ft" if area else "Area to confirm"}</span><span>{"Plot " + plot if plot != "To confirm" else "Plot to confirm"}</span><span>{ori if ori != "To confirm" else "Orientation to confirm"}</span></div>
  <span class="link">Ask Mark about this villa</span></div></a>'''
@@ -357,7 +357,7 @@ def beach():
         cards += f'<article class="design reveal" id="{n.lower().replace(" ", "-")}"><span class="num">{i:02d}</span><h3>{n}</h3><span class="small">6 bedrooms · Beach Collection</span>{arch(n)}<div class="area">{a} sq ft</div><span class="small">Indicative built-up area</span><a class="btn btn-line" href="{wa(f"Hello Mark, please send me current {n} resale opportunities on Palm Jebel Ali with price and payment position.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></article>'
     more = ""
     for j, (n, a) in enumerate(BEACH_MORE, len(BEACH) + 1):
-        area = f'<div class="area tbc">{a} sq ft</div>' if a else '<div class="area tbc">Area to confirm</div>'
+        area = f'<div class="area tbc">{a}</div>' if a else '<div class="area tbc">Area to confirm</div>'
         more += f'<article class="design reveal" id="{n.lower().replace(" ", "-")}"><span class="num">{j:02d}</span><h3>{n}</h3><span class="small">Beach Collection</span>{arch(n)}{area}<a class="btn btn-line" href="{wa(f"Hello Mark, please send me the {n} floor plan and any current resale opportunities.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></article>'
     body = f'''
 <section class="phero"><div class="wrap phero-grid">
@@ -394,8 +394,8 @@ def beach():
 # ---------------------------------------------------------------- CORAL
 def coral():
     wide = ""
-    for i, (slug, n, a, im) in enumerate([("coral-dune", "Coral Dune", "11,635.14", "coral-dune-floorplan.jpg"),
-                                           ("sunset-mirage", "Sunset Mirage", "11,701.12", "sunset-mirage-floorplan.jpg")], 1):
+    for i, (slug, n, a, im) in enumerate([("coral-dune", "Coral Dune", "11,635.14", "coral-dune-floorplan-v2.jpg"),
+                                           ("sunset-mirage", "Sunset Mirage", "11,701.12", "sunset-mirage-floorplan-v2.jpg")], 1):
         wide += f'''<article class="design wide reveal" id="{slug}"><div><span class="num">{i:02d}</span><h3>{n}</h3><span class="small">6 bedrooms · Coral Collection</span>{arch(n)}<div class="area">{a} sq ft</div><span class="small">Brochure built-up area · indicative developer plan</span><br><a class="btn btn-line" href="{wa(f"Hello Mark, please send me current {n} resale opportunities on Palm Jebel Ali with price and payment position.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></div><figure>{img(im, f"{n} indicative developer floor plan showing floors and area schedule")}</figure></article>'''
     more = ""
     for j, n in enumerate(CORAL_MORE, 3):
@@ -473,10 +473,10 @@ def atlas():
 </div></section>
 
 <section class="sec-cream"><div class="wrap">
- <div class="sec-head reveal"><span class="eyebrow">Where they sit</span><h2>The listed fronds on the island plan.</h2></div>
+ <div class="sec-head reveal"><span class="eyebrow">Where they sit</span><h2>Listed villas by frond.</h2></div>
  <ul class="names reveal" style="justify-content:center;margin-bottom:28px">{chips}</ul>
- <div class="mp reveal">{img("pja-fronds-masterplan.webp", "Palm Jebel Ali conceptual frond masterplan")}{pins}</div>
- <p class="note center">Developer's conceptual masterplan. Exact villa positions, orientation and outlook require the individual plot plan.</p>
+ <div class="mp reveal">{img("pja-fronds-masterplan-v2.webp", "Palm Jebel Ali conceptual frond masterplan")}{pins}</div>
+ <p class="note center">Developer's conceptual masterplan. Frond letters are not marked on the plan; Mark confirms each villa's exact frond position, orientation and outlook from its individual plot plan.</p>
 </div></section>
 
 <section id="estimator"><div class="wrap">
@@ -528,7 +528,7 @@ def position():
  <div class="reveal"><span class="eyebrow">Palm Jebel Ali buying intelligence</span><h1>The villa is only half the decision.</h1>
   <p class="lead">Two villas with the same design can offer different privacy, outlook, access and resale appeal. Compare the individual position — not an unsupported frond ranking.</p>
   <div class="btns"><a class="btn btn-gold" href="#compare-positions">Compare two positions</a></div></div>
- <figure class="reveal">{img("pja-fronds-masterplan.webp", "Palm Jebel Ali conceptual masterplan showing villa fronds", eager=True)}</figure>
+ <figure class="reveal">{img("pja-fronds-masterplan-v2.webp", "Palm Jebel Ali conceptual masterplan showing villa fronds", eager=True, cls="natural")}</figure>
 </div></section>
 
 <section class="sec-cream" id="compare-positions"><div class="wrap">

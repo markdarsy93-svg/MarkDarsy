@@ -365,3 +365,7 @@ details.more .form{padding:4px 0 20px}
   .process h3{font-size:22px}
   .process p{font-size:14px}
 }
+.hdr:not(.home) .nav .btn,.hdr.home.solid .nav .btn{color:var(--ivory)}
+.hdr:not(.home) .nav .btn:hover{color:#fff}
+.design .small{display:block}
+.phero img.natural{aspect-ratio:auto;height:auto}
