@@ -175,8 +175,25 @@ LISTINGS = [
     ("d", "D", 6, "Pacific Breeze · sunset outlook", 21_000_000, "Advertised area", 7578, "To confirm", "Sunset"),
     ("c", "C", 6, "Bluejay · high-number position", 25_000_000, "Built-up area", 8293, "7,374.46 sq ft", "Sunrise"),
     ("m", "M", 7, "Seven-bedroom beachfront residence", 49_000_000, "Advertised BUA", 11632, "To confirm", "To confirm"),
+    # added 6 Oct 2026 (advertised asking prices; availability unconfirmed)
+    ("p1", "P", 6, "Blue Horizon · six-bedroom villa", 25_000_000, "Built-up area", 7391, "7,390.72 sq ft", "To confirm"),
+    ("l1", "L", 6, "Six-bedroom beach villa", 23_500_000, "Advertised area", 7373, "To confirm", "To confirm"),
+    ("b1", "B", 6, "Six-bedroom beach villa", 19_100_000, "Built-up area", 7308, "7,373 sq ft", "To confirm"),
+    ("b2", "B", 6, "Six-bedroom contemporary villa", 18_600_000, "Advertised area", 7562, "To confirm", "To confirm"),
+    ("k1", "K", 7, "Seven-bedroom Coral villa", 35_908_800, "Built-up area", 11448, "13,094 sq ft", "To confirm"),
+    ("k2", "K", 7, "Seven-bedroom beach mansion · large plot", 49_278_800, "Built-up area", 11448, "21,246 sq ft", "To confirm"),
+    ("k3", "K", 5, "Indigo Ocean · high-number position", 21_500_000, "Advertised area", 7434, "To confirm", "To confirm"),
+    ("c1", "C", 5, "Five-bedroom beach villa", 19_500_000, "Advertised area", 7569, "To confirm", "To confirm"),
+    ("c2", "C", 6, "Coral Dune · high-number position", 50_000_000, "Built-up area", None, "20,775 sq ft (advertised)", "Sunset"),
+    ("d1", "D", 6, "Six-bedroom villa · high number", 20_000_000, "Advertised area", 7589, "To confirm", "Sunset"),
+    ("n1", "N", 6, "Six-bedroom sunset villa", 19_808_800, "Advertised area", 7374, "To confirm", "Sunset"),
+    ("l2", "L", 5, "Five-bedroom beach villa", 20_698_800, "Advertised area", 7606, "To confirm", "To confirm"),
+    ("l3", "L", 6, "Six-bedroom villa · sunset outlook", 18_800_000, "Built-up area", 7883, "7,427 sq ft", "Sunset"),
+    ("f1", "F", 7, "Seven-bedroom beach mansion · 30/70 plan", 53_909_000, "Built-up area", None, "To confirm", "To confirm"),
+    ("o1", "O", 7, "Hibiscus layout · seven-bedroom Coral villa", 32_500_000, "Built-up area", 12007, "13,087 sq ft", "To confirm"),
+    ("m1", "M", 7, "Redwood · seven-bedroom Coral villa", 34_500_000, "Built-up area", 12165, "13,098 sq ft", "Sunrise"),
 ]
-PSF = [round(l[4] / l[6]) for l in LISTINGS]
+PSF = [round(l[4] / l[6]) for l in LISTINGS if l[6]]
 PSF_MIN, PSF_MAX = min(PSF), max(PSF)
 PRICE_MIN, PRICE_MAX = min(l[4] for l in LISTINGS), max(l[4] for l in LISTINGS)
 
@@ -224,7 +241,7 @@ def home():
  <p class="lead">Figures below are calculated from the villas currently presented in the Property Atlas. They describe advertised asking prices, not valuations or achieved sales.</p></div>
  <div class="kpis reveal">
   <div><b>{psf_note}</b><span>Asking price per sq ft across current listings (advertised price ÷ advertised area)</span></div>
-  <div><b>AED {PRICE_MIN//1_000_000}M–{PRICE_MAX//1_000_000}M</b><span>Asking price range · 5 to 7 bedrooms</span></div>
+  <div><b>AED {PRICE_MIN/1e6:.0f}M–{PRICE_MAX/1e6:.0f}M</b><span>Asking price range · 5 to 7 bedrooms</span></div>
   <div><b>40–80%</b><span>Typical seller payment positions to compare — the remaining balance follows the developer schedule</span></div>
  </div>
  <div class="g2 reveal">
@@ -416,23 +433,26 @@ def coral():
                 "pja-beach-villas-evening.webp", body)
 
 # ---------------------------------------------------------------- ATLAS
+FRONDS_LISTED = sorted({l[1] for l in LISTINGS})
 PINS = {"C": (60.5, 37), "D": (63.5, 44), "E": (66, 51), "M": (39, 52), "N": (37, 45)}
 
 def atlas():
     cards = ""
     for lid, fr, beds, title, price, alab, area, plot, ori in LISTINGS:
-        psf = round(price / area)
+        psf = round(price / area) if area else None
+        area_txt = f"{area:,} sq ft" if area else "To confirm"
+        psf_txt = f"Asking price · approx. AED {psf:,} per sq ft" if psf else "Asking price · area to confirm"
         summary = f"Frond {fr} · {title} · {beds} bedrooms · AED {price:,}"
         cards += f'''<article class="lst" data-id="{lid}" data-frond="{fr}" data-beds="{beds}" data-price="{price}" data-summary="{esc(summary)}">
  <div class="lst-top"><span>Frond {fr}</span><span>{beds} bedrooms</span></div>
  <div class="lst-body"><span class="tag">Off-plan resale</span><h3>{esc(title)}</h3>
- <div class="price">AED {price:,}</div><div class="price-sub">Asking price · approx. AED {psf:,} per sq ft</div>
- <div class="spec"><div><span>{alab}</span>{area:,} sq ft</div><div><span>Plot</span>{plot}</div><div><span>Orientation</span>{ori}</div><div><span>Developer payments</span>Statement required</div></div>
+ <div class="price">AED {price:,}</div><div class="price-sub">{psf_txt}</div>
+ <div class="spec"><div><span>{alab}</span>{area_txt}</div><div><span>Plot</span>{plot}</div><div><span>Orientation</span>{ori}</div><div><span>Developer payments</span>Statement required</div></div>
  <a class="tel" href="tel:{TEL}">Mark Darsy · <b>{PHONE}</b></a>
  <div class="acts"><a class="btn ask" href="{WA}" target="_blank" rel="noopener">Ask Mark about this villa</a><button class="btn btn-line add" type="button" aria-pressed="false">Add to shortlist</button></div></div>
 </article>'''
     pins = ""
-    chips = "".join(f'<li>Frond {f} · {sum(1 for l in LISTINGS if l[1]==f)} listed</li>' for f in sorted(PINS))
+    chips = "".join(f'<li>Frond {f} · {sum(1 for l in LISTINGS if l[1]==f)} listed</li>' for f in FRONDS_LISTED)
     body = f'''
 <section class="phero" style="padding-bottom:30px"><div class="wrap">
  <span class="eyebrow">Property Atlas · Palm Jebel Ali only</span>
@@ -443,7 +463,7 @@ def atlas():
 <section id="listings" style="padding-top:20px"><div class="wrap">
  <div class="filters">
   <div class="field"><label for="f-beds">Bedrooms</label><select id="f-beds"><option value="all">All</option><option value="5">5 bedrooms</option><option value="6">6 bedrooms</option><option value="7">7 bedrooms</option></select></div>
-  <div class="field"><label for="f-frond">Frond</label><select id="f-frond"><option value="all">All</option>{"".join(f'<option value="{f}">Frond {f}</option>' for f in sorted(PINS))}</select></div>
+  <div class="field"><label for="f-frond">Frond</label><select id="f-frond"><option value="all">All</option>{"".join(f'<option value="{f}">Frond {f}</option>' for f in FRONDS_LISTED)}</select></div>
   <div class="field"><label for="f-sort">Price</label><select id="f-sort"><option value="asc">Lowest first</option><option value="desc">Highest first</option></select></div>
   <span class="count" id="f-count" aria-live="polite"></span>
  </div>
