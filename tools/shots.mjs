@@ -14,7 +14,7 @@ for (const [label, vp] of Object.entries(sizes)) {
   for (const p of pages) {
     await page.goto(base + p, { waitUntil: 'networkidle' });
     await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 60)); } window.scrollTo(0, 0); document.querySelectorAll('.reveal').forEach(e => e.classList.add('in')); });
-    await page.waitForTimeout(500);
+    await page.evaluate(() => Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })))); await page.waitForTimeout(400);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     const broken = await page.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.src));
     report.push({ label, p, overflow, broken });
