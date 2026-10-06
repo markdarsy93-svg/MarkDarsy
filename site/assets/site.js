@@ -33,6 +33,8 @@
     });
   });
 
+  /* frond map: start scrolled to the centre on narrow screens */
+  $$('.mp-scroll').forEach(function(m){if(m.scrollWidth>m.clientWidth)m.scrollLeft=(m.scrollWidth-m.clientWidth)/2});
   /* listings */
   var grid=$('#listings-grid');
   if(grid){
@@ -44,6 +46,7 @@
       cnt.textContent=n+(n===1?' villa':' villas');}
     try{var q=new URLSearchParams(location.search);if(q.get('frond')&&$('option[value="'+q.get('frond')+'"]',ff))ff.value=q.get('frond');if(q.get('beds')&&$('option[value="'+q.get('beds')+'"]',fb))fb.value=q.get('beds');}catch(e){}
     [fb,ff,fs].forEach(function(x){x.addEventListener('change',apply)});apply();
+    $$('.mp a.pin[data-f]').forEach(function(p){p.addEventListener('click',function(e){if(!$('option[value="'+p.dataset.f+'"]',ff))return;e.preventDefault();ff.value=p.dataset.f;apply();$('#listings').scrollIntoView({behavior:'smooth'})})});
     function upd(){barN.textContent=sel.length+(sel.length===1?' villa selected':' villas selected');bar.classList.toggle('show',sel.length>0);b.classList.toggle('has-bar',sel.length>0)}
     cards.forEach(function(c){
       $('.add',c).addEventListener('click',function(){var id=c.dataset.id,i=sel.indexOf(id),btn=this;
