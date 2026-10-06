@@ -120,7 +120,7 @@ def footer(extra=""):
 
 def img(name, alt, eager=False, cls=""):
     load = 'loading="eager" fetchpriority="high"' if eager else 'loading="eager"'
-    return f'<img src="/images/{name}" alt="{esc(alt)}" {load} decoding="async"{(" class=" + cls) if cls else ""}>'
+    return f'<img src="/images/{name}" alt="{esc(alt)}" {load}{(" class=" + cls) if cls else ""}>'
 
 def page(path, title, desc, ogimg, body, home=False, extra=""):
     return head(path, title, desc, ogimg, home) + "\n" + header(path, home) + body + footer(extra)
