@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "12"
+VER = "13"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -553,7 +553,21 @@ def coral():
 
 # ---------------------------------------------------------------- ATLAS
 FRONDS_LISTED = sorted({l[1] for l in LISTINGS})
-PINS = {"C": (60.5, 37), "D": (63.5, 44), "E": (66, 51), "M": (39, 52), "N": (37, 45)}
+# Frond letters follow Nakheel's frond locator on palmjebelali.ae: A to H run up one side of the spine
+# from the trunk, I to P down the other. Positions are % of pja-fronds-lettered-map.webp (1200x410).
+FROND_XY = {"A": (86.7, 48.8), "B": (75.8, 39.0), "C": (85.0, 30.2), "D": (67.5, 24.6), "E": (73.3, 14.6), "F": (60.8, 12.0), "K": (15.0, 52.0), "L": (19.2, 65.1), "M": (24.2, 71.2), "N": (33.3, 73.4), "O": (44.6, 72.4), "P": (53.1, 76.8)}
+
+def frond_map(link=True):
+    pins = ""
+    for f, (x, y) in FROND_XY.items():
+        n = sum(1 for l in LISTINGS if l[1] == f)
+        lab = f"Frond {f}: {n} listed villa{'s' if n != 1 else ''}" if link else f"Frond {f}"
+        badge = f'<i aria-hidden="true">{n}</i>' if link and n else ""
+        cls = "pin" + ("" if n or not link else " pin-empty")
+        tag, href = ("a", f' href="/dubai-property-atlas?frond={f}#listings" data-f="{f}"') if link and n else (("a", f' href="/palm-jebel-ali-fronds#frond-{f.lower()}"') if not link else ("span", ""))
+        pins += f'<{tag} class="{cls}"{href} style="left:{x}%;top:{y}%" aria-label="{lab}" title="{lab}">{f}{badge}</{tag}>'
+    return f'<div class="mp-scroll"><div class="mp">{img("pja-fronds-lettered-map.webp", "Palm Jebel Ali villa fronds with frond letters marked")}{pins}</div></div><p class="mp-hint">Swipe the map to see every frond.</p>'
+
 
 def atlas():
     cards = ""
@@ -572,7 +586,6 @@ def atlas():
  <a class="tel" href="tel:{TEL}">Mark Darsy · <b>{PHONE}</b></a>
  <div class="acts"><a class="btn ask" href="{WA}" target="_blank" rel="noopener">Ask Mark about this villa</a><button class="btn btn-line add" type="button" aria-pressed="false">Add to shortlist</button></div></div>
 </article>'''
-    pins = ""
     chips = "".join(f'<li>Frond {f} · {sum(1 for l in LISTINGS if l[1]==f)} listed</li>' for f in FRONDS_LISTED)
     body = f'''
 <section class="phero" style="padding-bottom:30px"><div class="wrap">
@@ -595,8 +608,8 @@ def atlas():
 <section class="sec-cream"><div class="wrap">
  <div class="sec-head reveal"><span class="eyebrow">Where they sit</span><h2>Listed villas by frond.</h2></div>
  <ul class="names reveal" style="justify-content:center;margin-bottom:28px">{chips}</ul>
- <div class="mp reveal">{img("pja-fronds-masterplan-v2.webp", "Palm Jebel Ali conceptual frond masterplan")}{pins}</div>
- <p class="note center">Developer's conceptual masterplan. Frond letters are not marked on the plan; Mark confirms each villa's exact frond position, orientation and outlook from its individual plot plan.</p>
+ <div class="reveal">{frond_map()}</div>
+ <p class="note center">Tap a frond to see its villas. Each pin marks the frond, not the plot. Frond letters follow Nakheel's official frond locator, shown on the developer's conceptual masterplan; Mark confirms each villa's exact plot position, orientation and outlook from its plot plan.</p>
 </div></section>
 
 <section id="estimator"><div class="wrap">
@@ -1039,6 +1052,7 @@ def fronds():
 <section style="padding-top:10px"><div class="wrap">
  <div class="sec-head reveal"><span class="eyebrow">Overview</span><h2>All twelve villa fronds.</h2>
  <p class="lead">Based on {total} currently advertised resale villas in the Property Atlas and Nakheel's August 2026 construction update.</p></div>
+ <div class="reveal" style="margin-bottom:28px">{frond_map(link=False)}<p class="note center">Where each frond sits, lettered from Nakheel's official frond locator. The twelve villa fronds covered in this study are marked. Tap a letter for its profile.</p></div>
  <div class="table-wrap reveal"><table class="sortable">
   <thead><tr><th>Frond</th><th>Stage</th><th>Listings</th><th>Asking range</th><th>Median AED/sq ft</th></tr></thead>
   <tbody>{rows}</tbody></table></div>
