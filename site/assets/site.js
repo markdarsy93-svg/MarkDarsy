@@ -42,6 +42,7 @@
       list.sort(function(a,c){var x=+a.dataset.price,y=+c.dataset.price;return fs.value==='desc'?y-x:x-y});
       list.forEach(function(c){grid.appendChild(c);var ok=(fb.value==='all'||c.dataset.beds===fb.value)&&(ff.value==='all'||c.dataset.frond===ff.value);c.hidden=!ok;if(ok)n++});
       cnt.textContent=n+(n===1?' villa':' villas');}
+    try{var q=new URLSearchParams(location.search);if(q.get('frond')&&$('option[value="'+q.get('frond')+'"]',ff))ff.value=q.get('frond');if(q.get('beds')&&$('option[value="'+q.get('beds')+'"]',fb))fb.value=q.get('beds');}catch(e){}
     [fb,ff,fs].forEach(function(x){x.addEventListener('change',apply)});apply();
     function upd(){barN.textContent=sel.length+(sel.length===1?' villa selected':' villas selected');bar.classList.toggle('show',sel.length>0);b.classList.toggle('has-bar',sel.length>0)}
     cards.forEach(function(c){
@@ -52,6 +53,17 @@
     barSend.addEventListener('click',function(){var t=['Hello Mark, please confirm availability, price and remaining developer payments for my Palm Jebel Ali shortlist:'];
       sel.forEach(function(id,k){var c=$('.lst[data-id="'+id+'"]',grid);t.push((k+1)+'. '+c.dataset.summary)});openWA(t.join('\n'))});
   }
+
+  /* sortable tables */
+  $$('table.sortable').forEach(function(t){
+    $$('th',t).forEach(function(th,i){th.addEventListener('click',function(){
+      var tb=t.tBodies[0],rows=$$('tr',tb),asc=th.dataset.dir!=='asc';
+      $$('th',t).forEach(function(h){delete h.dataset.dir});th.dataset.dir=asc?'asc':'desc';
+      rows.sort(function(a,b){var x=a.cells[i].dataset.v||a.cells[i].textContent,y=b.cells[i].dataset.v||b.cells[i].textContent;
+        var nx=parseFloat(x),ny=parseFloat(y);var r=(!isNaN(nx)&&!isNaN(ny))?nx-ny:String(x).localeCompare(String(y));return asc?r:-r});
+      rows.forEach(function(r){tb.appendChild(r)});
+    })});
+  });
 
   /* cost estimator */
   var calc=$('#calc');

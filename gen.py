@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "10"
+VER = "11"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -28,6 +28,7 @@ NAV = [
     ("/dubai-property-atlas", "Property Atlas"),
     ("/beach-collection-resale", "Beach Collection"),
     ("/coral-collection-resale", "Coral Collection"),
+    ("/palm-jebel-ali-fronds", "Fronds"),
     ("/palm-jebel-ali-position-guide", "Position Guide"),
     ("/sell-your-palm-jebel-ali-villa", "Sell"),
 ]
@@ -109,7 +110,7 @@ def footer(extra=""):
     <p style="margin-top:22px">{ADDRESS}<br><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></p>
     <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a></p>
    </div>
-   <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a></nav>
+   <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/palm-jebel-ali-fronds">Frond by frond</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a></nav>
    <nav aria-label="Services"><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
   </div>
   <p class="disc">Independent broker marketing. Availability, specifications, payment obligations and market figures must be verified against the selected property's documents before any decision. Sales figure based on Mark Darsy's transaction records. Villa and lifestyle images are developer conceptual imagery, not a specific resale villa; aerial photographs supplied by Mark Darsy. Drive times, construction and planned figures as published by <a href="https://www.nakheel.com/en/media-centre/press-releases/news-detail/2026/08/20/nakheel-unveils-limited-collection-of-44-beachfront-villas-on-palm-jebel-ali-s-frond-f" target="_blank" rel="noopener">Nakheel, 20 August 2026</a>, subject to change. Palm Jebel Ali and Nakheel names, trademarks and project imagery remain their owners' property.</p>
@@ -218,6 +219,70 @@ def featured():
  <div class="fv-spec"><span>{f"{area:,} sq ft" if area else "Area to confirm"}</span><span>{"Plot " + plot if plot != "To confirm" else "Plot to confirm"}</span><span>{ori if ori != "To confirm" else "Orientation to confirm"}</span></div>
  <span class="link">Ask Mark about this villa</span></div></a>'''
     return out
+SQM = 10.7639
+# name, collection, bedrooms, BUA sq ft, ground/first/second floor sq ft, release, source
+DESIGNS = [
+    ("Blue Horizon", "Beach", "6", 7316.01, (2225.33, 2633.28, 1250.55), "Launch 1", "Nakheel brochure (rev 19); 7,307.73 sq ft in the latest release"),
+    ("Pacific Breeze", "Beach", "6", 7676.93, None, "Latest release", "Frond F brochure"),
+    ("Cyan Sky", "Beach", "6", 7722.35, None, "Latest release", "Frond F brochure"),
+    ("Sapphire", "Beach", "6", 7727.63, (2873.32, 2513.27, 1124.40), "Launch 1", "Nakheel brochure (rev 21)"),
+    ("Tropical Mist", "Beach", "6", 7798.45, (2683.87, 2612.62, 1249.37), "Launch 1", "Nakheel brochure (rev 20)"),
+    ("Acquamarina", "Beach", "6", 7875.74, (2640.39, 2469.24, 1227.09), "Launch 1", "Nakheel brochure (rev 20)"),
+    ("Indigo Ocean", "Beach", "5", 7882.63, (2666.65, 2444.81, 1236.24), "Launch 1", "Nakheel brochure (rev 20)"),
+    ("Mediterranean", "Beach", "5 + family", 8165.61, (2577.63, 2557.07, 1464.65), "Launch 1", "Nakheel brochure (rev 18)"),
+    ("Bluejay", "Beach", "6", 8293.27, None, "Latest release", "Frond F brochure"),
+    ("Ocean Whisper", "Beach", "6", 8314.91, None, "Latest release", "Frond F brochure"),
+    ("Provence", "Beach", "5 + family", 8321.90, (2808.95, 2546.10, 1433.32), "Launch 1", "Nakheel brochure (rev 19)"),
+    ("Azure Blue", "Beach", "5", 8434.38, (2778.60, 2655.13, 1652.80), "Launch 1", "Nakheel brochure (rev 20)"),
+    ("Cobalt", "Beach", "–", None, None, "Latest release", "Approx. 7,800 sq ft, pending confirmation"),
+    ("Baia Luna", "Beach", "–", None, None, "Latest release", "Area to confirm"),
+    ("Crystal Springs", "Beach", "–", None, None, "Latest release", "Area to confirm"),
+    ("Wave Crest", "Beach", "–", None, None, "Latest release", "Area to confirm"),
+    ("Coral Living", "Coral", "7", 11222.02, None, "Coral launch", "Nakheel brochure (rev 23)"),
+    ("Cranberry Sky", "Coral", "7", 11447.85, (3422.39, 4072.31, 1672.93), "Coral launch", "Nakheel brochure (rev 22)"),
+    ("Porcelain Roses", "Coral", "7", 11530.73, (4126.02, 3729.26, 1735.03), "Coral launch", "Nakheel brochure (rev 23)"),
+    ("Red Aurora", "Coral", "7", 11631.91, (4202.23, 3845.51, 1628.47), "Coral launch", "Nakheel brochure (rev 23)"),
+    ("Coral Dune", "Coral", "6", 11635.14, None, "Latest release", "Frond F brochure"),
+    ("Sunset Mirage", "Coral", "6", 11701.12, None, "Latest release", "Frond F brochure"),
+    ("Hibiscus", "Coral", "7", 12007.46, (3801.92, 3741.97, 1699.94), "Coral launch", "Nakheel brochure (rev 28)"),
+    ("Terracotta", "Coral", "7", 12140.51, (3784.38, 3934.64, 1943.32), "Coral launch", "Nakheel brochure (rev 23)"),
+    ("Ruby Sunset", "Coral", "7", 12155.47, (4105.14, 3903.53, 1796.50), "Coral launch", "Nakheel brochure (rev 21)"),
+    ("Redwood", "Coral", "7", 12165.37, (3700.42, 4023.76, 2253.96), "Coral launch", "Nakheel brochure (rev 23)"),
+    ("Amber Reef", "Coral", "–", None, None, "Latest release", "Area to confirm"),
+]
+def slug(s): return s.lower().replace(" ", "-")
+
+def listing_design(l):
+    """Design named in the advert title, or an exact brochure-area match with the same bedroom count."""
+    title, beds, area = l[3], l[2], l[6]
+    for d in DESIGNS:
+        if d[0].lower().replace(" ", "") in title.lower().replace(" ", ""):
+            return d[0], "named"
+    if area:
+        for d in DESIGNS:
+            if d[3] and abs(d[3] - area) <= 1.0 and d[2].split()[0] == str(beds):
+                return d[0], "match"
+    return None, None
+
+def design_listings(name):
+    return [l for l in LISTINGS if listing_design(l)[0] == name]
+
+def design_table(coll):
+    rows = ""
+    for name, c, beds, bua, floors, rel, src in DESIGNS:
+        if c != coll: continue
+        n_list = len(design_listings(name))
+        listed = f'<a href="/dubai-property-atlas#listings">{n_list}</a>' if n_list else "–"
+        bua_txt = f"{bua:,.2f}" if bua else "To confirm"
+        sqm_txt = f"{bua/SQM:,.1f}" if bua else "–"
+        fl = " / ".join(f"{x:,.0f}" for x in floors) if floors else "–"
+        rows += (f'<tr id="{slug(name)}"><td data-v="{esc(name)}"><b>{name}</b><span class="small" style="display:block">{esc(src)}</span></td>'
+                 f'<td data-v="{beds[0] if beds[0].isdigit() else 0}">{beds}</td><td data-v="{bua or 0}">{bua_txt}</td><td data-v="{bua or 0}">{sqm_txt}</td>'
+                 f'<td>{fl}</td><td data-v="{ARCH.get(name, "")}">{ARCH.get(name, "–")}</td><td data-v="{rel}">{rel}</td><td data-v="{n_list}">{listed}</td></tr>')
+    return f'''<div class="table-wrap reveal"><table class="sortable design-table">
+<thead><tr><th>Design</th><th>Beds</th><th>Built-up sq ft</th><th>sq m</th><th>Ground / First / Second (sq ft)</th><th>Architect</th><th>Release</th><th>Listed now</th></tr></thead>
+<tbody>{rows}</tbody></table></div>
+<p class="small" style="margin-top:12px">Tap a column heading to sort. Every brochure design shown is ground plus two floors with a lift, private pool, roof lounge and terrace, maid's and driver's rooms and a covered tandem garage. "Listed now" counts current advertised villas whose advert names the design or whose stated area matches the brochure exactly.</p>'''
 
 # ---------------------------------------------------------------- HOME
 def home():
@@ -368,9 +433,9 @@ def beach():
 </div></section>
 
 <section class="sec-cream" id="designs"><div class="wrap">
- <div class="sec-head reveal"><span class="eyebrow">The designs</span><h2>Ten Beach designs, ordered by size.</h2>
- <p class="lead">Approx. 7,300–8,500 sq ft across five- and six-bedroom designs. Areas are indicative collection references; different releases may use revised plans.</p></div>
- <div class="designs">{cards}{more}</div>
+ <div class="sec-head reveal"><span class="eyebrow">Design library</span><h2>Every Beach design, side by side.</h2>
+ <p class="lead">Sixteen Beach designs from approx. 7,300 to 8,450 sq ft, with floor-by-floor areas from Nakheel's own brochures. Use it to check whether an advertised area actually matches the design claimed.</p></div>
+ {design_table("Beach")}
  <p class="note">Confirm bedrooms, layout and exact area against the selected villa's SPA and developer floor plan before making an offer. Developer reference: <a href="https://www.nakheel.com/en/media-centre/press-releases/news-detail/2025/05/06/on-palm-jebel-ali--the-beach-collection-is-set-to-take-luxury-coastal-living-to-new-heights" target="_blank" rel="noopener">Nakheel, Beach Collection, 6 May 2025</a>.</p>
 </div></section>
 
@@ -388,7 +453,7 @@ def beach():
 {cta_band("Compare the strongest Beach Villa opportunities.", "Share your budget, preferred position and timing. You receive a focused shortlist — not a generic property list.", "Hello Mark, please send me a private shortlist of Palm Jebel Ali Beach Collection resale villas with current pricing and payment positions.")}
 '''
     return page("/beach-collection-resale", "Palm Jebel Ali Beach Villas Resale | Mark Darsy",
-                "Compare Palm Jebel Ali Beach Collection resale villas — ten designs from approx. 7,300 to 8,500 sq ft — by frond position, orientation and developer payment obligations.",
+                "Palm Jebel Ali Beach Collection design library: 16 villa designs with built-up and floor-by-floor areas from Nakheel brochures, plus current resale listings by design.",
                 "palm-jebel-ali-beach-villas.webp", body)
 
 # ---------------------------------------------------------------- CORAL
@@ -409,9 +474,10 @@ def coral():
 </div></section>
 
 <section class="sec-cream" id="designs"><div class="wrap">
- <div class="sec-head reveal"><span class="eyebrow">The designs</span><h2>Six Coral designs at a glance.</h2>
- <p class="lead">Approx. 11,500–12,500 sq ft. Published releases include six- and seven-bedroom Coral designs; confirm the size and bedroom count of the specific resale villa.</p></div>
- <div class="designs">{wide}{more}</div>
+ <div class="sec-head reveal"><span class="eyebrow">Design library</span><h2>Every Coral design, side by side.</h2>
+ <p class="lead">Eleven Coral designs from approx. 11,200 to 12,200 sq ft, with floor-by-floor areas from Nakheel's own brochures — the fastest way to verify the design behind a resale advert.</p></div>
+ {design_table("Coral")}
+ <div class="designs mt">{wide}</div>
  <p class="note">Plans are indicative; final dimensions, orientation, materials and specifications are governed by the individual SPA. Architects as named by Nakheel for the latest release. Developer reference: <a href="https://www.nakheel.com/en/media-centre/press-releases/news-detail/2026/08/20/four-studios--one-shoreline--inside-the-latest-release-from-palm-jebel-ali-s-beach---coral-collections" target="_blank" rel="noopener">Nakheel, Beach &amp; Coral release, 20 August 2026</a>.</p>
 </div></section>
 
@@ -430,7 +496,7 @@ def coral():
 {cta_band("Build a private Coral Villa comparison.", "A focused comparison of current opportunities based on position, documentation and payment obligations.", "Hello Mark, please send me the current Palm Jebel Ali Coral Collection resale opportunities and floor plans.")}
 '''
     return page("/coral-collection-resale", "Palm Jebel Ali Coral Villas Resale | Mark Darsy",
-                "Palm Jebel Ali Coral Collection resale villas, approx. 11,500–12,500 sq ft — compare Coral Dune, Sunset Mirage and other designs by scale, position, layout and payment obligations.",
+                "Palm Jebel Ali Coral Collection design library: 11 villa designs including Redwood, Hibiscus and Cranberry Sky with brochure areas, plus current resale listings by design.",
                 "pja-beach-villas-evening.webp", body)
 
 # ---------------------------------------------------------------- ATLAS
@@ -442,13 +508,15 @@ def atlas():
     for lid, fr, beds, title, price, alab, area, plot, ori in LISTINGS:
         psf = round(price / area) if area else None
         area_txt = f"{area:,} sq ft" if area else "To confirm"
+        dn, how = listing_design((lid, fr, beds, title, price, alab, area, plot, ori))
+        design_line = (f'<p class="small" style="margin:-6px 0 14px">Area matches Nakheel\'s <a href="/{"beach" if dict((d[0], d[1]) for d in DESIGNS)[dn] == "Beach" else "coral"}-collection-resale#{slug(dn)}">{dn}</a> brochure</p>' if how == "match" else "")
         psf_txt = f"Asking price · approx. AED {psf:,} per sq ft" if psf else "Asking price · area to confirm"
         summary = f"Frond {fr} · {title} · {beds} bedrooms · AED {price:,}"
         cards += f'''<article class="lst" data-id="{lid}" data-frond="{fr}" data-beds="{beds}" data-price="{price}" data-summary="{esc(summary)}">
  <div class="lst-top"><span>Frond {fr}</span><span>{beds} bedrooms</span></div>
  <div class="lst-body"><span class="tag">Off-plan resale</span><h3>{esc(title)}</h3>
  <div class="price">AED {price:,}</div><div class="price-sub">{psf_txt}</div>
- <div class="spec"><div><span>{alab}</span>{area_txt}</div><div><span>Plot</span>{plot}</div><div><span>Orientation</span>{ori}</div><div><span>Developer payments</span>Statement required</div></div>
+ {design_line}<div class="spec"><div><span>{alab}</span>{area_txt}</div><div><span>Plot</span>{plot}</div><div><span>Orientation</span>{ori}</div><div><span>Developer payments</span>Statement required</div></div>
  <a class="tel" href="tel:{TEL}">Mark Darsy · <b>{PHONE}</b></a>
  <div class="acts"><a class="btn ask" href="{WA}" target="_blank" rel="noopener">Ask Mark about this villa</a><button class="btn btn-line add" type="button" aria-pressed="false">Add to shortlist</button></div></div>
 </article>'''
@@ -677,12 +745,96 @@ def notfound():
 def redirect(to):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Redirecting…</title><meta name="robots" content="noindex"><link rel="canonical" href="{SITE}{to}"><meta http-equiv="refresh" content="0; url={to}"><script>location.replace("{to}")</script></head><body><a href="{to}">Continue</a></body></html>'''
 
-ROUTES = ["/", "/dubai-property-atlas", "/beach-collection-resale", "/coral-collection-resale",
+# ---------------------------------------------------------------- FRONDS
+FRONDS_ALL = list("ABCDEF") + list("KLMNOP")
+LATEST_BEACH = ["Cyan Sky", "Cobalt", "Baia Luna", "Wave Crest", "Ocean Whisper", "Bluejay", "Blue Horizon", "Indigo Ocean", "Pacific Breeze", "Crystal Springs"]
+LAUNCH1_BEACH = ["Blue Horizon", "Provence", "Indigo Ocean", "Sapphire", "Acquamarina", "Tropical Mist", "Azure Blue", "Mediterranean"]
+
+def median(xs):
+    xs = sorted(xs); n = len(xs)
+    return None if not n else (xs[n // 2] if n % 2 else round((xs[n // 2 - 1] + xs[n // 2]) / 2))
+
+def frond_stats(f):
+    ls = [l for l in LISTINGS if l[1] == f]
+    prices = [l[4] for l in ls]
+    psf = [round(l[4] / l[6]) for l in ls if l[6]]
+    return ls, prices, median(psf)
+
+def fronds():
+    rows, secs = "", ""
+    for f in FRONDS_ALL:
+        ls, prices, mpsf = frond_stats(f)
+        kp = f in "KLMNOP"
+        stage = "Internal &amp; external finishing" if kp else "Under construction"
+        rng = f"AED {min(prices)/1e6:.1f}M–{max(prices)/1e6:.1f}M" if len(prices) > 1 else (f"AED {prices[0]/1e6:.1f}M" if prices else "–")
+        rows += (f'<tr><td data-v="{f}"><a href="#frond-{f.lower()}"><b>Frond {f}</b></a></td><td data-v="{1 if kp else 2}">{stage}</td>'
+                 f'<td data-v="{len(ls)}">{len(ls) or "–"}</td><td data-v="{min(prices) if prices else 0}">{rng}</td>'
+                 f'<td data-v="{mpsf or 0}">{f"AED {mpsf:,}" if mpsf else "–"}</td></tr>')
+        beach = LATEST_BEACH if kp else sorted(set(LAUNCH1_BEACH + LATEST_BEACH), key=lambda n: [d[0] for d in DESIGNS].index(n))
+        chips = "".join(f'<li><a href="/beach-collection-resale#{slug(n)}" style="text-decoration:none">{n}</a></li>' for n in beach)
+        lst = ""
+        for l in sorted(ls, key=lambda x: x[4]):
+            dn, _ = listing_design(l)
+            lst += f'<li><b>AED {l[4]:,}</b> · {l[2]} bedrooms{f" · {l[6]:,} sq ft" if l[6] else ""}{f" · {dn}" if dn else ""}{f" · {l[8]}" if l[8] not in ("To confirm",) else ""}</li>'
+        lst_html = (f'<ul class="flist">{lst}</ul><a class="link" href="/dubai-property-atlas?frond={f}#listings">Shortlist Frond {f} villas</a>'
+                    if ls else '<p class="small">No current advertised resale villas on this frond in the Atlas. Ask Mark for off-market and upcoming options.</p>')
+        extra = ""
+        if f == "F":
+            extra = '<p class="small"><b>Latest release:</b> Nakheel unveiled 44 beachfront villas on Frond F in 10 designs (20 August 2026), from four architecture studios.</p>'
+        status = ("Nakheel reports the 728 villas on Fronds K–P in internal and external finishing (August 2026)." if kp
+                  else "Nakheel reports the 544 villas on Fronds A–F at various construction stages (August 2026).")
+        secs += f'''<article class="card reveal frond" id="frond-{f.lower()}">
+ <div class="frond-head"><span class="frond-l">{f}</span><div><h3>Frond {f}</h3><span class="small">{stage} · {len(ls)} advertised resale villa{"s" if len(ls) != 1 else ""}{f" · median asking AED {mpsf:,}/sq ft" if mpsf else ""}</span></div></div>
+ <p>{status}</p>{extra}
+ <h4>Current resale asking prices</h4>{lst_html}
+ <h4>Beach designs shown by Nakheel for {"Fronds K–P" if kp else "this frond"}</h4><ul class="names">{chips}</ul>
+ <p class="small">Coral Collection designs are also released on this frond — see the <a href="/coral-collection-resale#designs">Coral design library</a>.</p>
+ <a class="btn btn-line" href="{wa(f"Hello Mark, I am interested in Frond {f} at Palm Jebel Ali. Please send me current resale options with price, orientation and payment position.")}" target="_blank" rel="noopener">Ask Mark about Frond {f}</a>
+</article>'''
+    total = len(LISTINGS)
+    body = f'''
+<section class="phero" style="padding-bottom:30px"><div class="wrap narrow">
+ <span class="eyebrow">Frond by frond · Resale study</span>
+ <h1>Palm Jebel Ali, frond by frond.</h1>
+ <p class="lead">Construction stage, current resale asking prices, price per square foot and the designs released on each villa frond — in one place, so you can compare fronds before comparing villas.</p>
+</div></section>
+
+<section style="padding-top:10px"><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Overview</span><h2>All twelve villa fronds.</h2>
+ <p class="lead">Based on {total} currently advertised resale villas in the Property Atlas and Nakheel's August 2026 construction update.</p></div>
+ <div class="table-wrap reveal"><table class="sortable">
+  <thead><tr><th>Frond</th><th>Stage</th><th>Listings</th><th>Asking range</th><th>Median AED/sq ft</th></tr></thead>
+  <tbody>{rows}</tbody></table></div>
+ <p class="note">Asking prices are advertised figures, not valuations or achieved sales, and a frond median from a few listings is only indicative. Price per sq ft uses the advertised built-up area where stated. Nakheel states a phased handover of the first villas from late 2026 through 2027; confirm the delivery date in each villa's contract.</p>
+</div></section>
+
+<section class="sec-cream"><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">How to read a frond</span><h2>The frond is the start, not the answer.</h2></div>
+ <div class="g3">
+  <div class="card reveal"><h3>Two sides per frond</h3><p>Every frond has a sunrise side and a sunset side. Orientation belongs to the individual plot, never to the frond letter.</p></div>
+  <div class="card reveal"><h3>Spine to tip</h3><p>Plots closer to the spine favour daily access; plots towards the tip trade a longer drive for a quieter, more open position.</p></div>
+  <div class="card reveal"><h3>Stage and timing</h3><p>Fronds K–P are further along in construction. On a resale, timing changes how many developer instalments remain before handover.</p></div>
+ </div>
+ <div class="btns"><a class="btn btn-line" href="/palm-jebel-ali-position-guide#compare-positions">Compare two villa positions</a></div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Frond profiles</span><h2>Inside each frond.</h2></div>
+ <div class="frond-grid">{secs}</div>
+ <p class="note">Design availability reflects the designs Nakheel shows for each frond group on its official Palm Jebel Ali website; release and plot allocation vary, so confirm the exact villa with its SPA and plot plan. Sources: Nakheel press releases of 20 August 2026 and palmjebelali.ae.</p>
+</div></section>
+{cta_band("Choose the frond, then the villa.", "Tell Mark your preferred fronds, side and budget. You receive up to three villas compared on position, design and payment structure.", "Hello Mark, please help me choose between Palm Jebel Ali fronds and shortlist resale villas.")}
+'''
+    return page("/palm-jebel-ali-fronds", "Palm Jebel Ali Fronds A–P: Resale Prices & Status | Mark Darsy",
+                "Compare every Palm Jebel Ali villa frond: construction stage, current resale asking prices, median price per sq ft and released Beach and Coral designs.",
+                "pja-aerial-progress-overview-v1.webp", body)
+
+ROUTES = ["/", "/dubai-property-atlas", "/palm-jebel-ali-fronds", "/beach-collection-resale", "/coral-collection-resale",
           "/palm-jebel-ali-position-guide", "/sell-your-palm-jebel-ali-villa", "/palm-jebel-ali-resale-guide", "/privacy"]
 
 if __name__ == "__main__":
     write("/", home()); write("/beach-collection-resale", beach()); write("/coral-collection-resale", coral())
-    write("/dubai-property-atlas", atlas()); write("/palm-jebel-ali-position-guide", position())
+    write("/dubai-property-atlas", atlas()); write("/palm-jebel-ali-fronds", fronds()); write("/palm-jebel-ali-position-guide", position())
     write("/sell-your-palm-jebel-ali-villa", sell()); write("/palm-jebel-ali-resale-guide", guide()); write("/privacy", privacy())
     with open(os.path.join(OUT, "404.html"), "w") as f: f.write(notfound())
     for src, to in [("/dubai-property-atlas/designs/coral-dune", "/coral-collection-resale#coral-dune"),
