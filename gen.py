@@ -8,7 +8,9 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "6"
+VER = "7"
+ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
+MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
 def wa(text): return WA + "?text=" + quote(text)
 def esc(s): return html.escape(s, quote=True)
@@ -41,6 +43,8 @@ LD = {
     "image": SITE + "/images/mark-darsy-authentic-advisor-v2.webp",
     "telephone": TEL,
     "areaServed": {"@type": "Place", "name": "Palm Jebel Ali, Dubai, United Arab Emirates"},
+    "address": {"@type": "PostalAddress", "streetAddress": "Regalia Tower, 1st Floor", "addressLocality": "Business Bay, Dubai", "addressCountry": "AE"},
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai",
     "knowsAbout": ["Palm Jebel Ali resale villas", "Beach Collection", "Coral Collection", "Off-plan villa resale"],
 }
 
@@ -101,7 +105,7 @@ def footer(extra=""):
   <div class="ftr-grid">
    <div>
     <a class="brand" href="/"><span class="mono">MD</span><span><b>Mark Darsy</b><small>Palm Jebel Ali resale specialist</small></span></a>
-    <p style="margin-top:22px">Dubai, United Arab Emirates</p>
+    <p style="margin-top:22px">{ADDRESS}<br><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></p>
     <p><a href="tel:{TEL}">{PHONE}</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a></p>
    </div>
    <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a></nav>
@@ -303,7 +307,8 @@ def home():
  <div class="reveal"><span class="eyebrow">09 · Your shortlist</span><h2>Build your private shortlist.</h2>
   <p class="lead">Share a few details. WhatsApp opens with your brief — press Send to share it with Mark.</p>
   <div class="direct"><span class="small">Direct WhatsApp</span><a href="{WA}" target="_blank" rel="noopener">{PHONE}</a></div>
-  <div class="btns" style="margin-top:0"><a class="btn btn-line" href="tel:{TEL}">Call Mark</a><a class="btn btn-line" href="/sell-your-palm-jebel-ali-villa">Own a villa? Seller enquiry</a></div>
+  <div class="direct"><span class="small">Office</span><p style="margin:6px 0 4px;font:500 22px/1.35 var(--serif)">Regalia Tower, 1st Floor<br>Business Bay, Dubai, UAE</p><a class="link" href="{MAPS}" target="_blank" rel="noopener" style="font:600 13px var(--sans)">Get directions</a></div>
+  <div class="btns" style="margin-top:26px"><a class="btn btn-line" href="tel:{TEL}">Call Mark</a><a class="btn btn-line" href="/sell-your-palm-jebel-ali-villa">Own a villa? Seller enquiry</a></div>
  </div>
  <form class="form reveal" data-wa="Hello Mark, here is my Palm Jebel Ali buyer brief:">
   {field("Your name", '<input name="name" autocomplete="name" required>')}
@@ -474,7 +479,7 @@ def atlas():
 
 <section class="sec-dark"><div class="wrap g2" style="align-items:center">
  <div class="reveal"><span class="eyebrow">Two villas in mind?</span><h2>Compare the positions side by side.</h2><p class="lead">Frond, orientation, position along the frond, outlook, neighbours and payment status — in one structured comparison.</p><div class="btns"><a class="btn btn-gold" href="/palm-jebel-ali-position-guide#compare-positions">Open the comparison tool</a></div></div>
- <div class="advisor reveal">{img("mark-darsy-authentic-advisor-v2.webp", "Mark Darsy, Palm Jebel Ali resale specialist")}<div><span class="eyebrow">Your advisor</span><h3>Mark Darsy</h3><p>Palm Jebel Ali resale specialist · AED 200M+ in Palm Jebel Ali sales.</p><p><a href="tel:{TEL}" style="font:500 26px var(--serif);text-decoration:none;color:var(--on-dark)">{PHONE}</a></p><a class="link" href="{wa("Hello Mark, please advise on my Palm Jebel Ali villa shortlist and payment obligations.")}" target="_blank" rel="noopener">WhatsApp Mark</a></div></div>
+ <div class="advisor reveal">{img("mark-darsy-authentic-advisor-v2.webp", "Mark Darsy, Palm Jebel Ali resale specialist")}<div><span class="eyebrow">Your advisor</span><h3>Mark Darsy</h3><p>Palm Jebel Ali resale specialist · AED 200M+ in Palm Jebel Ali sales.</p><p class="small">Regalia Tower, 1st Floor, Business Bay, Dubai · <a href="{MAPS}" target="_blank" rel="noopener" style="color:var(--gold-lt)">Directions</a></p><p><a href="tel:{TEL}" style="font:500 26px var(--serif);text-decoration:none;color:var(--on-dark)">{PHONE}</a></p><a class="link" href="{wa("Hello Mark, please advise on my Palm Jebel Ali villa shortlist and payment obligations.")}" target="_blank" rel="noopener">WhatsApp Mark</a></div></div>
 </div></section>
 '''
     bar = f'''<div class="shortbar" role="region" aria-label="Your shortlist"><div class="wrap"><div><b>Your shortlist</b><span id="bar-n">0 villas selected</span></div><button class="btn btn-gold" id="bar-send" type="button">Send to Mark</button></div></div>'''
