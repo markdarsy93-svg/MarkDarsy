@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "4"
+VER = "5"
 
 def wa(text): return WA + "?text=" + quote(text)
 def esc(s): return html.escape(s, quote=True)
