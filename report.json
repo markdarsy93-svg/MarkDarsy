@@ -1,0 +1,252 @@
+[
+ {
+  "label": "mobile",
+  "p": "/",
+  "overflow": 0,
+  "broken": [],
+  "ph": [
+   [
+    "palm-jebel-ali-frond-villas.webp",
+    true,
+    2000,
+    348,
+    261,
+    "1",
+    "visible",
+    "block",
+    "1",
+    "none"
+   ],
+   [
+    "pja-beach-villas-frontage.webp",
+    true,
+    2200,
+    348,
+    261,
+    "1",
+    "visible",
+    "block",
+    "1",
+    "none"
+   ],
+   [
+    "pja-beach-villas-evening.webp",
+    true,
+    2200,
+    348,
+    261,
+    "1",
+    "visible",
+    "block",
+    "1",
+    "none"
+   ]
+  ]
+ },
+ {
+  "label": "mobile",
+  "p": "/palm-jebel-ali-fronds/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/dubai-property-atlas/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/beach-collection-resale/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/coral-collection-resale/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/palm-jebel-ali-position-guide/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/sell-your-palm-jebel-ali-villa/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/palm-jebel-ali-resale-guide/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/privacy/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/palm-jebel-ali-villa-prices/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/about-mark-darsy/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "p": "/nope",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "mobile",
+  "errors": []
+ },
+ {
+  "label": "desktop",
+  "p": "/",
+  "overflow": 0,
+  "broken": [],
+  "ph": [
+   [
+    "palm-jebel-ali-frond-villas.webp",
+    true,
+    2000,
+    379,
+    474,
+    "1",
+    "visible",
+    "block",
+    "1",
+    "none"
+   ],
+   [
+    "pja-beach-villas-frontage.webp",
+    true,
+    2200,
+    379,
+    474,
+    "1",
+    "visible",
+    "block",
+    "1",
+    "none"
+   ],
+   [
+    "pja-beach-villas-evening.webp",
+    true,
+    2200,
+    379,
+    474,
+    "1",
+    "visible",
+    "block",
+    "1",
+    "none"
+   ]
+  ]
+ },
+ {
+  "label": "desktop",
+  "p": "/palm-jebel-ali-fronds/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/dubai-property-atlas/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/beach-collection-resale/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/coral-collection-resale/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/palm-jebel-ali-position-guide/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/sell-your-palm-jebel-ali-villa/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/palm-jebel-ali-resale-guide/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/privacy/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/palm-jebel-ali-villa-prices/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/about-mark-darsy/",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "p": "/nope",
+  "overflow": 0,
+  "broken": [],
+  "ph": []
+ },
+ {
+  "label": "desktop",
+  "errors": []
+ }
+]
