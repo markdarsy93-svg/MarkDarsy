@@ -39,6 +39,7 @@ WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wid
 UPDATED = "2026-10-06"
 UPDATED_TXT = "6 October 2026"
 EMAIL = "mark@palmjebelali-resale.com"
+INSTAGRAM = "https://www.instagram.com/markdarsy_therealtor/"
 INDEXNOW_KEY = "6f1d2c8a4b7e4f0e9a3d5c1b8e2f7a64"
 
 ORG_ID, MARK_ID, SITE_ID, PJA_ID = SITE + "/#business", SITE + "/#mark-darsy", SITE + "/#website", SITE + "/#palm-jebel-ali"
@@ -53,14 +54,14 @@ BASE_LD = [
      "telephone": TEL, "email": EMAIL, "founder": {"@id": MARK_ID}, "employee": {"@id": MARK_ID},
      "areaServed": {"@id": PJA_ID},
      "address": {"@type": "PostalAddress", "streetAddress": "Regalia Tower, 1st Floor", "addressLocality": "Business Bay, Dubai", "addressRegion": "Dubai", "addressCountry": "AE"},
-     "hasMap": MAPS,
+     "hasMap": MAPS, "sameAs": [INSTAGRAM],
      "contactPoint": {"@type": "ContactPoint", "telephone": TEL, "email": EMAIL, "contactType": "sales", "areaServed": "AE", "availableLanguage": ["English"]},
      "knowsAbout": ["Palm Jebel Ali", "Palm Jebel Ali resale villas", "Beach Collection villas", "Coral Collection villas", "Off-plan villa resale in Dubai", "Nakheel developer payment plans", "Dubai property transfer and NOC process"]},
     {"@type": "Person", "@id": MARK_ID, "name": "Mark Darsy", "jobTitle": "Palm Jebel Ali resale specialist",
      "url": SITE + "/about-mark-darsy", "image": SITE + "/images/mark-darsy-authentic-advisor-v2.webp",
      "telephone": TEL, "email": EMAIL, "worksFor": {"@id": ORG_ID}, "workLocation": {"@type": "Place", "name": "Regalia Tower, Business Bay, Dubai"},
      "description": "Dubai-based property adviser specialising in Palm Jebel Ali resale villas. " + "; ".join(CREDS) + ".",
-     "knowsAbout": ["Palm Jebel Ali", "Palm Jebel Ali fronds", "Off-plan resale", "Nakheel"]},
+     "knowsAbout": ["Palm Jebel Ali", "Palm Jebel Ali fronds", "Off-plan resale", "Nakheel"], "sameAs": [INSTAGRAM]},
     {"@type": "WebSite", "@id": SITE_ID, "url": SITE + "/", "name": "Palm Jebel Ali Resale", "alternateName": "palmjebelali-resale.com",
      "publisher": {"@id": ORG_ID}, "inLanguage": "en"},
     {"@type": "Place", "@id": PJA_ID, "name": "Palm Jebel Ali", "description": "Nakheel's palm-shaped island development off Jebel Ali, Dubai, with Beach and Coral Collection villas on its fronds.",
@@ -143,7 +144,7 @@ def footer(extra=""):
    <div>
     <a class="brand" href="/"><span class="mono">MD</span><span><b>Mark Darsy</b><small>Palm Jebel Ali resale specialist</small></span></a>
     <p style="margin-top:22px">{ADDRESS}<br><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></p>
-    <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a></p>
+    <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a><br><a href="{INSTAGRAM}" target="_blank" rel="noopener me">Instagram</a></p>
    </div>
    <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/palm-jebel-ali-fronds">Frond by frond</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a><a href="/palm-jebel-ali-villa-prices">Villa prices</a></nav>
    <nav aria-label="Services"><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/about-mark-darsy">About Mark Darsy</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
@@ -336,7 +337,7 @@ def design_table(coll):
 def home():
     body = f'''
 <section class="hero" aria-label="Palm Jebel Ali resale villas">
- <img class="poster" src="/images/palm-jebel-ali-villa.webp" alt="" aria-hidden="true">
+ <img class="poster" src="/images/palm-jebel-ali-villa.webp" alt="Palm Jebel Ali beachfront villa, developer imagery">
  <video autoplay muted loop playsinline preload="auto" poster="/images/palm-jebel-ali-villa.webp" aria-hidden="true" tabindex="-1">
   <source src="/videos/coral-dune-hero.mp4" type="video/mp4">
  </video>
@@ -460,7 +461,7 @@ def home():
  </form>
 </div></section>
 '''
-    return page("/", "Palm Jebel Ali Resale Villas | Mark Darsy",
+    return page("/", "Palm Jebel Ali Villas & Property Resale | Mark Darsy",
                 "Palm Jebel Ali resale villas compared by frond, orientation, plot, outlook and remaining developer payments. A private shortlist of up to three options with Mark Darsy.",
                 "palm-jebel-ali-villa.webp", body, home=True, faq=faqs()["home"])
 
@@ -626,7 +627,7 @@ def atlas():
 </div></section>
 '''
     bar = f'''<div class="shortbar" role="region" aria-label="Your shortlist"><div class="wrap"><div><b>Your shortlist</b><span id="bar-n">0 villas selected</span></div><button class="btn btn-gold" id="bar-send" type="button">Send to Mark</button></div></div>'''
-    return page("/dubai-property-atlas", "Palm Jebel Ali Villa Listings | Mark Darsy",
+    return page("/dubai-property-atlas", "Palm Jebel Ali Villas for Sale | Resale Listings | Mark Darsy",
                 "Palm Jebel Ali villas for resale by frond, bedrooms and asking price. Shortlist villas, estimate purchase costs and confirm remaining developer payments with Mark Darsy.",
                 "palm-jebel-ali-villa.webp", body, extra=bar, faq=faqs()["atlas"], ld=listing_ld("/dubai-property-atlas"), crumb="Villa listings")
 
@@ -837,16 +838,20 @@ def faqs():
              f"Nakheel brochures list Beach Collection designs at about {S['beach'][0]:,.0f}–{S['beach'][1]:,.0f} sq ft of built-up area, with five or six bedrooms (some five-bedroom designs add a family room). Designs include Blue Horizon, Sapphire, Tropical Mist, Acquamarina, Indigo Ocean, Mediterranean, Provence, Azure Blue, Pacific Breeze, Cyan Sky, Bluejay and Ocean Whisper.")
     coral_sizes = ("How big are Palm Jebel Ali Coral Collection villas?",
              f"Nakheel brochures list Coral Collection designs at about {S['coral'][0]:,.0f}–{S['coral'][1]:,.0f} sq ft of built-up area, mostly with seven bedrooms; Coral Dune and Sunset Mirage have six. Designs include Coral Living, Cranberry Sky, Porcelain Roses, Red Aurora, Coral Dune, Sunset Mirage, Hibiscus, Terracotta, Ruby Sunset and Redwood.")
+    built = ("Is Palm Jebel Ali being built, and will it be finished?",
+             "Yes. Nakheel relaunched Palm Jebel Ali and reports more than AED 13 billion in construction and infrastructure contracts awarded. In its August 2026 update, the 728 villas on Fronds K–P were in internal and external finishing and the 544 villas on Fronds A–F at various construction stages, with a phased handover of the first villas scheduled from late 2026 through 2027.")
+    worth = ("Is it worth investing in a Palm Jebel Ali villa?",
+             "It depends on the specific villa, the price and the seller's payment position rather than the island as a whole. Compare the exact frond, orientation, plot and outlook, how much cash is due at transfer and how much remains payable to the developer, and the contractual delivery date. This site does not forecast returns or appreciation; current advertised asking prices are shown on the <a href=\"/palm-jebel-ali-villa-prices\">villa prices</a> page.")
     contact = ("How do I contact a Palm Jebel Ali resale specialist?",
              f"Mark Darsy can be reached on WhatsApp or phone at {PHONE}, by email at {EMAIL}, or at Regalia Tower, 1st Floor, Business Bay, Dubai. Share your budget, preferred collection and timing to receive a shortlist of up to three villas.")
     return {
-        "home": [price, collections, handover, how, mark, visa, sellq],
+        "home": [price, collections, built, handover, how, worth, mark, visa, sellq],
         "atlas": [count, psfq, costs, how],
         "prices": [price, psfq, costs, collections],
-        "fronds": [nfronds, advanced, best, sunrise, handover],
+        "fronds": [nfronds, advanced, best, sunrise, built],
         "position": [best, sunrise],
         "sell": [sellq, sell_docs, sell_val],
-        "guide": [checks, how, costs, noc, visa, vs],
+        "guide": [checks, how, costs, noc, worth, visa, vs],
         "beach": [beach_sizes, collections],
         "coral": [coral_sizes, collections],
         "about": [mark, contact],
@@ -1082,7 +1087,7 @@ def llms(full=False):
            f"Villas are compared by frond, orientation, plot relationship, outlook and the seller's remaining developer payments; buyers receive a shortlist of up to three options. Last updated {UPDATED_TXT}.", "",
            "## Key facts", "",
            f"- Adviser: Mark Darsy, Palm Jebel Ali resale specialist, Regalia Tower, 1st Floor, Business Bay, Dubai, UAE.",
-           f"- Contact: {PHONE} (phone and WhatsApp, {WA}); {EMAIL}.",
+           f"- Contact: {PHONE} (phone and WhatsApp, {WA}); {EMAIL}; Instagram {INSTAGRAM}.",
            "- Track record: " + "; ".join(CREDS) + ".",
            f"- Current resale asking prices ({UPDATED_TXT}): {S['n']} villas from {m(S['pmin'])} to {m(S['pmax'])}, median {m(S['pmed'])}; about AED {S['psfmin']:,}–{S['psfmax']:,} per sq ft (median AED {S['psfmed']:,}). Asking prices, not valuations or achieved sales.",
            f"- Beach Collection: 5–6 bedrooms, about {S['beach'][0]:,.0f}–{S['beach'][1]:,.0f} sq ft (Nakheel brochures). Coral Collection: 6–7 bedrooms, about {S['coral'][0]:,.0f}–{S['coral'][1]:,.0f} sq ft.",
@@ -1091,7 +1096,7 @@ def llms(full=False):
     out += [f"- [{n}]({SITE}{r}): {d}" for r, n, d in PAGES]
     out += ["", "## Frequently asked questions", ""]
     seen = set()
-    for k in ("home", "atlas", "fronds", "guide", "sell", "beach", "coral", "about"):
+    for k in ("home", "atlas", "prices", "fronds", "guide", "sell", "beach", "coral", "about"):
         for q, a in F[k]:
             if q in seen: continue
             seen.add(q)
