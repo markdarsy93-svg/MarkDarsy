@@ -46,7 +46,7 @@ jobs:
 
       - name: Build pages
         env:
-          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+          CUSTOM_DOMAIN: palmjebelali-resale.com
         run: python3 gen.py
 
       - name: Layout check (mobile + desktop screenshots)
@@ -64,14 +64,6 @@ jobs:
           git config user.email "github-actions@users.noreply.github.com"
           git add -A && git commit -qm "Layout screenshots for ${GITHUB_SHA::7}"
           git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" qa-shots
-
-      - name: Rebuild for preview sub-path (only until the custom domain is live)
-        if: vars.CUSTOM_DOMAIN == ''
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}
-        run: |
-          git checkout -- site/assets/site.css
-          python3 gen.py
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
