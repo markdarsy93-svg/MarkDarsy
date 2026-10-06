@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "7"
+VER = "8"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -42,6 +42,7 @@ LD = {
     "url": SITE + "/",
     "image": SITE + "/images/mark-darsy-authentic-advisor-v2.webp",
     "telephone": TEL,
+    "email": "mark@palmjebelali-resale.com",
     "areaServed": {"@type": "Place", "name": "Palm Jebel Ali, Dubai, United Arab Emirates"},
     "address": {"@type": "PostalAddress", "streetAddress": "Regalia Tower, 1st Floor", "addressLocality": "Business Bay, Dubai", "addressCountry": "AE"},
     "hasMap": "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai",
@@ -106,7 +107,7 @@ def footer(extra=""):
    <div>
     <a class="brand" href="/"><span class="mono">MD</span><span><b>Mark Darsy</b><small>Palm Jebel Ali resale specialist</small></span></a>
     <p style="margin-top:22px">{ADDRESS}<br><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></p>
-    <p><a href="tel:{TEL}">{PHONE}</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a></p>
+    <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a></p>
    </div>
    <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a></nav>
    <nav aria-label="Services"><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
@@ -307,6 +308,7 @@ def home():
  <div class="reveal"><span class="eyebrow">09 · Your shortlist</span><h2>Build your private shortlist.</h2>
   <p class="lead">Share a few details. WhatsApp opens with your brief — press Send to share it with Mark.</p>
   <div class="direct"><span class="small">Direct WhatsApp</span><a href="{WA}" target="_blank" rel="noopener">{PHONE}</a></div>
+  <div class="direct"><span class="small">Email</span><p style="margin:6px 0 18px;font:500 22px/1.35 var(--serif)"><a href="mailto:mark@palmjebelali-resale.com" style="font:inherit;display:inline;margin:0">mark@palmjebelali-resale.com</a></p></div>
   <div class="direct"><span class="small">Office</span><p style="margin:6px 0 4px;font:500 22px/1.35 var(--serif)">Regalia Tower, 1st Floor<br>Business Bay, Dubai, UAE</p><a class="link" href="{MAPS}" target="_blank" rel="noopener" style="font:600 13px var(--sans);display:inline-block;margin:6px 0 0">Get directions</a></div>
   <div class="btns" style="margin-top:26px"><a class="btn btn-line" href="tel:{TEL}">Call Mark</a><a class="btn btn-line" href="/sell-your-palm-jebel-ali-villa">Own a villa? Seller enquiry</a></div>
  </div>
