@@ -1135,6 +1135,7 @@ if __name__ == "__main__":
     with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
         f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n')
     with open(os.path.join(OUT, f"{INDEXNOW_KEY}.txt"), "w") as f: f.write(INDEXNOW_KEY)
+    with open(os.path.join(OUT, "googleb71c4d8f29254c1a.html"), "w") as f: f.write("google-site-verification: googleb71c4d8f29254c1a.html")
     with open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8") as f: f.write(llms())
     with open(os.path.join(OUT, "llms-full.txt"), "w", encoding="utf-8") as f: f.write(llms(full=True))
     if os.environ.get("CUSTOM_DOMAIN"):
