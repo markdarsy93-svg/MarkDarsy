@@ -17,7 +17,8 @@ for (const [label, vp] of Object.entries(sizes)) {
     await page.evaluate(() => Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })))); await page.waitForTimeout(400);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     const broken = await page.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.src));
-    report.push({ label, p, overflow, broken });
+    const ph = await page.evaluate(() => [...document.querySelectorAll('.ph img')].slice(0,3).map(i => { const r = i.getBoundingClientRect(), cs = getComputedStyle(i), pc = getComputedStyle(i.closest('figure,a,section')); return [i.src.split('/').pop(), i.complete, i.naturalWidth, Math.round(r.width), Math.round(r.height), cs.opacity, cs.visibility, cs.display, pc.opacity, pc.transform]; }));
+    report.push({ label, p, overflow, broken, ph });
     const name = (p === '/' ? 'home' : p.replace(/\//g, '')) + '-' + label;
     await page.screenshot({ path: `shots/${name}.png`, fullPage: true });
   }
