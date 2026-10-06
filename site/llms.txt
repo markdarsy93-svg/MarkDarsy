@@ -14,15 +14,15 @@
 ## Pages
 
 - [Home](https://palmjebelali-resale.com/): Palm Jebel Ali resale villas with Mark Darsy: the shortlist service, featured villas, collections, construction progress and contact.
-- [Villa listings (Property Atlas)](https://palmjebelali-resale.com/dubai-property-atlas): Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator.
-- [Villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices): Current Palm Jebel Ali resale asking prices by bedrooms, frond and price per square foot, with method notes.
-- [Fronds A–P](https://palmjebelali-resale.com/palm-jebel-ali-fronds): Frond-by-frond study: construction stage, resale asking prices, median price per sq ft and released designs for the twelve villa fronds.
-- [Beach Collection](https://palmjebelali-resale.com/beach-collection-resale): Beach Collection design library with Nakheel brochure built-up and floor-by-floor areas, architects and resale guidance.
-- [Coral Collection](https://palmjebelali-resale.com/coral-collection-resale): Coral Collection design library with Nakheel brochure areas, floor plans for Coral Dune and Sunset Mirage, and resale guidance.
-- [Position Guide](https://palmjebelali-resale.com/palm-jebel-ali-position-guide): How frond, orientation, position along the frond, outlook, neighbours and payments affect a villa decision; two-villa comparison tool.
-- [Buyer guide](https://palmjebelali-resale.com/palm-jebel-ali-resale-guide): Resale checks, how off-plan resale works, investor snapshot, Palm Jumeirah comparison, Golden Visa and DLD verification.
-- [Sell your villa](https://palmjebelali-resale.com/sell-your-palm-jebel-ali-villa): Confidential resale review and sale process for Palm Jebel Ali villa owners.
-- [About Mark Darsy](https://palmjebelali-resale.com/about-mark-darsy): Who Mark Darsy is, his Palm Jebel Ali track record, how he works and how to contact him.
+- [Villa listings (Property Atlas)](https://palmjebelali-resale.com/dubai-property-atlas/): Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator.
+- [Villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/): Current Palm Jebel Ali resale asking prices by bedrooms, frond and price per square foot, with method notes.
+- [Fronds A–P](https://palmjebelali-resale.com/palm-jebel-ali-fronds/): Frond-by-frond study: construction stage, resale asking prices, median price per sq ft and released designs for the twelve villa fronds.
+- [Beach Collection](https://palmjebelali-resale.com/beach-collection-resale/): Beach Collection design library with Nakheel brochure built-up and floor-by-floor areas, architects and resale guidance.
+- [Coral Collection](https://palmjebelali-resale.com/coral-collection-resale/): Coral Collection design library with Nakheel brochure areas, floor plans for Coral Dune and Sunset Mirage, and resale guidance.
+- [Position Guide](https://palmjebelali-resale.com/palm-jebel-ali-position-guide/): How frond, orientation, position along the frond, outlook, neighbours and payments affect a villa decision; two-villa comparison tool.
+- [Buyer guide](https://palmjebelali-resale.com/palm-jebel-ali-resale-guide/): Resale checks, how off-plan resale works, investor snapshot, Palm Jumeirah comparison, Golden Visa and DLD verification.
+- [Sell your villa](https://palmjebelali-resale.com/sell-your-palm-jebel-ali-villa/): Confidential resale review and sale process for Palm Jebel Ali villa owners.
+- [About Mark Darsy](https://palmjebelali-resale.com/about-mark-darsy/): Who Mark Darsy is, his Palm Jebel Ali track record, how he works and how to contact him.
 
 ## Frequently asked questions
 

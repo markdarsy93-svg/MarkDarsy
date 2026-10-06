@@ -1143,6 +1143,12 @@ if __name__ == "__main__":
     open(os.path.join(OUT, ".nojekyll"), "w").close()
     with open(os.path.join(OUT, "favicon.svg"), "w") as f:
         f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#1D1B18"/><rect x="5" y="5" width="54" height="54" fill="none" stroke="#A9874F" stroke-width="2"/><text x="32" y="41" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="#F3ECDF">MD</text></svg>')
+    # GitHub Pages serves each page at /route/ and 301-redirects /route, so canonical URLs, sitemap and links use the slash form
+    import glob
+    slash = re.compile("(" + "|".join(re.escape(r) for r in sorted(ROUTES, key=len, reverse=True) if r != "/") + r")(?=[\"#?<)\s'|])")
+    for fp in glob.glob(os.path.join(OUT, "**", "*.html"), recursive=True) + [os.path.join(OUT, n) for n in ("sitemap.xml", "llms.txt", "llms-full.txt")]:
+        t = open(fp, encoding="utf-8").read()
+        open(fp, "w", encoding="utf-8").write(slash.sub(r"\1/", t))
     base = os.environ.get("BASE_PATH", "").rstrip("/")
     if base:  # preview under a sub-path (e.g. github.io/MarkDarsy)
         import glob

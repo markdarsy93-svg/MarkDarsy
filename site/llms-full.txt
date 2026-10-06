@@ -14,25 +14,25 @@
 ## Pages
 
 - [Home](https://palmjebelali-resale.com/): Palm Jebel Ali resale villas with Mark Darsy: the shortlist service, featured villas, collections, construction progress and contact.
-- [Villa listings (Property Atlas)](https://palmjebelali-resale.com/dubai-property-atlas): Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator.
-- [Villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices): Current Palm Jebel Ali resale asking prices by bedrooms, frond and price per square foot, with method notes.
-- [Fronds A–P](https://palmjebelali-resale.com/palm-jebel-ali-fronds): Frond-by-frond study: construction stage, resale asking prices, median price per sq ft and released designs for the twelve villa fronds.
-- [Beach Collection](https://palmjebelali-resale.com/beach-collection-resale): Beach Collection design library with Nakheel brochure built-up and floor-by-floor areas, architects and resale guidance.
-- [Coral Collection](https://palmjebelali-resale.com/coral-collection-resale): Coral Collection design library with Nakheel brochure areas, floor plans for Coral Dune and Sunset Mirage, and resale guidance.
-- [Position Guide](https://palmjebelali-resale.com/palm-jebel-ali-position-guide): How frond, orientation, position along the frond, outlook, neighbours and payments affect a villa decision; two-villa comparison tool.
-- [Buyer guide](https://palmjebelali-resale.com/palm-jebel-ali-resale-guide): Resale checks, how off-plan resale works, investor snapshot, Palm Jumeirah comparison, Golden Visa and DLD verification.
-- [Sell your villa](https://palmjebelali-resale.com/sell-your-palm-jebel-ali-villa): Confidential resale review and sale process for Palm Jebel Ali villa owners.
-- [About Mark Darsy](https://palmjebelali-resale.com/about-mark-darsy): Who Mark Darsy is, his Palm Jebel Ali track record, how he works and how to contact him.
+- [Villa listings (Property Atlas)](https://palmjebelali-resale.com/dubai-property-atlas/): Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator.
+- [Villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/): Current Palm Jebel Ali resale asking prices by bedrooms, frond and price per square foot, with method notes.
+- [Fronds A–P](https://palmjebelali-resale.com/palm-jebel-ali-fronds/): Frond-by-frond study: construction stage, resale asking prices, median price per sq ft and released designs for the twelve villa fronds.
+- [Beach Collection](https://palmjebelali-resale.com/beach-collection-resale/): Beach Collection design library with Nakheel brochure built-up and floor-by-floor areas, architects and resale guidance.
+- [Coral Collection](https://palmjebelali-resale.com/coral-collection-resale/): Coral Collection design library with Nakheel brochure areas, floor plans for Coral Dune and Sunset Mirage, and resale guidance.
+- [Position Guide](https://palmjebelali-resale.com/palm-jebel-ali-position-guide/): How frond, orientation, position along the frond, outlook, neighbours and payments affect a villa decision; two-villa comparison tool.
+- [Buyer guide](https://palmjebelali-resale.com/palm-jebel-ali-resale-guide/): Resale checks, how off-plan resale works, investor snapshot, Palm Jumeirah comparison, Golden Visa and DLD verification.
+- [Sell your villa](https://palmjebelali-resale.com/sell-your-palm-jebel-ali-villa/): Confidential resale review and sale process for Palm Jebel Ali villa owners.
+- [About Mark Darsy](https://palmjebelali-resale.com/about-mark-darsy/): Who Mark Darsy is, his Palm Jebel Ali track record, how he works and how to contact him.
 
 ## Frequently asked questions
 
 ### How much does a resale villa on Palm Jebel Ali cost?
 
-As of 6 October 2026, the 21 resale villas presented on this site are advertised from AED 18M to AED 53.9M, a median of AED 21.5M. By size: 5-bedroom villas AED 18M–AED 21.5M; 6-bedroom villas AED 18M–AED 50M; 7-bedroom villas AED 32.5M–AED 53.9M. Advertised price per square foot ranges from about AED 2,329 to AED 4,305 (median AED 2,721). These are asking prices, not valuations or achieved sales. See [Palm Jebel Ali villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices) for the full breakdown.
+As of 6 October 2026, the 21 resale villas presented on this site are advertised from AED 18M to AED 53.9M, a median of AED 21.5M. By size: 5-bedroom villas AED 18M–AED 21.5M; 6-bedroom villas AED 18M–AED 50M; 7-bedroom villas AED 32.5M–AED 53.9M. Advertised price per square foot ranges from about AED 2,329 to AED 4,305 (median AED 2,721). These are asking prices, not valuations or achieved sales. See [Palm Jebel Ali villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/) for the full breakdown.
 
 ### What is the difference between Beach Collection and Coral Collection villas?
 
-Beach Collection villas are five- and six-bedroom homes with Nakheel brochure built-up areas of about 7,316–8,434 sq ft. Coral Collection villas are larger six- and seven-bedroom residences of about 11,222–12,165 sq ft. Designs come from studios including SAOTA, NAGA Architects, LW Design Group and LOCI Architecture. Compare them in the [Beach](https://palmjebelali-resale.com/beach-collection-resale#designs) and [Coral](https://palmjebelali-resale.com/coral-collection-resale#designs) design libraries.
+Beach Collection villas are five- and six-bedroom homes with Nakheel brochure built-up areas of about 7,316–8,434 sq ft. Coral Collection villas are larger six- and seven-bedroom residences of about 11,222–12,165 sq ft. Designs come from studios including SAOTA, NAGA Architects, LW Design Group and LOCI Architecture. Compare them in the [Beach](https://palmjebelali-resale.com/beach-collection-resale/#designs) and [Coral](https://palmjebelali-resale.com/coral-collection-resale/#designs) design libraries.
 
 ### Is Palm Jebel Ali being built, and will it be finished?
 
@@ -48,11 +48,11 @@ On an off-plan resale, the seller has already paid part of the developer price. 
 
 ### Is it worth investing in a Palm Jebel Ali villa?
 
-It depends on the specific villa, the price and the seller's payment position rather than the island as a whole. Compare the exact frond, orientation, plot and outlook, how much cash is due at transfer and how much remains payable to the developer, and the contractual delivery date. This site does not forecast returns or appreciation; current advertised asking prices are shown on the [villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices) page.
+It depends on the specific villa, the price and the seller's payment position rather than the island as a whole. Compare the exact frond, orientation, plot and outlook, how much cash is due at transfer and how much remains payable to the developer, and the contractual delivery date. This site does not forecast returns or appreciation; current advertised asking prices are shown on the [villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/) page.
 
 ### Who is Mark Darsy?
 
-Mark Darsy is a Dubai-based property adviser who specialises in Palm Jebel Ali resale villas, working from Regalia Tower, Business Bay. He has advised on more than AED 200 million of Palm Jebel Ali transactions, has purchased directly from the developer Nakheel and has VIP access to selected developer stock. Buyers receive a shortlist of up to three villas compared on frond, orientation, plot, outlook and remaining developer payments. Contact: +971 58 541 4999 (WhatsApp) or mark@palmjebelali-resale.com. [About Mark Darsy](https://palmjebelali-resale.com/about-mark-darsy).
+Mark Darsy is a Dubai-based property adviser who specialises in Palm Jebel Ali resale villas, working from Regalia Tower, Business Bay. He has advised on more than AED 200 million of Palm Jebel Ali transactions, has purchased directly from the developer Nakheel and has VIP access to selected developer stock. Buyers receive a shortlist of up to three villas compared on frond, orientation, plot, outlook and remaining developer payments. Contact: +971 58 541 4999 (WhatsApp) or mark@palmjebelali-resale.com. [About Mark Darsy](https://palmjebelali-resale.com/about-mark-darsy/).
 
 ### Does a Palm Jebel Ali villa qualify for the UAE Golden Visa?
 
@@ -60,11 +60,11 @@ The UAE 10-year Golden Visa for property investors applies to property valued at
 
 ### Can I sell my Palm Jebel Ali villa before handover?
 
-Yes. Palm Jebel Ali villas are bought and sold as off-plan resales before handover, with the buyer taking over the remaining developer payments. The sale is subject to the developer's NOC and transfer conditions in force at the time, which should be confirmed for your contract. Mark Darsy offers owners a [confidential resale review](https://palmjebelali-resale.com/sell-your-palm-jebel-ali-villa).
+Yes. Palm Jebel Ali villas are bought and sold as off-plan resales before handover, with the buyer taking over the remaining developer payments. The sale is subject to the developer's NOC and transfer conditions in force at the time, which should be confirmed for your contract. Mark Darsy offers owners a [confidential resale review](https://palmjebelali-resale.com/sell-your-palm-jebel-ali-villa/).
 
 ### How many Palm Jebel Ali villas are available for resale?
 
-As of 6 October 2026, 21 advertised resale villas on Fronds B, C, D, E, F, K, L, M, N, O and P are presented in the [Property Atlas](https://palmjebelali-resale.com/dubai-property-atlas). Availability changes quickly; Mark Darsy confirms each villa's availability, plot and remaining developer payments before you rely on it, and can advise on off-market and upcoming options.
+As of 6 October 2026, 21 advertised resale villas on Fronds B, C, D, E, F, K, L, M, N, O and P are presented in the [Property Atlas](https://palmjebelali-resale.com/dubai-property-atlas/). Availability changes quickly; Mark Darsy confirms each villa's availability, plot and remaining developer payments before you rely on it, and can advise on off-market and upcoming options.
 
 ### What is the price per square foot of Palm Jebel Ali villas?
 
@@ -72,11 +72,11 @@ Across the 21 villas currently presented, the advertised asking price per square
 
 ### What costs apply when buying a Palm Jebel Ali villa on resale?
 
-Beyond the agreed price, budget for the Dubai Land Department transfer fee of 4% (DLD states 2% seller and 2% buyer; the split depends on your agreement), agreed brokerage plus 5% VAT, title deed fees, the developer NOC fee and any legal or bank costs. On an off-plan resale you also take over the outstanding developer balance. The [cost estimator](https://palmjebelali-resale.com/dubai-property-atlas#estimator) gives a first estimate.
+Beyond the agreed price, budget for the Dubai Land Department transfer fee of 4% (DLD states 2% seller and 2% buyer; the split depends on your agreement), agreed brokerage plus 5% VAT, title deed fees, the developer NOC fee and any legal or bank costs. On an off-plan resale you also take over the outstanding developer balance. The [cost estimator](https://palmjebelali-resale.com/dubai-property-atlas/#estimator) gives a first estimate.
 
 ### How many villa fronds does Palm Jebel Ali have?
 
-This site covers twelve villa fronds on Palm Jebel Ali: Fronds A–F and Fronds K–P. Each frond has a sunrise side and a sunset side, with plots running from the spine towards the tip. See [Palm Jebel Ali frond by frond](https://palmjebelali-resale.com/palm-jebel-ali-fronds).
+This site covers twelve villa fronds on Palm Jebel Ali: Fronds A–F and Fronds K–P. Each frond has a sunrise side and a sunset side, with plots running from the spine towards the tip. See [Palm Jebel Ali frond by frond](https://palmjebelali-resale.com/palm-jebel-ali-fronds/).
 
 ### Which Palm Jebel Ali fronds are most advanced in construction?
 
@@ -84,7 +84,7 @@ According to Nakheel's August 2026 update, the 728 villas on Fronds K–P are in
 
 ### Which frond is best on Palm Jebel Ali?
 
-No frond is best for every buyer. Orientation belongs to the individual plot, not the frond letter, and plots closer to the spine favour daily access while plots towards the tip are quieter and more open but a longer drive. Compare the exact plot's orientation, outlook, neighbours and payment position, using the [Position Guide](https://palmjebelali-resale.com/palm-jebel-ali-position-guide).
+No frond is best for every buyer. Orientation belongs to the individual plot, not the frond letter, and plots closer to the spine favour daily access while plots towards the tip are quieter and more open but a longer drive. Compare the exact plot's orientation, outlook, neighbours and payment position, using the [Position Guide](https://palmjebelali-resale.com/palm-jebel-ali-position-guide/).
 
 ### What does sunrise side or sunset side mean on Palm Jebel Ali?
 
@@ -108,7 +108,7 @@ Start with the SPA, the developer payment plan and statement showing the amount 
 
 ### What affects the resale price of a Palm Jebel Ali villa?
 
-The exact design and documented area, frond and side, position along the frond, plot size and outlook, neighbouring plots, construction stage, how much has been paid to the developer and the remaining instalment schedule. Current advertised prices are listed in the [villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices) study.
+The exact design and documented area, frond and side, position along the frond, plot size and outlook, neighbouring plots, construction stage, how much has been paid to the developer and the remaining instalment schedule. Current advertised prices are listed in the [villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/) study.
 
 ### How big are Palm Jebel Ali Beach Collection villas?
 
