@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "8"
+VER = "9"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -201,6 +201,8 @@ BEACH = [("Blue Horizon", "7,307.73"), ("Pacific Breeze", "7,676.93"), ("Cyan Sk
          ("Bluejay", "8,293.27"), ("Ocean Whisper", "8,314.91")]
 BEACH_MORE = [("Cobalt", "approx. 7,800 · pending confirmation"), ("Baia Luna", None), ("Crystal Springs", None),
               ("Wave Crest", None), ("Indigo Ocean", None)]
+ARCH = {"Cyan Sky": "NAGA Architects", "Wave Crest": "LW Design Group", "Ocean Whisper": "SAOTA", "Bluejay": "SAOTA", "Coral Dune": "NAGA Architects", "Sunset Mirage": "NAGA Architects", "Amber Reef": "SAOTA", "Red Aurora": "SAOTA", "Redwood": "LW Design Group", "Porcelain Roses": "LOCI Architecture"}
+def arch(n): return f'<span class="small">Architect: {ARCH[n]}</span>' if n in ARCH else ''
 CORAL_MORE = ["Red Aurora", "Redwood", "Porcelain Roses", "Amber Reef"]
 
 # ---------------------------------------------------------------- HOME
@@ -255,7 +257,8 @@ def home():
     <tr><td>Timing</td><td>Occupancy and agreed possession</td><td>The unit's contractual delivery schedule</td></tr>
    </tbody></table></div></div>
  </div>
- <p class="note">No figure on this website is a forecast of returns or appreciation. Asking prices, areas and availability are subject to confirmation against the individual villa's documents.</p>
+<div class="card reveal mt"><span class="eyebrow">Residency</span><h3>Golden Visa eligibility.</h3><p>The UAE 10-year Golden Visa for property investors applies to property valued at AED 2 million or more, subject to approval by the relevant authorities — every villa on this site is above that threshold. Nakheel and Meraas sales centres now offer Golden Visa facilitation for new and existing customers. Off-plan and resale eligibility conditions are set by the authorities and should be confirmed for the specific villa.</p><span class="small">Source: <a href="https://www.nakheel.com/media-centre/press-release/news-detail/2026/06/29/meraas-and-nakheel-enhance-customer-experience-with-dedicated-golden-visa-facilitation" target="_blank" rel="noopener" style="color:var(--gold-lt)">Nakheel, 29 June 2026</a></span></div>
+  <p class="note">No figure on this website is a forecast of returns or appreciation. Asking prices, areas and availability are subject to confirmation against the individual villa's documents.</p>
 </div></section>
 
 <section><div class="wrap">
@@ -281,6 +284,12 @@ def home():
 <section><div class="wrap">
  <div class="sec-head reveal"><span class="eyebrow">05 · Project progress</span><h2>From masterplan to <em>waterfront reality.</em></h2>
  <p class="lead">Real aerial views of Palm Jebel Ali taking shape — useful context when comparing frond position, orientation and long-term resale appeal.</p></div>
+ <div class="kpis reveal" style="margin-top:0;margin-bottom:34px;background:var(--line);border-color:var(--line)">
+  <div style="background:var(--cream)"><b style="color:var(--ink)">728</b><span style="color:var(--muted)">villas on Fronds K–P in internal and external finishing</span></div>
+  <div style="background:var(--cream)"><b style="color:var(--ink)">544</b><span style="color:var(--muted)">villas on Fronds A–F at various construction stages</span></div>
+  <div style="background:var(--cream)"><b style="color:var(--ink)">AED 13bn+</b><span style="color:var(--muted)">in construction and infrastructure contracts awarded</span></div>
+ </div>
+ <p class="small reveal" style="margin:-14px 0 34px">Nakheel states that a phased handover of the first villas is scheduled to begin in late 2026 and continue through 2027. Planned community facilities include a 9,000 sqm retail centre and a Friday Mosque for 1,000 worshippers. Source: <a href="https://www.nakheel.com/media-centre/press-release/news-detail/2026/08/20/nakheel-unveils-limited-collection-of-44-beachfront-villas-on-palm-jebel-ali-s-frond-f" target="_blank" rel="noopener">Nakheel, 20 August 2026</a>. Timelines can change; confirm the delivery schedule in the selected villa's contract.</p>
  <div class="aerials">
   <figure class="reveal"><div class="ph">{img("pja-aerial-progress-overview-v1.webp", "Aerial overview of Palm Jebel Ali fronds and surrounding water")}</div><figcaption><b>The complete palm perspective</b><span class="small">Fronds, shoreline and emerging waterfront neighbourhoods.</span></figcaption></figure>
   <figure class="reveal"><div class="ph">{img("pja-aerial-progress-fronds-v1.webp", "Closer aerial view of villa rows along Palm Jebel Ali fronds")}</div><figcaption><b>Waterfront rows emerging</b><span class="small">The scale and spacing of the villa fronds.</span></figcaption></figure>
@@ -353,11 +362,11 @@ def home():
 def beach():
     cards = ""
     for i, (n, a) in enumerate(BEACH, 1):
-        cards += f'<article class="design reveal" id="{n.lower().replace(" ", "-")}"><span class="num">{i:02d}</span><h3>{n}</h3><span class="small">6 bedrooms · Beach Collection</span><div class="area">{a} sq ft</div><span class="small">Indicative built-up area</span><a class="btn btn-line" href="{wa(f"Hello Mark, please send me current {n} resale opportunities on Palm Jebel Ali with price and payment position.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></article>'
+        cards += f'<article class="design reveal" id="{n.lower().replace(" ", "-")}"><span class="num">{i:02d}</span><h3>{n}</h3><span class="small">6 bedrooms · Beach Collection</span>{arch(n)}<div class="area">{a} sq ft</div><span class="small">Indicative built-up area</span><a class="btn btn-line" href="{wa(f"Hello Mark, please send me current {n} resale opportunities on Palm Jebel Ali with price and payment position.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></article>'
     more = ""
     for j, (n, a) in enumerate(BEACH_MORE, len(BEACH) + 1):
         area = f'<div class="area tbc">{a} sq ft</div>' if a else '<div class="area tbc">Area to confirm</div>'
-        more += f'<article class="design reveal" id="{n.lower().replace(" ", "-")}"><span class="num">{j:02d}</span><h3>{n}</h3><span class="small">Beach Collection</span>{area}<a class="btn btn-line" href="{wa(f"Hello Mark, please send me the {n} floor plan and any current resale opportunities.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></article>'
+        more += f'<article class="design reveal" id="{n.lower().replace(" ", "-")}"><span class="num">{j:02d}</span><h3>{n}</h3><span class="small">Beach Collection</span>{arch(n)}{area}<a class="btn btn-line" href="{wa(f"Hello Mark, please send me the {n} floor plan and any current resale opportunities.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></article>'
     body = f'''
 <section class="phero"><div class="wrap phero-grid">
  <div class="reveal"><span class="eyebrow">Palm Jebel Ali · Beach Collection</span><h1>Beach villas selected beyond the floor plan.</h1>
@@ -395,10 +404,10 @@ def coral():
     wide = ""
     for i, (slug, n, a, im) in enumerate([("coral-dune", "Coral Dune", "11,635.14", "coral-dune-floorplan.jpg"),
                                            ("sunset-mirage", "Sunset Mirage", "11,701.12", "sunset-mirage-floorplan.jpg")], 1):
-        wide += f'''<article class="design wide reveal" id="{slug}"><div><span class="num">{i:02d}</span><h3>{n}</h3><span class="small">6 bedrooms · Coral Collection</span><div class="area">{a} sq ft</div><span class="small">Brochure built-up area · indicative developer plan</span><br><a class="btn btn-line" href="{wa(f"Hello Mark, please send me current {n} resale opportunities on Palm Jebel Ali with price and payment position.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></div><figure>{img(im, f"{n} indicative developer floor plan showing floors and area schedule")}</figure></article>'''
+        wide += f'''<article class="design wide reveal" id="{slug}"><div><span class="num">{i:02d}</span><h3>{n}</h3><span class="small">6 bedrooms · Coral Collection</span>{arch(n)}<div class="area">{a} sq ft</div><span class="small">Brochure built-up area · indicative developer plan</span><br><a class="btn btn-line" href="{wa(f"Hello Mark, please send me current {n} resale opportunities on Palm Jebel Ali with price and payment position.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></div><figure>{img(im, f"{n} indicative developer floor plan showing floors and area schedule")}</figure></article>'''
     more = ""
     for j, n in enumerate(CORAL_MORE, 3):
-        more += f'<article class="design reveal" id="{n.lower().replace(" ", "-")}"><span class="num">{j:02d}</span><h3>{n}</h3><span class="small">Coral Collection</span><div class="area tbc">Area to confirm</div><a class="btn btn-line" href="{wa(f"Hello Mark, please send me the {n} floor plan and any current resale opportunities.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></article>'
+        more += f'<article class="design reveal" id="{n.lower().replace(" ", "-")}"><span class="num">{j:02d}</span><h3>{n}</h3><span class="small">Coral Collection</span>{arch(n)}<div class="area tbc">Area to confirm</div><a class="btn btn-line" href="{wa(f"Hello Mark, please send me the {n} floor plan and any current resale opportunities.")}" target="_blank" rel="noopener">Ask Mark about {n}</a></article>'
     body = f'''
 <section class="phero"><div class="wrap phero-grid">
  <div class="reveal"><span class="eyebrow">Palm Jebel Ali · Coral Collection</span><h1>Grand-scale waterfront villas, evaluated individually.</h1>
@@ -411,7 +420,7 @@ def coral():
  <div class="sec-head reveal"><span class="eyebrow">The designs</span><h2>Six Coral designs at a glance.</h2>
  <p class="lead">Approx. 11,500–12,500 sq ft. Published releases include six- and seven-bedroom Coral designs; confirm the size and bedroom count of the specific resale villa.</p></div>
  <div class="designs">{wide}{more}</div>
- <p class="note">Plans are indicative; final dimensions, orientation, materials and specifications are governed by the individual SPA. Developer reference: <a href="https://www.nakheel.com/en/media-centre/press-releases/news-detail/2026/08/20/four-studios--one-shoreline--inside-the-latest-release-from-palm-jebel-ali-s-beach---coral-collections" target="_blank" rel="noopener">Nakheel, Beach &amp; Coral release, 20 August 2026</a>.</p>
+ <p class="note">Plans are indicative; final dimensions, orientation, materials and specifications are governed by the individual SPA. Architects as named by Nakheel for the latest release. Developer reference: <a href="https://www.nakheel.com/en/media-centre/press-releases/news-detail/2026/08/20/four-studios--one-shoreline--inside-the-latest-release-from-palm-jebel-ali-s-beach---coral-collections" target="_blank" rel="noopener">Nakheel, Beach &amp; Coral release, 20 August 2026</a>.</p>
 </div></section>
 
 <section><div class="wrap">
