@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "12"
+VER = "13"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -403,6 +403,22 @@ def home():
   <div><b>544</b><span>villas on Fronds A–F at various construction stages</span></div>
   <div><b>AED 13bn+</b><span>in construction and infrastructure contracts awarded</span></div>
  </div>
+</div></section>
+
+<section class="sec-dark film-sec" id="film"><div class="wrap film">
+ <div class="reveal">
+  <span class="eyebrow">The film</span>
+  <h2>Palm Jebel Ali, <em>from the air.</em></h2>
+  <p class="lead">Sixteen seconds across the island: where the new palm sits beside Palm Jumeirah, the fronds seen from a helicopter, and villas rising on the water's edge.</p>
+  <p class="small">Aerial footage and official Nakheel imagery. Silent, looping.</p>
+  <div class="btns"><a class="btn btn-gold" href="/dubai-property-atlas">Browse villa listings</a><a class="btn btn-line" href="/palm-jebel-ali-fronds">Explore the fronds</a></div>
+ </div>
+ <figure class="film-frame reveal">
+  <video muted loop playsinline preload="none" poster="/images/palm-jebel-ali-film-poster.webp" aria-label="Palm Jebel Ali aerial film: the island beside Palm Jumeirah, its fronds from the air and villas on the waterfront" data-inview>
+   <source src="/videos/palm-jebel-ali-film.webm" type="video/webm">
+   <source src="/videos/palm-jebel-ali-film.mp4" type="video/mp4">
+  </video>
+ </figure>
 </div></section>
 
 <section class="sec-cream"><div class="wrap loc">
