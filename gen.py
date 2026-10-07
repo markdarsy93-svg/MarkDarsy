@@ -32,6 +32,7 @@ NAV = [
     ("/palm-jebel-ali-fronds", "Fronds"),
     ("/palm-jebel-ali-position-guide", "Position Guide"),
     ("/sell-your-palm-jebel-ali-villa", "Sell"),
+    ("/palm-jebel-ali-owners", "Valuation"),
 ]
 
 WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .9c-.2 1-1.2 1.8-2.3 1.7-3.5-.4-6.2-3.1-6.6-6.6-.1-1.1.7-2.1 1.7-2.3l.9 2-1.2 1Z" fill="currentColor" stroke="none"/></svg>'
@@ -148,7 +149,7 @@ def footer(extra=""):
     <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a><br><a href="{INSTAGRAM}" target="_blank" rel="noopener me">Instagram</a></p>
    </div>
    <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/palm-jebel-ali-fronds">Frond by frond</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a><a href="/palm-jebel-ali-villa-prices">Villa prices</a></nav>
-   <nav aria-label="Services"><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/about-mark-darsy">About Mark Darsy</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
+   <nav aria-label="Services"><a href="/palm-jebel-ali-owners">Villa valuation</a><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/about-mark-darsy">About Mark Darsy</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
   </div>
   <p class="disc">Independent broker marketing. Availability, specifications, payment obligations and market figures must be verified against the selected property's documents before any decision. Sales figure based on Mark Darsy's transaction records. Villa and lifestyle images are developer conceptual imagery, not a specific resale villa; aerial photographs supplied by Mark Darsy. Drive times, construction and planned figures as published by <a href="https://www.nakheel.com/en/media-centre/press-releases/news-detail/2026/08/20/nakheel-unveils-limited-collection-of-44-beachfront-villas-on-palm-jebel-ali-s-frond-f" target="_blank" rel="noopener">Nakheel, 20 August 2026</a>, subject to change. Palm Jebel Ali and Nakheel names, trademarks and project imagery remain their owners' property.</p>
   <p class="disc" style="border:0;padding-top:0">© 2026 Mark Darsy</p>
@@ -727,6 +728,72 @@ def sell():
                 "Confidential Palm Jebel Ali resale guidance for owners: document review, pricing context, property-specific positioning and coordinated transfer support.",
                 "palm-jebel-ali-frond-villas.webp", body, faq=faqs()["sell"], crumb="Sell your villa")
 
+OWNER_FAQ = [
+    ("What is my Palm Jebel Ali villa worth?",
+     "It depends on the design, frond, orientation, position along the frond, plot and how much of the developer payment plan has been paid. Current resale asking prices on this site run from {pmin} to {pmax} (about AED {psfmin:,}–{psfmax:,} per sq ft). Asking prices are not achieved sales, so Mark Darsy prepares a written valuation opinion for your specific villa from comparable evidence."),
+    ("Can I sell my Palm Jebel Ali villa before handover?",
+     "Yes. Palm Jebel Ali villas are resold off-plan before handover, with the buyer taking over the remaining developer payments. The sale is subject to the developer's NOC and the transfer conditions in your SPA, including any minimum amount paid, which should be confirmed for your contract before you list."),
+    ("What should I do when my villa is handed over?",
+     "Plan the snagging inspection, utility connections, service-charge setup, title deed and insurance before handover day. If you will lease the villa, decide early between a long-term tenancy and a holiday-home permit from Dubai's Department of Economy and Tourism, which needs the title deed or SPA and proof of payment."),
+    ("Is the valuation request confidential?",
+     "Yes. Your details go only to Mark Darsy on WhatsApp. Nothing is advertised without your signed instruction (Form A) and a DLD advertising permit."),
+    ("How do I receive the monthly Palm Jebel Ali market report?",
+     "Tick the box in the form or send \"REPORT\" on WhatsApp. It is sent once a month and you can stop it at any time by replying STOP."),
+]
+
+def owners():
+    S = stats()
+    faq = [(q, a.format(pmin=m(S["pmin"]), pmax=m(S["pmax"]), psfmin=S["psfmin"], psfmax=S["psfmax"])) for q, a in OWNER_FAQ]
+    body = f'''
+<section class="phero"><div class="wrap phero-grid">
+ <div class="reveal"><span class="eyebrow">For Palm Jebel Ali owners</span><h1>What is your Palm Jebel Ali villa worth today?</h1>
+  <p class="lead">A confidential, written valuation opinion for your exact villa — frond, design, orientation, plot and payment position — from an adviser with AED 200M+ in Palm Jebel Ali transactions.</p>
+  <div class="btns"><a class="btn btn-gold" href="#valuation">Request my valuation</a><a class="btn btn-line" href="{wa("Hello Mark, please send me the monthly Palm Jebel Ali market report. REPORT")}" target="_blank" rel="noopener">Get the monthly report</a></div></div>
+ <figure class="reveal">{img("pja-aerial-progress-fronds-v2.webp", "Aerial photograph of Palm Jebel Ali fronds under construction", eager=True)}</figure>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">The market today</span><h2>Current resale asking prices.</h2>
+  <p class="lead">{S["n"]} villas presented on this site, {UPDATED_TXT}: {m(S["pmin"])} to {m(S["pmax"])}, median {m(S["pmed"])}; about AED {S["psfmin"]:,}–{S["psfmax"]:,} per sq ft (median AED {S["psfmed"]:,}). These are asking prices, not valuations or achieved sales — your villa's value depends on its own details.</p></div>
+ <div class="btns"><a class="btn btn-line" href="/palm-jebel-ali-villa-prices">See prices by bedrooms and frond</a><a class="btn btn-line" href="/palm-jebel-ali-fronds">Compare fronds</a></div>
+</div></section>
+
+<section class="sec-cream" id="valuation"><div class="wrap contact">
+ <div class="reveal"><span class="eyebrow">Confidential valuation request</span><h2>Tell us about your villa.</h2>
+  <p class="lead">Choose “Not sure” when a detail needs checking. WhatsApp opens with your brief — press Send to share it privately with Mark, who replies personally.</p>
+  <div class="direct"><span class="small">Speak with Mark directly</span><a href="{wa("Hello Mark, I own a Palm Jebel Ali villa and would like a confidential valuation.")}" target="_blank" rel="noopener">{PHONE}</a></div></div>
+ <form class="form reveal" data-wa="Hello Mark, I own a Palm Jebel Ali villa and would like a confidential valuation:">
+  {field("Your name", '<input name="name" autocomplete="name" required>')}
+  {field("Villa collection", sel("coll", ["Not sure", "Beach Collection", "Coral Collection"]))}
+  {field("Frond", sel("frond", ["Not sure"] + FRONDS))}
+  {field("Bedrooms", sel("beds", ["Not sure", "5", "6", "7"]))}
+  {field("Orientation", sel("ori", ["Not sure", "Sunrise", "Sunset"]))}
+  {field("Developer amount paid", sel("paid", ["Not sure", "Below 30%", "30–40%", "40–60%", "60–80%", "80%+"]))}
+  {field("What are you considering?", sel("goal", ["Just the value for now", "Selling before handover", "Selling after handover", "Leasing after handover", "Holiday home after handover"]))}
+  {field("Monthly market report", sel("report", ["Not now", "Yes, send me the monthly report"]))}
+  {field("Villa details", '<textarea name="notes" placeholder="Design name, plot or villa number if comfortable, anything relevant"></textarea>', True)}
+  <div class="full"><button class="btn btn-gold" type="submit" style="width:100%">Prepare my valuation request</button><p class="small" style="margin-top:12px">Confidential. Nothing is advertised without your signed instruction and a DLD permit. Reply STOP at any time to stop the report.</p></div>
+ </form>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Handover 2026–2027</span><h2>One adviser from handover to income or sale.</h2>
+  <p class="lead">Nakheel is handing over the first Palm Jebel Ali villas in phases from late 2026 through 2027. Owners who plan early avoid empty months and rushed decisions.</p></div>
+ {steps([
+   ("Valuation and options", "A written opinion of value and a side-by-side of selling now, selling after handover, a long-term lease or a holiday home."),
+   ("Handover and snagging", "Inspection coordination, the snagging list and follow-up with the developer before you accept the keys."),
+   ("Leasing or holiday-home set-up", "Tenant search and Ejari, or the Department of Economy and Tourism holiday-home permit and an operator, depending on your plan."),
+   ("Resale when the timing is right", "Property-specific presentation to qualified local and international buyers, negotiation and a coordinated transfer with NOC steps."),
+ ])}
+</div></section>
+<!--FAQ-->
+{cta_band("Prefer to talk first?", "Message Mark directly. Owner conversations are confidential.", "Hello Mark, I own a Palm Jebel Ali villa and would like to talk about my options.")}
+{continue_links([("/sell-your-palm-jebel-ali-villa", "How a sale is handled"), ("/dubai-property-atlas", "See current asking prices")])}
+'''
+    return page("/palm-jebel-ali-owners", "Palm Jebel Ali Villa Valuation for Owners | Mark Darsy",
+                "What is your Palm Jebel Ali villa worth? Request a confidential written valuation, the monthly market report and handover, leasing and resale support from Mark Darsy.",
+                "palm-jebel-ali-frond-villas.webp", body, faq=faq, crumb="Owner valuation")
+
 # ---------------------------------------------------------------- GUIDE
 def guide():
     psf_note = f"AED {PSF_MIN:,}–{PSF_MAX:,}"
@@ -1078,6 +1145,7 @@ PAGES = [  # route, name, summary (for llms.txt)
     ("/palm-jebel-ali-position-guide", "Position Guide", "How frond, orientation, position along the frond, outlook, neighbours and payments affect a villa decision; two-villa comparison tool."),
     ("/palm-jebel-ali-resale-guide", "Buyer guide", "Resale checks, how off-plan resale works, investor snapshot, Palm Jumeirah comparison, Golden Visa and DLD verification."),
     ("/sell-your-palm-jebel-ali-villa", "Sell your villa", "Confidential resale review and sale process for Palm Jebel Ali villa owners."),
+    ("/palm-jebel-ali-owners", "Owner valuation", "Confidential valuation request, monthly market report and handover, leasing and resale support for Palm Jebel Ali villa owners."),
     ("/about-mark-darsy", "About Mark Darsy", "Who Mark Darsy is, his Palm Jebel Ali track record, how he works and how to contact him."),
 ]
 
@@ -1112,13 +1180,13 @@ def llms(full=False):
     return "\n".join(out)
 
 ROUTES = ["/", "/dubai-property-atlas", "/palm-jebel-ali-fronds", "/beach-collection-resale", "/coral-collection-resale",
-          "/palm-jebel-ali-villa-prices", "/palm-jebel-ali-position-guide", "/sell-your-palm-jebel-ali-villa", "/palm-jebel-ali-resale-guide",
+          "/palm-jebel-ali-villa-prices", "/palm-jebel-ali-position-guide", "/sell-your-palm-jebel-ali-villa", "/palm-jebel-ali-owners", "/palm-jebel-ali-resale-guide",
           "/about-mark-darsy", "/privacy"]
 
 if __name__ == "__main__":
     write("/", home()); write("/beach-collection-resale", beach()); write("/coral-collection-resale", coral())
     write("/dubai-property-atlas", atlas()); write("/palm-jebel-ali-fronds", fronds()); write("/palm-jebel-ali-position-guide", position())
-    write("/sell-your-palm-jebel-ali-villa", sell()); write("/palm-jebel-ali-resale-guide", guide()); write("/privacy", privacy())
+    write("/sell-your-palm-jebel-ali-villa", sell()); write("/palm-jebel-ali-owners", owners()); write("/palm-jebel-ali-resale-guide", guide()); write("/privacy", privacy())
     write("/palm-jebel-ali-villa-prices", prices()); write("/about-mark-darsy", about())
     with open(os.path.join(OUT, "404.html"), "w") as f: f.write(notfound())
     for src, to in [("/dubai-property-atlas/designs/coral-dune", "/coral-collection-resale#coral-dune"),
