@@ -405,3 +405,9 @@ table.sortable th::after{content:" ↕";opacity:.35;font-size:10px}
 .faq-a p{margin:0;color:var(--muted);max-width:680px}
 .faq-a a{color:var(--ink)}
 .sec-cream .faq-q summary h3{color:var(--ink)}
+
+/* homepage film */
+.film{display:grid;grid-template-columns:1fr minmax(0,400px);gap:clamp(36px,6vw,90px);align-items:center}
+.film-frame{margin:0;position:relative;border:1px solid rgba(201,169,110,.35);padding:10px;background:#0E0D0B}
+.film-frame video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#141310}
+@media (max-width:860px){.film{grid-template-columns:1fr}.film-frame{max-width:420px;width:100%;margin:0 auto;padding:8px}}
