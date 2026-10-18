@@ -17,6 +17,7 @@
 - [Villa listings (Property Atlas)](https://palmjebelali-resale.com/dubai-property-atlas/): Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator.
 - [Villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/): Current Palm Jebel Ali resale asking prices by bedrooms, frond and price per square foot, with method notes.
 - [Fronds A–P](https://palmjebelali-resale.com/palm-jebel-ali-fronds/): Frond-by-frond study: construction stage, resale asking prices, median price per sq ft and released designs for the twelve villa fronds.
+- [Master plan](https://palmjebelali-resale.com/palm-jebel-ali-master-plan/): The Palm Jebel Ali master plan explained: spine, twelve villa fronds, villa counts, construction status by frond group, location and drive times.
 - [Frond pages (A–F, K–P)](https://palmjebelali-resale.com/palm-jebel-ali-fronds/frond-a/): One page per villa frond, e.g. /palm-jebel-ali-fronds/frond-a/ to /frond-p: current resale asking prices, construction status, designs and buying guidance for that frond.
 - [Beach Collection](https://palmjebelali-resale.com/beach-collection-resale/): Beach Collection design library with Nakheel brochure built-up and floor-by-floor areas, architects and resale guidance.
 - [Coral Collection](https://palmjebelali-resale.com/coral-collection-resale/): Coral Collection design library with Nakheel brochure areas, floor plans for Coral Dune and Sunset Mirage, and resale guidance.
