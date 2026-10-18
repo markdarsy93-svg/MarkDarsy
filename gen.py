@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "12"
+VER = "13"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -41,6 +41,8 @@ UPDATED_TXT = "6 October 2026"
 EMAIL = "mark@palmjebelali-resale.com"
 INSTAGRAM = "https://www.instagram.com/markdarsy_therealtor/"
 INDEXNOW_KEY = "6f1d2c8a4b7e4f0e9a3d5c1b8e2f7a64"
+BRN = "52456"  # Mark Darsy's RERA broker registration number (public on his Instagram/LinkedIn)
+GA4_ID = ""  # set to the G-XXXXXXX measurement ID to switch on Google Analytics and lead tracking
 
 ORG_ID, MARK_ID, SITE_ID, PJA_ID = SITE + "/#business", SITE + "/#mark-darsy", SITE + "/#website", SITE + "/#palm-jebel-ali"
 CREDS = ["AED 200M+ in Palm Jebel Ali transactions advised on",
@@ -61,7 +63,11 @@ BASE_LD = [
      "url": SITE + "/about-mark-darsy", "image": SITE + "/images/mark-darsy-authentic-advisor-v2.webp",
      "telephone": TEL, "email": EMAIL, "worksFor": {"@id": ORG_ID}, "workLocation": {"@type": "Place", "name": "Regalia Tower, Business Bay, Dubai"},
      "description": "Dubai-based property adviser specialising in Palm Jebel Ali resale villas. " + "; ".join(CREDS) + ".",
-     "knowsAbout": ["Palm Jebel Ali", "Palm Jebel Ali fronds", "Off-plan resale", "Nakheel"], "sameAs": [INSTAGRAM]},
+     "knowsAbout": ["Palm Jebel Ali", "Palm Jebel Ali fronds", "Off-plan resale", "Nakheel"], "sameAs": [INSTAGRAM],
+     "identifier": {"@type": "PropertyValue", "propertyID": "RERA BRN", "value": BRN},
+     "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "license",
+                       "name": "Dubai real estate broker registration (BRN " + BRN + ")",
+                       "recognizedBy": {"@type": "GovernmentOrganization", "name": "Dubai Land Department (RERA)"}}},
     {"@type": "WebSite", "@id": SITE_ID, "url": SITE + "/", "name": "Palm Jebel Ali Resale", "alternateName": "palmjebelali-resale.com",
      "publisher": {"@id": ORG_ID}, "inLanguage": "en"},
     {"@type": "Place", "@id": PJA_ID, "name": "Palm Jebel Ali", "description": "Nakheel's palm-shaped island development off Jebel Ali, Dubai, with Beach and Coral Collection villas on its fronds.",
@@ -81,6 +87,11 @@ def faq_html(items, title="Questions buyers and owners ask.", eyebrow="Palm Jebe
  <div class="faq reveal">{qs}</div>
  <p class="note">Answers reflect the information on this website as of {UPDATED_TXT}. Prices, availability and official requirements change, so confirm them for the specific villa.</p>
 </div></section>'''
+
+def ga4():
+    if not GA4_ID: return ""
+    return (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
+            f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','{GA4_ID}');</script>\n")
 
 def head(path, title, desc, img, home=False, ld=None):
     w, h = OG[img]
@@ -119,7 +130,7 @@ def head(path, title, desc, img, home=False, ld=None):
 <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 {pre}
 <link rel="stylesheet" href="/assets/site.css?v={VER}">
-<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": ld or BASE_LD}, ensure_ascii=False)}</script>
+{ga4()}<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": ld or BASE_LD}, ensure_ascii=False)}</script>
 </head>'''
 
 def header(path, home=False):
@@ -144,7 +155,7 @@ def footer(extra=""):
   <div class="ftr-grid">
    <div>
     <a class="brand" href="/"><span class="mono">MD</span><span><b>Mark Darsy</b><small>Palm Jebel Ali resale specialist</small></span></a>
-    <p style="margin-top:22px">{ADDRESS}<br><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></p>
+    <p style="margin-top:22px">Broker registration (BRN) {BRN}<br>{ADDRESS}<br><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></p>
     <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a><br><a href="{INSTAGRAM}" target="_blank" rel="noopener me">Instagram</a></p>
    </div>
    <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/palm-jebel-ali-fronds">Frond by frond</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a><a href="/palm-jebel-ali-villa-prices">Villa prices</a></nav>
@@ -165,9 +176,9 @@ def img(name, alt, eager=False, cls=""):
     load = 'loading="eager" fetchpriority="high"' if eager else 'loading="eager"'
     return f'<img src="/images/{name}" alt="{esc(alt)}" {load}{(" class=" + cls) if cls else ""}>'
 
-def page(path, title, desc, ogimg, body, home=False, extra="", faq=None, ld=None, crumb=None, ptype="WebPage", faq_cream=None):
+def page(path, title, desc, ogimg, body, home=False, extra="", faq=None, ld=None, crumb=None, ptype="WebPage", faq_cream=None, parent=None):
     url = SITE + path
-    crumbs = [("/", "Home")] + ([(path, crumb)] if path != "/" else [])
+    crumbs = [("/", "Home")] + ([parent] if parent else []) + ([(path, crumb)] if path != "/" else [])
     wp = {"@type": ptype, "@id": url + "#webpage", "url": url, "name": title, "description": desc, "inLanguage": "en",
           "isPartOf": {"@id": SITE_ID}, "about": {"@id": PJA_ID}, "author": {"@id": MARK_ID}, "publisher": {"@id": ORG_ID},
           "primaryImageOfPage": {"@type": "ImageObject", "url": f"{SITE}/images/{ogimg}"}, "dateModified": UPDATED,
@@ -843,16 +854,22 @@ def faqs():
              "Yes. Nakheel relaunched Palm Jebel Ali and reports more than AED 13 billion in construction and infrastructure contracts awarded. In its August 2026 update, the 728 villas on Fronds K–P were in internal and external finishing and the 544 villas on Fronds A–F at various construction stages, with a phased handover of the first villas scheduled from late 2026 through 2027.")
     worth = ("Is it worth investing in a Palm Jebel Ali villa?",
              "It depends on the specific villa, the price and the seller's payment position rather than the island as a whole. Compare the exact frond, orientation, plot and outlook, how much cash is due at transfer and how much remains payable to the developer, and the contractual delivery date. This site does not forecast returns or appreciation; current advertised asking prices are shown on the <a href=\"/palm-jebel-ali-villa-prices\">villa prices</a> page.")
+    owner = ("Who is the developer of Palm Jebel Ali?",
+             "Palm Jebel Ali is developed by Nakheel, the Dubai developer behind Palm Jumeirah, which is part of Dubai Holding. Villa payments before handover are made to Nakheel under each villa's sale and purchase agreement, and a resale needs Nakheel's NOC before transfer.")
+    location = ("Where is Palm Jebel Ali?",
+             "Palm Jebel Ali is on Dubai's southwestern coast off Jebel Ali, between Jebel Ali Port and the Jebel Ali Marine Sanctuary, with access from Sheikh Zayed Road (E11). Its villas sit on the fronds, each with a sunrise side and a sunset side. See the <a href=\"/palm-jebel-ali-fronds\">frond-by-frond guide</a>.")
+    soldout = ("Is Palm Jebel Ali sold out?",
+             "Nakheel releases Palm Jebel Ali villas in phases, and developer stock is often limited or fully allocated between releases. When it is, the way to buy is a resale from an existing owner, taking over the remaining developer payments. Mark Darsy works on resales and also has VIP access to selected developer stock when new releases happen.")
     contact = ("How do I contact a Palm Jebel Ali resale specialist?",
              f"Mark Darsy can be reached on WhatsApp or phone at {PHONE}, by email at {EMAIL}, or at Regalia Tower, 1st Floor, Business Bay, Dubai. Share your budget, preferred collection and timing to receive a shortlist of up to three villas.")
     return {
-        "home": [price, collections, built, handover, how, worth, mark, visa, sellq],
+        "home": [price, soldout, collections, built, handover, how, worth, owner, mark, visa, sellq],
         "atlas": [count, psfq, costs, how],
         "prices": [price, psfq, costs, collections],
-        "fronds": [nfronds, advanced, best, sunrise, built],
+        "fronds": [nfronds, location, advanced, best, sunrise, built],
         "position": [best, sunrise],
         "sell": [sellq, sell_docs, sell_val],
-        "guide": [checks, how, costs, noc, worth, visa, vs],
+        "guide": [checks, how, costs, noc, worth, soldout, owner, location, visa, vs],
         "beach": [beach_sizes, collections],
         "coral": [coral_sizes, collections],
         "about": [mark, contact],
@@ -950,7 +967,7 @@ def about():
 </div></section>
 
 <section><div class="wrap g2" style="align-items:start">
- <div class="reveal"><span class="eyebrow">Office</span><h2>Regalia Tower, Business Bay.</h2><p class="lead">{ADDRESS}</p><a class="link" href="{MAPS}" target="_blank" rel="noopener">Get directions</a></div>
+ <div class="reveal"><span class="eyebrow">Office</span><h2>Regalia Tower, Business Bay.</h2><p class="lead">{ADDRESS}</p><p class="small">Dubai Land Department broker registration (BRN) {BRN}</p><a class="link" href="{MAPS}" target="_blank" rel="noopener">Get directions</a></div>
  <div class="reveal"><span class="eyebrow">Contact</span><p style="font:500 26px/1.4 var(--serif);margin:0"><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></p>
  <div class="btns"><a class="btn btn-line" href="/dubai-property-atlas">Browse villa listings</a><a class="btn btn-line" href="/sell-your-palm-jebel-ali-villa">Sell your villa</a></div></div>
 </div></section>
@@ -1005,7 +1022,7 @@ def fronds():
         kp = f in "KLMNOP"
         stage = "Internal &amp; external finishing" if kp else "Under construction"
         rng = f"AED {min(prices)/1e6:.1f}M–{max(prices)/1e6:.1f}M" if len(prices) > 1 else (f"AED {prices[0]/1e6:.1f}M" if prices else "–")
-        rows += (f'<tr><td data-v="{f}"><a href="#frond-{f.lower()}"><b>Frond {f}</b></a></td><td data-v="{1 if kp else 2}">{stage}</td>'
+        rows += (f'<tr><td data-v="{f}"><a href="/palm-jebel-ali-fronds/frond-{f.lower()}"><b>Frond {f}</b></a></td><td data-v="{1 if kp else 2}">{stage}</td>'
                  f'<td data-v="{len(ls)}">{len(ls) or "–"}</td><td data-v="{min(prices) if prices else 0}">{rng}</td>'
                  f'<td data-v="{mpsf or 0}">{f"AED {mpsf:,}" if mpsf else "–"}</td></tr>')
         beach = LATEST_BEACH if kp else sorted(set(LAUNCH1_BEACH + LATEST_BEACH), key=lambda n: [d[0] for d in DESIGNS].index(n))
@@ -1022,12 +1039,12 @@ def fronds():
         status = ("Nakheel reports the 728 villas on Fronds K–P in internal and external finishing (August 2026)." if kp
                   else "Nakheel reports the 544 villas on Fronds A–F at various construction stages (August 2026).")
         secs += f'''<article class="card reveal frond" id="frond-{f.lower()}">
- <div class="frond-head"><span class="frond-l">{f}</span><div><h3>Frond {f}</h3><span class="small">{stage} · {len(ls)} advertised resale villa{"s" if len(ls) != 1 else ""}{f" · median asking AED {mpsf:,}/sq ft" if mpsf else ""}</span></div></div>
+ <div class="frond-head"><span class="frond-l">{f}</span><div><h3><a href="/palm-jebel-ali-fronds/frond-{f.lower()}" style="color:inherit;text-decoration:none">Frond {f}</a></h3><span class="small">{stage} · {len(ls)} advertised resale villa{"s" if len(ls) != 1 else ""}{f" · median asking AED {mpsf:,}/sq ft" if mpsf else ""}</span></div></div>
  <p>{status}</p>{extra}
  <h4>Current resale asking prices</h4>{lst_html}
  <h4>Beach designs shown by Nakheel for {"Fronds K–P" if kp else "this frond"}</h4><ul class="names">{chips}</ul>
  <p class="small">Coral Collection designs are also released on this frond — see the <a href="/coral-collection-resale#designs">Coral design library</a>.</p>
- <a class="btn btn-line" href="{wa(f"Hello Mark, I am interested in Frond {f} at Palm Jebel Ali. Please send me current resale options with price, orientation and payment position.")}" target="_blank" rel="noopener">Ask Mark about Frond {f}</a>
+ <div class="btns"><a class="btn btn-line" href="{wa(f"Hello Mark, I am interested in Frond {f} at Palm Jebel Ali. Please send me current resale options with price, orientation and payment position.")}" target="_blank" rel="noopener">Ask Mark about Frond {f}</a><a class="link" href="/palm-jebel-ali-fronds/frond-{f.lower()}" style="align-self:center">Frond {f} guide</a></div>
 </article>'''
     total = len(LISTINGS)
     body = f'''
@@ -1068,11 +1085,98 @@ def fronds():
                 "Compare every Palm Jebel Ali villa frond: construction stage, current resale asking prices, median price per sq ft and released Beach and Coral designs.",
                 "pja-aerial-progress-overview-v1.webp", body, faq=faqs()["fronds"], crumb="Fronds A–P")
 
+def frond_page(f):
+    S = stats()
+    ls, prices, mpsf = frond_stats(f)
+    kp = f in "KLMNOP"
+    stage = "in internal and external finishing" if kp else "under construction"
+    status = ("Nakheel reports the 728 villas on Fronds K–P in internal and external finishing (August 2026 update)." if kp
+              else "Nakheel reports the 544 villas on Fronds A–F at various construction stages (August 2026 update).")
+    if f == "F":
+        status += " On 20 August 2026 Nakheel unveiled 44 beachfront villas on Frond F in 10 designs from four architecture studios."
+    beach = LATEST_BEACH if kp else sorted(set(LAUNCH1_BEACH + LATEST_BEACH), key=lambda n: [d[0] for d in DESIGNS].index(n))
+    chips = "".join(f'<li><a href="/beach-collection-resale#{slug(n)}" style="text-decoration:none">{n}</a></li>' for n in beach)
+    i = FRONDS_ALL.index(f)
+    near = [x for x in (FRONDS_ALL[i - 1] if i else None, FRONDS_ALL[i + 1] if i + 1 < len(FRONDS_ALL) else None) if x]
+    near_links = " · ".join(f'<a href="/palm-jebel-ali-fronds/frond-{x.lower()}">Frond {x}</a>' for x in near)
+    others = "".join(f'<a href="/palm-jebel-ali-fronds/frond-{x.lower()}"{" aria-current=page" if x == f else ""}>{x}</a>' for x in FRONDS_ALL)
+    msg = f"Hello Mark, I am interested in a villa on Frond {f} at Palm Jebel Ali. Please send me current resale options with price, orientation and payment position."
+    if ls:
+        rng = m(min(prices)) + ("–" + m(max(prices)) if len(prices) > 1 else "")
+        rows = ""
+        for l in sorted(ls, key=lambda x: x[4]):
+            dn, _ = listing_design(l)
+            rows += (f'<tr><td><b>{esc(l[3])}</b>{f"<br><span class=small>{dn}</span>" if dn else ""}</td><td>{l[2]}</td><td>AED {l[4]:,}</td>'
+                     f'<td>{f"{l[6]:,} sq ft" if l[6] else "–"}</td><td>{esc(l[7])}</td><td>{esc(l[8])}</td></tr>')
+        listing_html = f'''<div class="table-wrap reveal"><table><thead><tr><th>Villa</th><th>Beds</th><th>Asking price</th><th>Area</th><th>Plot</th><th>Orientation</th></tr></thead><tbody>{rows}</tbody></table></div>
+ <div class="btns"><a class="btn btn-gold" href="{wa(msg)}" target="_blank" rel="noopener">Ask Mark about Frond {f} villas</a><a class="btn btn-line" href="/dubai-property-atlas?frond={f}#listings">Shortlist in the Property Atlas</a></div>'''
+        lead = f"{len(ls)} advertised resale villa{'s' if len(ls) != 1 else ''} on Frond {f}, asking {rng}{f', median AED {mpsf:,} per sq ft' if mpsf else ''}. Frond {f} is {stage}."
+        price_a = (f"As of {UPDATED_TXT}, {len(ls)} resale villa{'s are' if len(ls) != 1 else ' is'} advertised on Frond {f} at {rng}"
+                   + (f", a median of AED {mpsf:,} per sq ft where the built-up area is stated" if mpsf else "")
+                   + ". These are asking prices, not valuations or achieved sales. The amount due at transfer depends on how much the seller has already paid Nakheel.")
+    else:
+        listing_html = f'''<div class="card reveal"><h3>No Frond {f} villas currently advertised</h3><p>None of the resale villas presented in the Property Atlas are on Frond {f} right now. Owners on Frond {f} do sell privately, and Mark Darsy can check off-market and upcoming Frond {f} options for you.</p>
+ <div class="btns"><a class="btn btn-gold" href="{wa(msg)}" target="_blank" rel="noopener">Find me a Frond {f} villa</a><a class="btn btn-line" href="/dubai-property-atlas#listings">See all current listings</a></div></div>'''
+        lead = f"Frond {f} is {stage}. No resale villas on Frond {f} are advertised in the Property Atlas right now; Palm Jebel Ali villas overall are asking {m(S['pmin'])}–{m(S['pmax'])}."
+        price_a = (f"No resale villas on Frond {f} are presented in the Property Atlas as of {UPDATED_TXT}. Across Palm Jebel Ali, advertised resale villas range from {m(S['pmin'])} to {m(S['pmax'])}. "
+                   f"Mark Darsy can check off-market and upcoming Frond {f} villas and compare them with similar villas on other fronds.")
+    fq = [
+        (f"How much is a villa on Frond {f}, Palm Jebel Ali?", price_a),
+        (f"What is the construction status of Frond {f}?",
+         status + " Nakheel states a phased handover of the first villas from late 2026 through 2027; confirm the delivery date in each villa's contract."),
+        (f"Which villa designs are on Frond {f}?",
+         f"Nakheel shows these Beach Collection designs for {'Fronds K–P' if kp else 'Fronds A–F'}: {', '.join(beach)}. Coral Collection designs are also released on the fronds. Release and plot allocation vary, so confirm the exact design with the villa's SPA and plot plan."),
+        (f"Is Frond {f} sunrise or sunset facing?",
+         f"Both. Like every Palm Jebel Ali frond, Frond {f} has a sunrise side and a sunset side, and plots run from the spine towards the tip. The orientation belongs to the individual plot, so check the compass direction of the main rooms, garden and pool on the plot plan."),
+        (f"How do I buy or sell a villa on Frond {f}?",
+         f"Contact Mark Darsy on WhatsApp or phone at {PHONE}. Buyers receive up to three villas compared on position, design and the seller's payment position; Frond {f} owners receive a confidential resale review."),
+    ]
+    body = f'''
+<section class="phero" style="padding-bottom:30px"><div class="wrap narrow">
+ <span class="eyebrow"><a href="/palm-jebel-ali-fronds" style="color:inherit">Fronds A–P</a> · Updated {UPDATED_TXT}</span>
+ <h1>Frond {f}, Palm Jebel Ali.</h1>
+ <p class="lead">{lead}</p>
+ <div class="btns"><a class="btn btn-gold" href="{wa(msg)}" target="_blank" rel="noopener">WhatsApp Mark about Frond {f}</a><a class="btn btn-line" href="tel:{TEL}">Call {PHONE}</a></div>
+</div></section>
+
+<section style="padding-top:10px"><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Current resale asking prices</span><h2>Frond {f} villas for sale.</h2></div>
+ {listing_html}
+ <p class="note">Asking prices are advertised figures, not valuations or achieved sales. Availability changes quickly; every villa is confirmed against its SPA, plot plan and developer statement before an offer.</p>
+</div></section>
+
+<section class="sec-cream"><div class="wrap g2" style="align-items:start">
+ <div class="reveal"><span class="eyebrow">Construction</span><h2>Frond {f} status.</h2><p>{status}</p><p class="small">Nakheel states a phased handover of the first villas from late 2026 through 2027.</p></div>
+ <div class="reveal"><span class="eyebrow">Designs</span><h2>Beach designs for {"Fronds K–P" if kp else "Fronds A–F"}.</h2><ul class="names">{chips}</ul>
+ <p class="small">Coral Collection designs are also released on the fronds; see the <a href="/coral-collection-resale#designs">Coral design library</a>.</p></div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Choosing a villa on Frond {f}</span><h2>The plot matters more than the letter.</h2></div>
+ <div class="g3">
+  <div class="card reveal"><h3>Sunrise or sunset side</h3><p>Frond {f} has both. Morning light suits some buyers, evening sun others; check the plot's real compass orientation.</p></div>
+  <div class="card reveal"><h3>Spine to tip</h3><p>Plots nearer the spine favour daily access; plots towards the tip are quieter and more open but a longer drive.</p></div>
+  <div class="card reveal"><h3>Payment position</h3><p>Two similar villas can need very different cash at transfer, depending on how much each seller has paid Nakheel.</p></div>
+ </div>
+ <div class="btns"><a class="btn btn-line" href="/palm-jebel-ali-position-guide">Read the Position Guide</a></div>
+ <p class="note">Nearby: {near_links} · <a href="/palm-jebel-ali-fronds">All fronds compared</a></p>
+ <nav class="names" aria-label="All fronds" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">{others}</nav>
+</div></section>
+<!--FAQ-->
+{cta_band(f"Looking at Frond {f}?", f"Tell Mark your budget, bedrooms and preferred side of Frond {f}. You receive up to three villas compared on position, design and payment structure.", msg)}
+'''
+    desc = (f"Frond {f} Palm Jebel Ali: " + (f"{len(ls)} resale villa{'s' if len(ls) != 1 else ''} asking {rng}" if ls else "resale villa search")
+            + f", construction status, designs and sunrise/sunset plots. Updated {UPDATED_TXT}.")
+    return page(f"/palm-jebel-ali-fronds/frond-{f.lower()}", f"Frond {f} Palm Jebel Ali: Villas, Resale Prices & Status | Mark Darsy",
+                desc, "pja-aerial-progress-overview-v1.webp", body, faq=fq, crumb=f"Frond {f}",
+                parent=("/palm-jebel-ali-fronds", "Fronds A–P"))
+
 PAGES = [  # route, name, summary (for llms.txt)
     ("/", "Home", "Palm Jebel Ali resale villas with Mark Darsy: the shortlist service, featured villas, collections, construction progress and contact."),
     ("/dubai-property-atlas", "Villa listings (Property Atlas)", "Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator."),
     ("/palm-jebel-ali-villa-prices", "Villa prices", "Current Palm Jebel Ali resale asking prices by bedrooms, frond and price per square foot, with method notes."),
     ("/palm-jebel-ali-fronds", "Fronds A–P", "Frond-by-frond study: construction stage, resale asking prices, median price per sq ft and released designs for the twelve villa fronds."),
+    ("/palm-jebel-ali-fronds/frond-a", "Frond pages (A–F, K–P)", "One page per villa frond, e.g. /palm-jebel-ali-fronds/frond-a to /frond-p: current resale asking prices, construction status, designs and buying guidance for that frond."),
     ("/beach-collection-resale", "Beach Collection", "Beach Collection design library with Nakheel brochure built-up and floor-by-floor areas, architects and resale guidance."),
     ("/coral-collection-resale", "Coral Collection", "Coral Collection design library with Nakheel brochure areas, floor plans for Coral Dune and Sunset Mirage, and resale guidance."),
     ("/palm-jebel-ali-position-guide", "Position Guide", "How frond, orientation, position along the frond, outlook, neighbours and payments affect a villa decision; two-villa comparison tool."),
@@ -1113,13 +1217,18 @@ def llms(full=False):
 
 ROUTES = ["/", "/dubai-property-atlas", "/palm-jebel-ali-fronds", "/beach-collection-resale", "/coral-collection-resale",
           "/palm-jebel-ali-villa-prices", "/palm-jebel-ali-position-guide", "/sell-your-palm-jebel-ali-villa", "/palm-jebel-ali-resale-guide",
-          "/about-mark-darsy", "/privacy"]
+          "/about-mark-darsy", "/privacy",
+          "/palm-jebel-ali-fronds/frond-a", "/palm-jebel-ali-fronds/frond-b", "/palm-jebel-ali-fronds/frond-c",
+          "/palm-jebel-ali-fronds/frond-d", "/palm-jebel-ali-fronds/frond-e", "/palm-jebel-ali-fronds/frond-f",
+          "/palm-jebel-ali-fronds/frond-k", "/palm-jebel-ali-fronds/frond-l", "/palm-jebel-ali-fronds/frond-m",
+          "/palm-jebel-ali-fronds/frond-n", "/palm-jebel-ali-fronds/frond-o", "/palm-jebel-ali-fronds/frond-p"]
 
 if __name__ == "__main__":
     write("/", home()); write("/beach-collection-resale", beach()); write("/coral-collection-resale", coral())
     write("/dubai-property-atlas", atlas()); write("/palm-jebel-ali-fronds", fronds()); write("/palm-jebel-ali-position-guide", position())
     write("/sell-your-palm-jebel-ali-villa", sell()); write("/palm-jebel-ali-resale-guide", guide()); write("/privacy", privacy())
     write("/palm-jebel-ali-villa-prices", prices()); write("/about-mark-darsy", about())
+    for f in FRONDS_ALL: write(f"/palm-jebel-ali-fronds/frond-{f.lower()}", frond_page(f))
     with open(os.path.join(OUT, "404.html"), "w") as f: f.write(notfound())
     for src, to in [("/dubai-property-atlas/designs/coral-dune", "/coral-collection-resale#coral-dune"),
                     ("/dubai-property-atlas/designs/sunset-mirage", "/coral-collection-resale#sunset-mirage"),

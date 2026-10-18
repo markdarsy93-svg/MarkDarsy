@@ -4,7 +4,11 @@
   function $(s,c){return (c||d).querySelector(s)}
   function $$(s,c){return Array.prototype.slice.call((c||d).querySelectorAll(s))}
   function aed(n){return 'AED '+Math.round(n).toLocaleString('en-US')}
-  function openWA(t){window.open(WA+encodeURIComponent(t),'_blank','noopener')}
+  /* lead tracking: sends a generate_lead event when Google Analytics is switched on (GA4_ID in gen.py) */
+  function lead(m){try{if(window.gtag)gtag('event','generate_lead',{method:m,page_path:location.pathname})}catch(e){}}
+  function openWA(t){lead('whatsapp_form');window.open(WA+encodeURIComponent(t),'_blank','noopener')}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href');
+    if(h.indexOf('wa.me/')>-1)lead('whatsapp');else if(h.indexOf('tel:')===0)lead('phone');else if(h.indexOf('mailto:')===0)lead('email')});
 
   /* menu */
   var burger=$('.burger');
