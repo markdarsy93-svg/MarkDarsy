@@ -17,6 +17,7 @@
 - [Villa listings (Property Atlas)](https://palmjebelali-resale.com/dubai-property-atlas/): Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator.
 - [Villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/): Current Palm Jebel Ali resale asking prices by bedrooms, frond and price per square foot, with method notes.
 - [Fronds A–P](https://palmjebelali-resale.com/palm-jebel-ali-fronds/): Frond-by-frond study: construction stage, resale asking prices, median price per sq ft and released designs for the twelve villa fronds.
+- [Frond pages (A–F, K–P)](https://palmjebelali-resale.com/palm-jebel-ali-fronds/frond-a/): One page per villa frond, e.g. /palm-jebel-ali-fronds/frond-a/ to /frond-p: current resale asking prices, construction status, designs and buying guidance for that frond.
 - [Beach Collection](https://palmjebelali-resale.com/beach-collection-resale/): Beach Collection design library with Nakheel brochure built-up and floor-by-floor areas, architects and resale guidance.
 - [Coral Collection](https://palmjebelali-resale.com/coral-collection-resale/): Coral Collection design library with Nakheel brochure areas, floor plans for Coral Dune and Sunset Mirage, and resale guidance.
 - [Position Guide](https://palmjebelali-resale.com/palm-jebel-ali-position-guide/): How frond, orientation, position along the frond, outlook, neighbours and payments affect a villa decision; two-villa comparison tool.
@@ -29,6 +30,10 @@
 ### How much does a resale villa on Palm Jebel Ali cost?
 
 As of 6 October 2026, the 21 resale villas presented on this site are advertised from AED 18M to AED 53.9M, a median of AED 21.5M. By size: 5-bedroom villas AED 18M–AED 21.5M; 6-bedroom villas AED 18M–AED 50M; 7-bedroom villas AED 32.5M–AED 53.9M. Advertised price per square foot ranges from about AED 2,329 to AED 4,305 (median AED 2,721). These are asking prices, not valuations or achieved sales. See [Palm Jebel Ali villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/) for the full breakdown.
+
+### Is Palm Jebel Ali sold out?
+
+Nakheel releases Palm Jebel Ali villas in phases, and developer stock is often limited or fully allocated between releases. When it is, the way to buy is a resale from an existing owner, taking over the remaining developer payments. Mark Darsy works on resales and also has VIP access to selected developer stock when new releases happen.
 
 ### What is the difference between Beach Collection and Coral Collection villas?
 
@@ -49,6 +54,10 @@ On an off-plan resale, the seller has already paid part of the developer price. 
 ### Is it worth investing in a Palm Jebel Ali villa?
 
 It depends on the specific villa, the price and the seller's payment position rather than the island as a whole. Compare the exact frond, orientation, plot and outlook, how much cash is due at transfer and how much remains payable to the developer, and the contractual delivery date. This site does not forecast returns or appreciation; current advertised asking prices are shown on the [villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/) page.
+
+### Who is the developer of Palm Jebel Ali?
+
+Palm Jebel Ali is developed by Nakheel, the Dubai developer behind Palm Jumeirah, which is part of Dubai Holding. Villa payments before handover are made to Nakheel under each villa's sale and purchase agreement, and a resale needs Nakheel's NOC before transfer.
 
 ### Who is Mark Darsy?
 
@@ -77,6 +86,10 @@ Beyond the agreed price, budget for the Dubai Land Department transfer fee of 4%
 ### How many villa fronds does Palm Jebel Ali have?
 
 This site covers twelve villa fronds on Palm Jebel Ali: Fronds A–F and Fronds K–P. Each frond has a sunrise side and a sunset side, with plots running from the spine towards the tip. See [Palm Jebel Ali frond by frond](https://palmjebelali-resale.com/palm-jebel-ali-fronds/).
+
+### Where is Palm Jebel Ali?
+
+Palm Jebel Ali is on Dubai's southwestern coast off Jebel Ali, between Jebel Ali Port and the Jebel Ali Marine Sanctuary, with access from Sheikh Zayed Road (E11). Its villas sit on the fronds, each with a sunrise side and a sunset side. See the [frond-by-frond guide](https://palmjebelali-resale.com/palm-jebel-ali-fronds/).
 
 ### Which Palm Jebel Ali fronds are most advanced in construction?
 

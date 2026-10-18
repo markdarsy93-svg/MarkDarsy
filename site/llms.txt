@@ -17,6 +17,7 @@
 - [Villa listings (Property Atlas)](https://palmjebelali-resale.com/dubai-property-atlas/): Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator.
 - [Villa prices](https://palmjebelali-resale.com/palm-jebel-ali-villa-prices/): Current Palm Jebel Ali resale asking prices by bedrooms, frond and price per square foot, with method notes.
 - [Fronds A–P](https://palmjebelali-resale.com/palm-jebel-ali-fronds/): Frond-by-frond study: construction stage, resale asking prices, median price per sq ft and released designs for the twelve villa fronds.
+- [Frond pages (A–F, K–P)](https://palmjebelali-resale.com/palm-jebel-ali-fronds/frond-a/): One page per villa frond, e.g. /palm-jebel-ali-fronds/frond-a/ to /frond-p: current resale asking prices, construction status, designs and buying guidance for that frond.
 - [Beach Collection](https://palmjebelali-resale.com/beach-collection-resale/): Beach Collection design library with Nakheel brochure built-up and floor-by-floor areas, architects and resale guidance.
 - [Coral Collection](https://palmjebelali-resale.com/coral-collection-resale/): Coral Collection design library with Nakheel brochure areas, floor plans for Coral Dune and Sunset Mirage, and resale guidance.
 - [Position Guide](https://palmjebelali-resale.com/palm-jebel-ali-position-guide/): How frond, orientation, position along the frond, outlook, neighbours and payments affect a villa decision; two-villa comparison tool.
@@ -27,11 +28,13 @@
 ## Frequently asked questions
 
 - How much does a resale villa on Palm Jebel Ali cost?
+- Is Palm Jebel Ali sold out?
 - What is the difference between Beach Collection and Coral Collection villas?
 - Is Palm Jebel Ali being built, and will it be finished?
 - When will Palm Jebel Ali villas be handed over?
 - How does buying a Palm Jebel Ali villa on resale work before handover?
 - Is it worth investing in a Palm Jebel Ali villa?
+- Who is the developer of Palm Jebel Ali?
 - Who is Mark Darsy?
 - Does a Palm Jebel Ali villa qualify for the UAE Golden Visa?
 - Can I sell my Palm Jebel Ali villa before handover?
@@ -39,6 +42,7 @@
 - What is the price per square foot of Palm Jebel Ali villas?
 - What costs apply when buying a Palm Jebel Ali villa on resale?
 - How many villa fronds does Palm Jebel Ali have?
+- Where is Palm Jebel Ali?
 - Which Palm Jebel Ali fronds are most advanced in construction?
 - Which frond is best on Palm Jebel Ali?
 - What does sunrise side or sunset side mean on Palm Jebel Ali?
