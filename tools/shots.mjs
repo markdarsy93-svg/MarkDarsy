@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 const base = 'http://127.0.0.1:8080';
-const pages = ['/', '/palm-jebel-ali-fronds/', '/dubai-property-atlas/', '/beach-collection-resale/', '/coral-collection-resale/', '/palm-jebel-ali-position-guide/', '/sell-your-palm-jebel-ali-villa/', '/palm-jebel-ali-resale-guide/', '/privacy/', '/palm-jebel-ali-villa-prices/', '/about-mark-darsy/', '/palm-jebel-ali-fronds/frond-a/', '/palm-jebel-ali-fronds/frond-k/', '/palm-jebel-ali-master-plan/', '/palm-jebel-ali-beachfront-villas/', '/palm-jebel-ali-vs-palm-jumeirah/', '/nakheel-palm-jebel-ali/', '/nope'];
+const pages = ['/', '/palm-jebel-ali-fronds/', '/dubai-property-atlas/', '/beach-collection-resale/', '/coral-collection-resale/', '/palm-jebel-ali-position-guide/', '/sell-your-palm-jebel-ali-villa/', '/palm-jebel-ali-resale-guide/', '/privacy/', '/palm-jebel-ali-villa-prices/', '/about-mark-darsy/', '/palm-jebel-ali-fronds/frond-a/', '/palm-jebel-ali-fronds/frond-k/', '/palm-jebel-ali-master-plan/', '/palm-jebel-ali-beachfront-villas/', '/palm-jebel-ali-vs-palm-jumeirah/', '/nakheel-palm-jebel-ali/', '/palm-jebel-ali-construction-update/', '/nope'];
 const sizes = { mobile: { width: 390, height: 844 }, desktop: { width: 1440, height: 900 } };
 const browser = await chromium.launch();
 const report = [];

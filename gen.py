@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "15"
+VER = "16"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -158,7 +158,7 @@ def footer(extra=""):
     <p style="margin-top:22px">Broker registration (BRN) {BRN}<br>{ADDRESS}<br><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></p>
     <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a><br><a href="{INSTAGRAM}" target="_blank" rel="noopener me">Instagram</a></p>
    </div>
-   <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/palm-jebel-ali-beachfront-villas">Beachfront villas &amp; mansions</a><a href="/palm-jebel-ali-master-plan">Master plan</a><a href="/palm-jebel-ali-fronds">Frond by frond</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a><a href="/palm-jebel-ali-villa-prices">Villa prices</a></nav>
+   <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/palm-jebel-ali-beachfront-villas">Beachfront villas &amp; mansions</a><a href="/palm-jebel-ali-master-plan">Master plan</a><a href="/palm-jebel-ali-construction-update">Construction update</a><a href="/palm-jebel-ali-fronds">Frond by frond</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a><a href="/palm-jebel-ali-villa-prices">Villa prices</a></nav>
    <nav aria-label="Services"><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/palm-jebel-ali-vs-palm-jumeirah">Palm Jebel Ali vs Palm Jumeirah</a><a href="/nakheel-palm-jebel-ali">Nakheel Palm Jebel Ali</a><a href="/about-mark-darsy">About Mark Darsy</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
   </div>
   <p class="disc">Independent broker marketing. Availability, specifications, payment obligations and market figures must be verified against the selected property's documents before any decision. Sales figure based on Mark Darsy's transaction records. Villa and lifestyle images are developer conceptual imagery, not a specific resale villa; aerial photographs supplied by Mark Darsy. Drive times, construction and planned figures as published by <a href="https://www.nakheel.com/en/media-centre/press-releases/news-detail/2026/08/20/nakheel-unveils-limited-collection-of-44-beachfront-villas-on-palm-jebel-ali-s-frond-f" target="_blank" rel="noopener">Nakheel, 20 August 2026</a>, subject to change. Palm Jebel Ali and Nakheel names, trademarks and project imagery remain their owners' property.</p>
@@ -414,7 +414,7 @@ def home():
   <div><b>544</b><span>villas on Fronds A–F at various construction stages</span></div>
   <div><b>AED 13bn+</b><span>in construction and infrastructure contracts awarded</span></div>
  </div>
- <p class="note">Browse <a href="/palm-jebel-ali-beachfront-villas">beachfront villas and mansions for sale</a>, compare <a href="/palm-jebel-ali-vs-palm-jumeirah">Palm Jebel Ali vs Palm Jumeirah</a>, read about <a href="/nakheel-palm-jebel-ali">Nakheel's progress</a>, explore the <a href="/palm-jebel-ali-master-plan">master plan</a> or go straight to a frond: {" · ".join(f'<a href="/palm-jebel-ali-fronds/frond-{x.lower()}">Frond {x}</a>' for x in FRONDS_ALL)}.</p>
+ <p class="note">Browse <a href="/palm-jebel-ali-beachfront-villas">beachfront villas and mansions for sale</a>, compare <a href="/palm-jebel-ali-vs-palm-jumeirah">Palm Jebel Ali vs Palm Jumeirah</a>, read about <a href="/nakheel-palm-jebel-ali">Nakheel</a> and the <a href="/palm-jebel-ali-construction-update">construction update and completion date</a>, explore the <a href="/palm-jebel-ali-master-plan">master plan</a> or go straight to a frond: {" · ".join(f'<a href="/palm-jebel-ali-fronds/frond-{x.lower()}">Frond {x}</a>' for x in FRONDS_ALL)}.</p>
 </div></section>
 
 <section class="sec-cream"><div class="wrap loc">
@@ -1429,6 +1429,74 @@ def nakheel_pja():
                 f"Nakheel's Palm Jebel Ali villas: construction status, Beach and Coral releases, the August 2026 Frond F launch, and how to buy direct or as a resale from {m(S['pmin'])}.",
                 "pja-aerial-progress-overview-v1.webp", body, faq=fq, crumb="Nakheel Palm Jebel Ali")
 
+def construction():
+    S = stats()
+    rows = ""
+    for f in FRONDS_ALL:
+        kp = f in "KLMNOP"
+        ls, _, _ = frond_stats(f)
+        rows += (f'<tr><td><a href="/palm-jebel-ali-fronds/frond-{f.lower()}"><b>Frond {f}</b></a></td>'
+                 f'<td>{"Internal and external finishing" if kp else "At various construction stages"}</td>'
+                 f'<td>{"Among the first villas due from late 2026" if kp else "Following the K–P group; confirm in the villa contract"}</td>'
+                 f'<td>{len(ls) or "–"}</td></tr>')
+    msg = "Hello Mark, please tell me the latest construction status and handover date for the Palm Jebel Ali villa I am interested in."
+    fq = [
+        ("When will Palm Jebel Ali be finished?",
+         "Palm Jebel Ali has no single completion date. Nakheel states that a phased handover of the first villas is scheduled to begin in late 2026 and continue through 2027, starting with the more advanced fronds. Other parts of the island follow in later phases. The delivery date for a specific villa is the one in its sale and purchase agreement (SPA)."),
+        ("Is Palm Jebel Ali finished?",
+         f"Not yet, as of {UPDATED_TXT}. In Nakheel's August 2026 update, the 728 villas on Fronds K–P were in internal and external finishing and the 544 villas on Fronds A–F were at various construction stages. Nakheel reports more than AED 13 billion in construction and infrastructure contracts awarded."),
+        ("When is the handover of Palm Jebel Ali villas?",
+         "Nakheel states a phased handover of the first villas from late 2026 through 2027. Fronds K–P are furthest along. Always check the completion date in the villa's SPA, which can differ from general guidance, before you buy a resale."),
+        ("Which fronds will be handed over first?",
+         "Fronds K–P, where Nakheel reported 728 villas in internal and external finishing in August 2026. Fronds A–F, with 544 villas, were at various construction stages."),
+        ("How does the construction stage affect a resale price?",
+         "On an off-plan resale the buyer takes over the remaining payments to Nakheel. A villa closer to handover usually has fewer instalments left, so more of the price is paid at transfer. Mark Darsy compares villas on the cash due at transfer as well as the headline price."),
+    ]
+    body = f"""
+<section class="phero" style="padding-bottom:30px"><div class="wrap narrow">
+ <span class="eyebrow">Construction update · Updated {UPDATED_TXT}</span>
+ <h1>Palm Jebel Ali completion date and construction update.</h1>
+ <p class="lead">Palm Jebel Ali is not finished yet. Nakheel states a phased handover of the first villas from late 2026 through 2027. Fronds K–P are in internal and external finishing, and Fronds A–F are at various construction stages.</p>
+ <div class="btns"><a class="btn btn-gold" href="{wa(msg)}" target="_blank" rel="noopener">Ask Mark about a handover date</a><a class="btn btn-line" href="/palm-jebel-ali-beachfront-villas">Villas for sale now</a></div>
+</div></section>
+
+<section style="padding-top:10px"><div class="wrap">
+ <div class="facts-row reveal">
+  <div><b>Late 2026</b><span>first villa handovers begin, continuing through 2027</span></div>
+  <div><b>728</b><span>villas on Fronds K–P in internal and external finishing</span></div>
+  <div><b>544</b><span>villas on Fronds A–F at various construction stages</span></div>
+ </div>
+ <div class="aerials" style="margin-top:30px">
+  <figure class="reveal"><div class="ph">{img("pja-aerial-progress-overview-v2.webp", "Aerial photograph of Palm Jebel Ali construction progress")}</div><figcaption><b>The complete palm</b><span class="small">Aerial photograph supplied by Mark Darsy.</span></figcaption></figure>
+  <figure class="reveal"><div class="ph">{img("pja-aerial-progress-fronds-v2.webp", "Aerial photograph of villa rows under construction on Palm Jebel Ali fronds")}</div><figcaption><b>Villa rows on the fronds</b><span class="small">Aerial photograph supplied by Mark Darsy.</span></figcaption></figure>
+ </div>
+</div></section>
+
+<section class="sec-cream"><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Frond by frond</span><h2>Where each frond stands.</h2>
+ <p class="lead">Stages from Nakheel's August 2026 update, with the number of resale villas currently advertised on each frond.</p></div>
+ <div class="table-wrap reveal"><table><thead><tr><th>Frond</th><th>Stage (Nakheel, Aug 2026)</th><th>Handover guidance</th><th>Resale villas</th></tr></thead><tbody>{rows}</tbody></table></div>
+ <p class="note">Nakheel publishes progress by frond group, not by individual frond. The completion date that binds you is the one in the villa's SPA; Mark checks it with the seller's developer statement before an offer.</p>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Milestones</span><h2>What Nakheel has announced.</h2></div>
+ {steps([
+   ("Relaunch and contracts", "Nakheel relaunched Palm Jebel Ali and reports more than AED 13 billion in construction and infrastructure contracts awarded."),
+   ("Beach and Coral releases", f"Villas were released in the Beach Collection (about {S['beach'][0]:,.0f}–{S['beach'][1]:,.0f} sq ft) and the larger Coral Collection (about {S['coral'][0]:,.0f}–{S['coral'][1]:,.0f} sq ft)."),
+   ("August 2026 update", "728 villas on Fronds K–P in internal and external finishing; 544 villas on Fronds A–F at various construction stages. On 20 August 2026 Nakheel unveiled 44 beachfront villas on Frond F in 10 designs."),
+   ("Handover", "A phased handover of the first villas is scheduled to begin in late 2026 and continue through 2027."),
+ ], h="h3")}
+ <div class="btns"><a class="btn btn-line" href="/palm-jebel-ali-master-plan">Master plan</a><a class="btn btn-line" href="/nakheel-palm-jebel-ali">Nakheel Palm Jebel Ali</a><a class="btn btn-line" href="/palm-jebel-ali-resale-guide">How a resale works</a></div>
+ <p class="note">Source: Nakheel press releases, including 20 August 2026. Figures as published, subject to change.</p>
+</div></section>
+<!--FAQ-->
+{cta_band("Buying before handover?", "Mark Darsy checks each villa's contracted completion date, the instalments left and the cash due at transfer, and compares up to three villas for you.", msg)}
+"""
+    return page("/palm-jebel-ali-construction-update", "Palm Jebel Ali Completion Date & Construction Update (October 2026)",
+                f"When will Palm Jebel Ali be finished? Phased villa handover from late 2026 through 2027; Fronds K–P in finishing, A–F under construction. Frond-by-frond status, updated {UPDATED_TXT}.",
+                "pja-aerial-progress-overview-v1.webp", body, faq=fq, crumb="Construction update")
+
 PAGES = [  # route, name, summary (for llms.txt)
     ("/", "Home", "Palm Jebel Ali resale villas with Mark Darsy: the shortlist service, featured villas, collections, construction progress and contact."),
     ("/dubai-property-atlas", "Villa listings (Property Atlas)", "Every Palm Jebel Ali resale villa currently presented, with frond, bedrooms, asking price, area, plot, orientation and a purchase cost estimator."),
@@ -1438,6 +1506,7 @@ PAGES = [  # route, name, summary (for llms.txt)
     ("/palm-jebel-ali-beachfront-villas", "Beachfront villas & mansions", "Every advertised Palm Jebel Ali resale villa, split into seven-bedroom mansions and Coral villas and five- to six-bedroom beachfront villas, with prices and areas."),
     ("/palm-jebel-ali-vs-palm-jumeirah", "Palm Jebel Ali vs Palm Jumeirah", "Side-by-side comparison of the two Nakheel palms for villa buyers: status, what a resale means, villa sizes, prices, location and Golden Visa."),
     ("/nakheel-palm-jebel-ali", "Nakheel Palm Jebel Ali", "Nakheel as developer of Palm Jebel Ali: construction status, Beach and Coral releases, the August 2026 Frond F launch, and buying direct vs resale."),
+    ("/palm-jebel-ali-construction-update", "Completion date & construction update", "When Palm Jebel Ali will be finished: Nakheel's phased handover guidance, construction stage by frond group, milestones and what it means for resale buyers."),
     ("/palm-jebel-ali-fronds/frond-a", "Frond pages (A–F, K–P)", "One page per villa frond, e.g. /palm-jebel-ali-fronds/frond-a to /frond-p: current resale asking prices, construction status, designs and buying guidance for that frond."),
     ("/beach-collection-resale", "Beach Collection", "Beach Collection design library with Nakheel brochure built-up and floor-by-floor areas, architects and resale guidance."),
     ("/coral-collection-resale", "Coral Collection", "Coral Collection design library with Nakheel brochure areas, floor plans for Coral Dune and Sunset Mirage, and resale guidance."),
@@ -1480,7 +1549,7 @@ def llms(full=False):
 ROUTES = ["/", "/dubai-property-atlas", "/palm-jebel-ali-fronds", "/beach-collection-resale", "/coral-collection-resale",
           "/palm-jebel-ali-villa-prices", "/palm-jebel-ali-position-guide", "/sell-your-palm-jebel-ali-villa", "/palm-jebel-ali-resale-guide",
           "/about-mark-darsy", "/privacy", "/palm-jebel-ali-master-plan",
-          "/palm-jebel-ali-beachfront-villas", "/palm-jebel-ali-vs-palm-jumeirah", "/nakheel-palm-jebel-ali",
+          "/palm-jebel-ali-beachfront-villas", "/palm-jebel-ali-vs-palm-jumeirah", "/nakheel-palm-jebel-ali", "/palm-jebel-ali-construction-update",
           "/palm-jebel-ali-fronds/frond-a", "/palm-jebel-ali-fronds/frond-b", "/palm-jebel-ali-fronds/frond-c",
           "/palm-jebel-ali-fronds/frond-d", "/palm-jebel-ali-fronds/frond-e", "/palm-jebel-ali-fronds/frond-f",
           "/palm-jebel-ali-fronds/frond-k", "/palm-jebel-ali-fronds/frond-l", "/palm-jebel-ali-fronds/frond-m",
@@ -1492,7 +1561,7 @@ if __name__ == "__main__":
     write("/sell-your-palm-jebel-ali-villa", sell()); write("/palm-jebel-ali-resale-guide", guide()); write("/privacy", privacy())
     write("/palm-jebel-ali-villa-prices", prices()); write("/about-mark-darsy", about())
     write("/palm-jebel-ali-master-plan", master_plan())
-    write("/palm-jebel-ali-beachfront-villas", beachfront()); write("/palm-jebel-ali-vs-palm-jumeirah", vs_jumeirah()); write("/nakheel-palm-jebel-ali", nakheel_pja())
+    write("/palm-jebel-ali-beachfront-villas", beachfront()); write("/palm-jebel-ali-vs-palm-jumeirah", vs_jumeirah()); write("/nakheel-palm-jebel-ali", nakheel_pja()); write("/palm-jebel-ali-construction-update", construction())
     for f in FRONDS_ALL: write(f"/palm-jebel-ali-fronds/frond-{f.lower()}", frond_page(f))
     with open(os.path.join(OUT, "404.html"), "w") as f: f.write(notfound())
     for src, to in [("/dubai-property-atlas/designs/coral-dune", "/coral-collection-resale#coral-dune"),
