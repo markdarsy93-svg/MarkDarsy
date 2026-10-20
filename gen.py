@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "16"
+VER = "17"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -166,6 +166,7 @@ def footer(extra=""):
  </div>
 </footer>
 <a class="wa" href="{WA}" target="_blank" rel="noopener" aria-label="WhatsApp Mark">{WA_ICON}</a>
+<nav class="cbar" aria-label="Contact Mark"><a class="btn btn-line" href="tel:{TEL}">Call Mark</a><a class="btn btn-gold" href="{WA}" target="_blank" rel="noopener">WhatsApp</a></nav>
 {extra}
 <script src="/assets/site.js?v={VER}" defer></script>
 </body>
@@ -924,7 +925,7 @@ def prices():
  <div class="table-wrap reveal"><table><thead><tr><th>Bedrooms</th><th>Listings</th><th>Asking range</th><th>Median price</th><th>Median AED/sq ft</th></tr></thead><tbody>{brows}</tbody></table></div>
  <div class="sec-head reveal mt"><span class="eyebrow">By frond</span><h2>Asking prices by frond.</h2></div>
  <div class="table-wrap reveal"><table><thead><tr><th>Frond</th><th>Listings</th><th>Asking range</th><th>Median AED/sq ft</th></tr></thead><tbody>{frows}</tbody></table></div>
- <p class="note">A frond median from a few listings is only indicative. Full frond profiles, construction stage and released designs: <a href="/palm-jebel-ali-fronds">Palm Jebel Ali frond by frond</a>.</p>
+ <p class="note">A frond median from a few listings is only indicative. Full frond profiles, construction stage and released designs: <a href="/palm-jebel-ali-fronds">Palm Jebel Ali frond by frond</a>. Every listed villa, grouped into mansions and beachfront villas: <a href="/palm-jebel-ali-beachfront-villas">beachfront villas and mansions for sale</a>.</p>
 </div></section>
 
 <section><div class="wrap">
@@ -1147,7 +1148,7 @@ def frond_page(f):
 </div></section>
 
 <section class="sec-cream"><div class="wrap g2" style="align-items:start">
- <div class="reveal"><span class="eyebrow">Construction</span><h2>Frond {f} status.</h2><p>{status}</p><p class="small">Nakheel states a phased handover of the first villas from late 2026 through 2027.</p></div>
+ <div class="reveal"><span class="eyebrow">Construction</span><h2>Frond {f} status.</h2><p>{status}</p><p class="small">Nakheel states a phased handover of the first villas from late 2026 through 2027. See the <a href="/palm-jebel-ali-construction-update">construction update and completion date</a>.</p></div>
  <div class="reveal"><span class="eyebrow">Designs</span><h2>Beach designs for {"Fronds K–P" if kp else "Fronds A–F"}.</h2><ul class="names">{chips}</ul>
  <p class="small">Coral Collection designs are also released on the fronds; see the <a href="/coral-collection-resale#designs">Coral design library</a>.</p></div>
 </div></section>
