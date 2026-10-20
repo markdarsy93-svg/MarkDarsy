@@ -405,3 +405,13 @@ table.sortable th::after{content:" ↕";opacity:.35;font-size:10px}
 .faq-a p{margin:0;color:var(--muted);max-width:680px}
 .faq-a a{color:var(--ink)}
 .sec-cream .faq-q summary h3{color:var(--ink)}
+/* Mobile contact bar */
+.cbar{display:none}
+@media (max-width:720px){
+ .cbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:38;background:var(--night);padding:8px 10px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -6px 20px rgba(0,0,0,.18)}
+ .cbar a{min-height:46px;padding:10px 12px;font-size:12px}
+ .cbar .btn-line{color:var(--on-dark);border-color:var(--on-dark-muted)}
+ .wa{display:none}
+ .ftr{padding-bottom:84px}
+ .has-bar .cbar{display:none}
+}
