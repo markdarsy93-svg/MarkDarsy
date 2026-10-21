@@ -36,8 +36,8 @@ NAV = [
 
 WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .9c-.2 1-1.2 1.8-2.3 1.7-3.5-.4-6.2-3.1-6.6-6.6-.1-1.1.7-2.1 1.7-2.3l.9 2-1.2 1Z" fill="currentColor" stroke="none"/></svg>'
 
-UPDATED = "2026-10-06"
-UPDATED_TXT = "6 October 2026"
+UPDATED = "2026-10-21"
+UPDATED_TXT = "21 October 2026"
 EMAIL = "mark@palmjebelali-resale.com"
 INSTAGRAM = "https://www.instagram.com/markdarsy_therealtor/"
 INDEXNOW_KEY = "6f1d2c8a4b7e4f0e9a3d5c1b8e2f7a64"
@@ -233,28 +233,26 @@ def continue_links(links):
 # ---------------------------------------------------------------- data
 LISTINGS = [
     # id, frond, beds, title, price, area_label, area, plot, orientation
-    ("e", "E", 5, "Five-bedroom beachfront villa", 18_000_000, "Advertised area", 7565, "To confirm", "To confirm"),
     ("n", "N", 6, "Six-bedroom sunset-facing villa", 18_000_000, "Advertised BUA", 7727, "7,429 sq ft", "Sunset"),
-    ("d", "D", 6, "Pacific Breeze · sunset outlook", 21_000_000, "Advertised area", 7578, "To confirm", "Sunset"),
     ("c", "C", 6, "Bluejay · high-number position", 25_000_000, "Built-up area", 8293, "7,374.46 sq ft", "Sunrise"),
-    ("m", "M", 7, "Seven-bedroom beachfront residence", 49_000_000, "Advertised BUA", 11632, "To confirm", "To confirm"),
     # added 6 Oct 2026 (advertised asking prices; availability unconfirmed)
     ("p1", "P", 6, "Blue Horizon · six-bedroom villa", 25_000_000, "Built-up area", 7391, "7,390.72 sq ft", "To confirm"),
     ("l1", "L", 6, "Six-bedroom beach villa", 23_500_000, "Advertised area", 7373, "To confirm", "To confirm"),
-    ("b1", "B", 6, "Six-bedroom beach villa", 19_100_000, "Built-up area", 7308, "7,373 sq ft", "To confirm"),
     ("b2", "B", 6, "Six-bedroom contemporary villa", 18_600_000, "Advertised area", 7562, "To confirm", "To confirm"),
-    ("k1", "K", 7, "Seven-bedroom Coral villa", 35_908_800, "Built-up area", 11448, "13,094 sq ft", "To confirm"),
-    ("k2", "K", 7, "Seven-bedroom beach mansion · large plot", 49_278_800, "Built-up area", 11448, "21,246 sq ft", "To confirm"),
     ("k3", "K", 5, "Indigo Ocean · high-number position", 21_500_000, "Advertised area", 7434, "To confirm", "To confirm"),
     ("c1", "C", 5, "Five-bedroom beach villa", 19_500_000, "Advertised area", 7569, "To confirm", "To confirm"),
     ("c2", "C", 6, "Coral Dune · high-number position", 50_000_000, "Built-up area", None, "20,775 sq ft (advertised)", "Sunset"),
     ("d1", "D", 6, "Six-bedroom villa · high number", 20_000_000, "Advertised area", 7589, "To confirm", "Sunset"),
-    ("n1", "N", 6, "Six-bedroom sunset villa", 19_808_800, "Advertised area", 7374, "To confirm", "Sunset"),
-    ("l2", "L", 5, "Five-bedroom beach villa", 20_698_800, "Advertised area", 7606, "To confirm", "To confirm"),
     ("l3", "L", 6, "Six-bedroom villa · sunset outlook", 18_800_000, "Built-up area", 7883, "7,427 sq ft", "Sunset"),
-    ("f1", "F", 7, "Seven-bedroom beach mansion · 30/70 plan", 53_909_000, "Built-up area", None, "To confirm", "To confirm"),
     ("o1", "O", 7, "Hibiscus layout · seven-bedroom Coral villa", 32_500_000, "Built-up area", 12007, "13,087 sq ft", "To confirm"),
-    ("m1", "M", 7, "Redwood · seven-bedroom Coral villa", 34_500_000, "Built-up area", 12165, "13,098 sq ft", "Sunrise"),
+    # added 21 Oct 2026 (advertised asking prices; availability unconfirmed)
+    ("a1", "A", 6, "Six-bedroom villa · sunset outlook", 25_000_000, "Advertised area", 7641, "To confirm", "Sunset"),
+    ("e1", "E", 5, "Five-bedroom beach villa", 23_000_000, "Advertised area", 7565, "To confirm", "To confirm"),
+    ("d2", "D", 5, "Five-bedroom beach villa", 21_990_000, "Advertised area", 7379, "To confirm", "To confirm"),
+    ("k4", "K", 5, "Five-bedroom villa · high number", 18_500_000, "Built-up area", 7316, "7,376 sq ft", "To confirm"),
+    ("m2", "M", 6, "Six-bedroom sunset villa", 16_481_900, "Built-up area", 7316, "7,578 sq ft", "Sunset"),
+    ("n2", "N", 6, "Six-bedroom beach villa", 25_000_000, "Advertised area", 7569, "To confirm", "To confirm"),
+    ("o2", "O", 5, "Five-bedroom beach villa", 21_799_999, "Built-up area", 7883, "7,562 sq ft", "To confirm"),
 ]
 PSF = [round(l[4] / l[6]) for l in LISTINGS if l[6]]
 PSF_MIN, PSF_MAX = min(PSF), max(PSF)
@@ -269,7 +267,7 @@ def arch(n): return f'<span class="small">Architect: {ARCH[n]}</span>' if n in A
 CORAL_MORE = ["Red Aurora", "Redwood", "Porcelain Roses", "Amber Reef"]
 
 
-FEATURED = [("n", "palm-jebel-ali-frond-villas.webp"), ("c", "pja-beach-villas-frontage.webp"), ("m1", "pja-beach-villas-evening.webp")]
+FEATURED = [("n", "palm-jebel-ali-frond-villas.webp"), ("c", "pja-beach-villas-frontage.webp"), ("o1", "pja-beach-villas-evening.webp")]
 def featured():
     out = ""
     by = {l[0]: l for l in LISTINGS}
@@ -937,7 +935,7 @@ def prices():
 <!--FAQ-->
 {cta_band("Know what the right villa should cost.", "Tell Mark the villa or brief. You receive current asking evidence, position and payment details for up to three options.", "Hello Mark, please send me current Palm Jebel Ali villa prices for my brief.")}
 '''
-    return page("/palm-jebel-ali-villa-prices", f"Palm Jebel Ali Villa Prices ({UPDATED_TXT[2:]}) | Resale Asking Prices",
+    return page("/palm-jebel-ali-villa-prices", f"Palm Jebel Ali Villa Prices ({UPDATED_TXT.split(" ", 1)[1]}) | Resale Asking Prices",
                 f"Palm Jebel Ali villa resale prices, updated {UPDATED_TXT}: {m(S['pmin'])}–{m(S['pmax'])} asking, median AED {S['psfmed']:,}/sq ft. Breakdown by bedrooms, frond and every listed villa.",
                 "palm-jebel-ali-villa.webp", body, faq=faqs()["prices"], ld=listing_ld("/palm-jebel-ali-villa-prices"), crumb="Villa prices")
 
