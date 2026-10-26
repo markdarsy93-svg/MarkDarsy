@@ -40,6 +40,7 @@ UPDATED = "2026-10-21"
 UPDATED_TXT = "21 October 2026"
 EMAIL = "mark@palmjebelali-resale.com"
 INSTAGRAM = "https://www.instagram.com/markdarsy_therealtor/"
+YOUTUBE = "https://www.youtube.com/@MarkDarsy_TheRealtor"
 INDEXNOW_KEY = "6f1d2c8a4b7e4f0e9a3d5c1b8e2f7a64"
 BRN = "52456"  # Mark Darsy's RERA broker registration number (public on his Instagram/LinkedIn)
 GA4_ID = ""  # set to the G-XXXXXXX measurement ID to switch on Google Analytics and lead tracking
@@ -56,14 +57,14 @@ BASE_LD = [
      "telephone": TEL, "email": EMAIL, "founder": {"@id": MARK_ID}, "employee": {"@id": MARK_ID},
      "areaServed": {"@id": PJA_ID},
      "address": {"@type": "PostalAddress", "streetAddress": "Regalia Tower, 1st Floor", "addressLocality": "Business Bay, Dubai", "addressRegion": "Dubai", "addressCountry": "AE"},
-     "hasMap": MAPS, "sameAs": [INSTAGRAM],
+     "hasMap": MAPS, "sameAs": [INSTAGRAM, YOUTUBE],
      "contactPoint": {"@type": "ContactPoint", "telephone": TEL, "email": EMAIL, "contactType": "sales", "areaServed": "AE", "availableLanguage": ["English"]},
      "knowsAbout": ["Palm Jebel Ali", "Palm Jebel Ali resale villas", "Beach Collection villas", "Coral Collection villas", "Off-plan villa resale in Dubai", "Nakheel developer payment plans", "Dubai property transfer and NOC process"]},
     {"@type": "Person", "@id": MARK_ID, "name": "Mark Darsy", "jobTitle": "Palm Jebel Ali resale specialist",
      "url": SITE + "/about-mark-darsy", "image": SITE + "/images/mark-darsy-authentic-advisor-v2.webp",
      "telephone": TEL, "email": EMAIL, "worksFor": {"@id": ORG_ID}, "workLocation": {"@type": "Place", "name": "Regalia Tower, Business Bay, Dubai"},
      "description": "Dubai-based property adviser specialising in Palm Jebel Ali resale villas. " + "; ".join(CREDS) + ".",
-     "knowsAbout": ["Palm Jebel Ali", "Palm Jebel Ali fronds", "Off-plan resale", "Nakheel"], "sameAs": [INSTAGRAM],
+     "knowsAbout": ["Palm Jebel Ali", "Palm Jebel Ali fronds", "Off-plan resale", "Nakheel"], "sameAs": [INSTAGRAM, YOUTUBE],
      "identifier": {"@type": "PropertyValue", "propertyID": "RERA BRN", "value": BRN},
      "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "license",
                        "name": "Dubai real estate broker registration (BRN " + BRN + ")",
@@ -156,7 +157,7 @@ def footer(extra=""):
    <div>
     <a class="brand" href="/"><span class="mono">MD</span><span><b>Mark Darsy</b><small>Palm Jebel Ali resale specialist</small></span></a>
     <p style="margin-top:22px">Broker registration (BRN) {BRN}<br>{ADDRESS}<br><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></p>
-    <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a><br><a href="{INSTAGRAM}" target="_blank" rel="noopener me">Instagram</a></p>
+    <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a><br><a href="{INSTAGRAM}" target="_blank" rel="noopener me">Instagram</a><br><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube</a></p>
    </div>
    <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/palm-jebel-ali-beachfront-villas">Beachfront villas &amp; mansions</a><a href="/palm-jebel-ali-master-plan">Master plan</a><a href="/palm-jebel-ali-construction-update">Construction update</a><a href="/palm-jebel-ali-fronds">Frond by frond</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-position-guide">Position Guide</a><a href="/palm-jebel-ali-villa-prices">Villa prices</a></nav>
    <nav aria-label="Services"><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/palm-jebel-ali-vs-palm-jumeirah">Palm Jebel Ali vs Palm Jumeirah</a><a href="/nakheel-palm-jebel-ali">Nakheel Palm Jebel Ali</a><a href="/about-mark-darsy">About Mark Darsy</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
@@ -1522,7 +1523,7 @@ def llms(full=False):
            f"Villas are compared by frond, orientation, plot relationship, outlook and the seller's remaining developer payments; buyers receive a shortlist of up to three options. Last updated {UPDATED_TXT}.", "",
            "## Key facts", "",
            f"- Adviser: Mark Darsy, Palm Jebel Ali resale specialist, Regalia Tower, 1st Floor, Business Bay, Dubai, UAE.",
-           f"- Contact: {PHONE} (phone and WhatsApp, {WA}); {EMAIL}; Instagram {INSTAGRAM}.",
+           f"- Contact: {PHONE} (phone and WhatsApp, {WA}); {EMAIL}; Instagram {INSTAGRAM}; YouTube {YOUTUBE}.",
            "- Track record: " + "; ".join(CREDS) + ".",
            f"- Current resale asking prices ({UPDATED_TXT}): {S['n']} villas from {m(S['pmin'])} to {m(S['pmax'])}, median {m(S['pmed'])}; about AED {S['psfmin']:,}–{S['psfmax']:,} per sq ft (median AED {S['psfmed']:,}). Asking prices, not valuations or achieved sales.",
            f"- Beach Collection: 5–6 bedrooms, about {S['beach'][0]:,.0f}–{S['beach'][1]:,.0f} sq ft (Nakheel brochures). Coral Collection: 6–7 bedrooms, about {S['coral'][0]:,.0f}–{S['coral'][1]:,.0f} sq ft.",
