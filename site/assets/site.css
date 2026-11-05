@@ -415,3 +415,7 @@ table.sortable th::after{content:" ↕";opacity:.35;font-size:10px}
  .ftr{padding-bottom:84px}
  .has-bar .cbar{display:none}
 }
+.kit .ph{margin:calc(-1*clamp(24px,3vw,34px)) calc(-1*clamp(24px,3vw,34px)) 18px}
+.kit .ph img{aspect-ratio:16/10;display:block}
+.kit-act{margin-top:auto;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;padding-top:10px}
+.kit-act .btn{padding-left:18px;padding-right:18px}
