@@ -160,7 +160,7 @@ def footer(extra=""):
     <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a><br><a href="{INSTAGRAM}" target="_blank" rel="noopener me">Instagram</a><br><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube</a></p>
    </div>
    <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/palm-jebel-ali-beachfront-villas">Beachfront villas &amp; mansions</a><a href="/palm-jebel-ali-master-plan">Master plan</a><a href="/palm-jebel-ali-construction-update">Construction update</a><a href="/palm-jebel-ali-fronds">Frond by frond</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-brochure-floor-plans">Brochure &amp; floor plans</a><a href="/palm-jebel-ali-position-guide">Position Guide</a><a href="/palm-jebel-ali-villa-prices">Villa prices</a></nav>
-   <nav aria-label="Services"><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/palm-jebel-ali-vs-palm-jumeirah">Palm Jebel Ali vs Palm Jumeirah</a><a href="/nakheel-palm-jebel-ali">Nakheel Palm Jebel Ali</a><a href="/about-mark-darsy">About Mark Darsy</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
+   <nav aria-label="Services"><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/palm-jebel-ali-vs-palm-jumeirah">Palm Jebel Ali vs Palm Jumeirah</a><a href="/dubai-prime-villa-market-report">Prime villa market report</a><a href="/nakheel-palm-jebel-ali">Nakheel Palm Jebel Ali</a><a href="/about-mark-darsy">About Mark Darsy</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
   </div>
   <p class="disc">Independent broker marketing. Availability, specifications, payment obligations and market figures must be verified against the selected property's documents before any decision. Sales figure based on Mark Darsy's transaction records. Villa and lifestyle images are developer conceptual imagery, not a specific resale villa; aerial photographs supplied by Mark Darsy. Drive times, construction and planned figures as published by <a href="https://www.nakheel.com/en/media-centre/press-releases/news-detail/2026/08/20/nakheel-unveils-limited-collection-of-44-beachfront-villas-on-palm-jebel-ali-s-frond-f" target="_blank" rel="noopener">Nakheel, 20 August 2026</a>, subject to change. Palm Jebel Ali and Nakheel names, trademarks and project imagery remain their owners' property.</p>
   <p class="disc" style="border:0;padding-top:0">© 2026 Mark Darsy</p>
@@ -1374,6 +1374,95 @@ def vs_jumeirah():
                 f"Palm Jebel Ali vs Palm Jumeirah for villa buyers: status, villa sizes, prices from {m(S['pmin'])}, location and Golden Visa. Both by Nakheel. Updated {UPDATED_TXT}.",
                 "pja-aerial-progress-overview-v1.webp", body, faq=fq, crumb="Palm Jebel Ali vs Palm Jumeirah")
 
+def market_report():
+    msg = "Hello Mark, I read your Q3 2026 prime villa market report. Please send me Palm Jebel Ali options that fit my budget."
+    tiers = [
+        ("Large-plot villas, Frond F", "6–7", "11,635–12,430", "AED 49.3M–53.5M", "4,232–4,381", "45–47%"),
+        ("Frond F villas", "6", "7,723–8,320", "AED 30.5M–31.8M", "3,775–3,954", "50–52%"),
+        ("Fronds D, E and M villas", "5–6", "7,308–8,369", "AED 18.7M–31.2M", "2,559–3,764", "53–68%"),
+    ]
+    trs = "".join(f"<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td><td>{d}</td><td>{e}</td><td>{f}</td></tr>" for a, b, c, d, e, f in tiers)
+    pj = [
+        ("Average villa price", "AED 7,938 per sq ft", "+10.6%"),
+        ("Villa resale transactions", "23", "−36.1%"),
+        ("Villa resale value", "AED 1.275B", "−29.8%"),
+        ("Gross rental yield", "3.62%", "—"),
+        ("Average rent, 4-bedroom villa", "AED 1.17M a year", "−1.5%"),
+        ("Average rent, 5-bedroom villa", "AED 2.29M a year", "+57.9%"),
+        ("Average rent, 6-bedroom villa", "AED 3.15M a year", "+119.3%"),
+    ]
+    pjr = "".join(f"<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td></tr>" for a, b, c in pj)
+    mk = [
+        ("Homes sold above US$10M, Q3 2026", "86 sales, US$1.57B", "Down 34% on Q3 2025"),
+        ("Homes sold above US$10M, H1 2026", "296 sales, US$5.1B", "Value up 14% year on year"),
+        ("Prime price index, 10 communities", "−5% quarter on quarter", "First quarterly dip since 2020"),
+        ("Prime transaction volumes", "−29.4% year on year", "Buyers are more selective"),
+        ("Mainstream prices", "Softer by 5–20%", "Depends on location"),
+        ("2026 new supply pipeline", "160,000+ units", "Only 14% are villas"),
+    ]
+    mkr = "".join(f"<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td></tr>" for a, b, c in mk)
+    fq = [
+        ("How much cheaper is Palm Jebel Ali than Palm Jumeirah per square foot?",
+         "Villa sales registered on Palm Jebel Ali in October 2026 ranged from about AED 2,559 to AED 4,381 per sq ft. That is 45–68% below the Palm Jumeirah villa average of AED 7,938 per sq ft in Q3 2026."),
+        ("Are Dubai prime property prices falling in 2026?",
+         "Prices across Dubai's ten prime villa communities eased 5% between Q2 and Q3 2026, the first quarterly dip since 2020. Palm Jumeirah villa prices per sq ft were still 10.6% higher than a year earlier."),
+        ("What rental yield do Palm Jumeirah villas make?",
+         "Palm Jumeirah villas recorded a gross rental yield of about 3.62% in Q3 2026. Net yield is lower after service charges, fees and vacancy."),
+        ("Can I rent out a Palm Jebel Ali villa now?",
+         "Not yet. Palm Jebel Ali villas are still under construction, so there is no rental history. Buyers today purchase for capital value and future use, through an off-plan resale."),
+    ]
+    body = f"""
+<section class="phero" style="padding-bottom:30px"><div class="wrap narrow">
+ <span class="eyebrow">Market report · Q3 2026 · Updated 8 November 2026</span>
+ <h1>Dubai prime villa market: Palm Jebel Ali vs Palm Jumeirah.</h1>
+ <p class="lead">Palm Jebel Ali villas are selling at roughly half the price per square foot of Palm Jumeirah villas. This holds even as Dubai's prime market cools for the first time since 2020.</p>
+ <div class="btns"><a class="btn btn-gold" href="{wa(msg)}" target="_blank" rel="noopener">Discuss this report with Mark</a><a class="btn btn-line" href="/dubai-property-atlas">See available villas</a></div>
+</div></section>
+
+<section class="sec-dark"><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">The three numbers</span><h2>The gap in one view.</h2></div>
+ <div class="kpis reveal">
+  <div><b>AED 7,938</b><span>Palm Jumeirah villas, average price per sq ft in Q3 2026, up 10.6% year on year</span></div>
+  <div><b>AED 2,559–4,381</b><span>Palm Jebel Ali villas, price per sq ft on sales registered in October 2026</span></div>
+  <div><b>−5%</b><span>Dubai prime price index, Q2 to Q3 2026: the first quarterly dip since 2020</span></div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Dubai prime market</span><h2>Still deep at the top, but slowing.</h2>
+ <p class="lead">Sales above US$10M remain strong in number, but volumes and prices have eased from the 2025 peak. Buyers now pay for value, not momentum.</p></div>
+ <div class="table-wrap reveal"><table><thead><tr><th>Indicator</th><th>Figure</th><th>What it means</th></tr></thead><tbody>{mkr}</tbody></table></div>
+ <p class="note">Palm Jebel Ali ranked third in Dubai for homes sold above US$10M in H1 2026, with 40 sales, before any villa was handed over.</p>
+</div></section>
+
+<section class="sec-cream"><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Palm Jumeirah villas · Q3 2026</span><h2>Prices up, deals down.</h2>
+ <p class="lead">Price per sq ft is still rising, but the number of villa resales fell by more than a third. At a 3.6% gross yield, Palm Jumeirah is a capital and lifestyle asset rather than a yield play.</p></div>
+ <div class="table-wrap reveal"><table><thead><tr><th>Metric</th><th>Q3 2026</th><th>Change vs Q3 2025</th></tr></thead><tbody>{pjr}</tbody></table></div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">Palm Jebel Ali villas · October 2026</span><h2>Three clear price tiers.</h2>
+ <p class="lead">In October 2026, 15 villa sales were registered on Palm Jebel Ali, totalling AED 592M. Even the top tier sits about 45% below the Palm Jumeirah villa average per sq ft.</p></div>
+ <div class="table-wrap reveal"><table><thead><tr><th>Tier</th><th>Beds</th><th>Built-up area (sq ft)</th><th>Sale price</th><th>AED per sq ft</th><th>Below Palm Jumeirah</th></tr></thead><tbody>{trs}</tbody></table></div>
+ <p class="note">Ranges show the lowest and highest registered sale in each tier during October 2026. Each villa's value depends on its frond, position, orientation and remaining payments.</p>
+</div></section>
+
+<section class="sec-cream"><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow">For investors</span><h2>The opportunity, and the risks.</h2></div>
+ <div class="g2">
+  <div class="card reveal"><h3>Why it works</h3><ul><li>New, larger beachfront villas at about half Palm Jumeirah's price per sq ft</li><li>Villas are only 14% of Dubai's 2026 supply pipeline</li><li>Palm Jumeirah villa stock is fixed; no new frond villas can be added</li><li>40 sales above US$10M in H1 2026, before handover</li></ul></div>
+  <div class="card reveal"><h3>What to weigh</h3><ul><li>Prime prices eased 5% in Q3 2026, and sales above US$10M fell 34% year on year</li><li>No rental income until handover, so yield is not yet proven</li><li>Off-plan resales are less liquid than completed homes</li><li>Regional events can affect buyer sentiment</li></ul></div>
+ </div>
+ <div class="btns"><a class="btn btn-line" href="/palm-jebel-ali-vs-palm-jumeirah">Palm Jebel Ali vs Palm Jumeirah</a><a class="btn btn-line" href="/palm-jebel-ali-resale-guide">How an off-plan resale works</a><a class="btn btn-line" href="/palm-jebel-ali-villa-prices">Current asking prices</a></div>
+</div></section>
+<!--FAQ-->
+{cta_band("Want the numbers for a specific villa?", "Tell Mark your budget and timing. He will compare up to three Palm Jebel Ali villas against these benchmarks, including the cash due at transfer and remaining payments.", msg)}
+"""
+    return page("/dubai-prime-villa-market-report", "Dubai Prime Villa Market Report Q3 2026: Palm Jebel Ali vs Palm Jumeirah | Mark Darsy",
+                "Q3 2026 Dubai prime villa data: Palm Jumeirah villas at AED 7,938 per sq ft vs Palm Jebel Ali at AED 2,559–4,381. Prime prices, $10M+ sales, yields and risks.",
+                "pja-beach-villas-evening.webp", body, faq=fq, crumb="Prime villa market report")
+
 def nakheel_pja():
     S = stats(); F_OWNER = next(x for x in faqs()['guide'] if x[0].startswith('Who is the developer'))
     msg = "Hello Mark, I am interested in Nakheel's Palm Jebel Ali villas. Please advise on new releases and resale options."
@@ -1604,6 +1693,7 @@ PAGES = [  # route, name, summary (for llms.txt)
     ("/palm-jebel-ali-master-plan", "Master plan", "The Palm Jebel Ali master plan explained: spine, twelve villa fronds, villa counts, construction status by frond group, location and drive times."),
     ("/palm-jebel-ali-beachfront-villas", "Beachfront villas & mansions", "Every advertised Palm Jebel Ali resale villa, split into seven-bedroom mansions and Coral villas and five- to six-bedroom beachfront villas, with prices and areas."),
     ("/palm-jebel-ali-vs-palm-jumeirah", "Palm Jebel Ali vs Palm Jumeirah", "Side-by-side comparison of the two Nakheel palms for villa buyers: status, what a resale means, villa sizes, prices, location and Golden Visa."),
+    ("/dubai-prime-villa-market-report", "Prime villa market report (Q3 2026)", "Q3 2026 Dubai prime villa data: Palm Jumeirah villa price per sq ft, deals and yields vs registered Palm Jebel Ali villa sales, with market context and investor risks."),
     ("/nakheel-palm-jebel-ali", "Nakheel Palm Jebel Ali", "Nakheel as developer of Palm Jebel Ali: construction status, Beach and Coral releases, the August 2026 Frond F launch, and buying direct vs resale."),
     ("/palm-jebel-ali-construction-update", "Completion date & construction update", "When Palm Jebel Ali will be finished: Nakheel's phased handover guidance, construction stage by frond group, milestones and what it means for resale buyers."),
     ("/palm-jebel-ali-fronds/frond-a", "Frond pages (A–F, K–P)", "One page per villa frond, e.g. /palm-jebel-ali-fronds/frond-a to /frond-p: current resale asking prices, construction status, designs and buying guidance for that frond."),
@@ -1649,7 +1739,7 @@ def llms(full=False):
 ROUTES = ["/", "/dubai-property-atlas", "/palm-jebel-ali-fronds", "/beach-collection-resale", "/coral-collection-resale",
           "/palm-jebel-ali-villa-prices", "/palm-jebel-ali-position-guide", "/sell-your-palm-jebel-ali-villa", "/palm-jebel-ali-resale-guide",
           "/about-mark-darsy", "/privacy", "/palm-jebel-ali-master-plan",
-          "/palm-jebel-ali-beachfront-villas", "/palm-jebel-ali-vs-palm-jumeirah", "/nakheel-palm-jebel-ali", "/palm-jebel-ali-construction-update", "/palm-jebel-ali-brochure-floor-plans",
+          "/palm-jebel-ali-beachfront-villas", "/palm-jebel-ali-vs-palm-jumeirah", "/dubai-prime-villa-market-report", "/nakheel-palm-jebel-ali", "/palm-jebel-ali-construction-update", "/palm-jebel-ali-brochure-floor-plans",
           "/palm-jebel-ali-fronds/frond-a", "/palm-jebel-ali-fronds/frond-b", "/palm-jebel-ali-fronds/frond-c",
           "/palm-jebel-ali-fronds/frond-d", "/palm-jebel-ali-fronds/frond-e", "/palm-jebel-ali-fronds/frond-f",
           "/palm-jebel-ali-fronds/frond-k", "/palm-jebel-ali-fronds/frond-l", "/palm-jebel-ali-fronds/frond-m",
@@ -1661,7 +1751,7 @@ if __name__ == "__main__":
     write("/sell-your-palm-jebel-ali-villa", sell()); write("/palm-jebel-ali-resale-guide", guide()); write("/privacy", privacy())
     write("/palm-jebel-ali-villa-prices", prices()); write("/about-mark-darsy", about())
     write("/palm-jebel-ali-master-plan", master_plan())
-    write("/palm-jebel-ali-beachfront-villas", beachfront()); write("/palm-jebel-ali-vs-palm-jumeirah", vs_jumeirah()); write("/nakheel-palm-jebel-ali", nakheel_pja()); write("/palm-jebel-ali-construction-update", construction()); write(KIT, toolkit())
+    write("/palm-jebel-ali-beachfront-villas", beachfront()); write("/palm-jebel-ali-vs-palm-jumeirah", vs_jumeirah()); write("/dubai-prime-villa-market-report", market_report()); write("/nakheel-palm-jebel-ali", nakheel_pja()); write("/palm-jebel-ali-construction-update", construction()); write(KIT, toolkit())
     for f in FRONDS_ALL: write(f"/palm-jebel-ali-fronds/frond-{f.lower()}", frond_page(f))
     with open(os.path.join(OUT, "404.html"), "w") as f: f.write(notfound())
     for src, to in [("/dubai-property-atlas/designs/coral-dune", "/coral-collection-resale#coral-dune"),
