@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "18"
+VER = "19"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -459,7 +459,7 @@ def home():
  </div>
  <form class="form reveal" data-wa="Hello Mark, here is my Palm Jebel Ali brief:">
   {field("Your name", '<input name="name" autocomplete="name" required>')}
-  {field("Phone number", '<input name="phone" type="tel" autocomplete="tel" inputmode="tel">')}
+  {field("Phone number", '<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required><input name="_honey" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">')}
   {field("I am looking to", sel("goal", ["Buy a villa", "Sell my villa", "Evaluate an opportunity", "Invest"]), True)}
   <details class="more full"><summary>Add preferences <span>optional</span></summary><div class="form">
   {field("Collection", sel("coll", ["Beach or Coral — open", "Beach Collection", "Coral Collection"]))}
@@ -708,11 +708,11 @@ def sell():
 
 <section class="sec-cream" id="seller-enquiry"><div class="wrap contact">
  <div class="reveal"><span class="eyebrow">Confidential seller enquiry</span><h2>Start with your villa's details.</h2>
-  <p class="lead">Choose “Not sure” when a detail needs checking. WhatsApp opens with your brief — press Send to share it privately with Mark.</p>
+  <p class="lead">Choose “Not sure” when a detail needs checking. Your details go to Mark privately, and WhatsApp opens with your brief so you can send it straight to him.</p>
   <div class="direct"><span class="small">Speak with Mark directly</span><a href="{wa("Hello Mark, I own a Palm Jebel Ali villa and would like a confidential resale review.")}" target="_blank" rel="noopener">{PHONE}</a></div></div>
  <form class="form reveal" data-wa="Hello Mark, I own a Palm Jebel Ali villa and would like a confidential resale review:">
   {field("Your name", '<input name="name" autocomplete="name" required>')}
-  {field("Phone number", '<input name="phone" type="tel" autocomplete="tel">')}
+  {field("Phone number", '<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required><input name="_honey" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">')}
   {field("Villa collection", sel("coll", ["Not sure", "Beach Collection", "Coral Collection"]))}
   {field("Frond", sel("frond", ["Not sure"] + FRONDS))}
   {field("Orientation", sel("ori", ["Not sure", "Sunrise", "Sunset"]))}
@@ -982,7 +982,7 @@ def about():
 def privacy():
     secs = [("Information you may provide", "Your name, telephone number, property interest, budget or asking price, timing and any property details you choose to share."),
             ("How it is used", "To respond to your enquiry, assess suitable property opportunities, discuss a potential sale and coordinate related professional support. Your information is not sold as a contact list."),
-            ("WhatsApp and external services", "The enquiry forms open WhatsApp with a prepared message. Information is shared only after you choose to press Send in WhatsApp. External platforms process information under their own terms and privacy policies. This website does not store form entries."),
+            ("WhatsApp and external services", "When you submit an enquiry form, your details are emailed to Mark through a form delivery service (FormSubmit) so your enquiry reaches him, and WhatsApp opens with a prepared message that is shared only if you press Send. External platforms process information under their own terms and privacy policies. This website itself does not store form entries."),
             ("Accuracy and retention", "Property requirements and availability change. You may ask for your enquiry information to be corrected or deleted, subject to any legitimate transaction, compliance or record-keeping obligations."),
             ("Contact", f'For privacy questions, contact Mark Darsy on <a href="tel:{TEL}">{PHONE}</a>.')]
     s = "".join(f'<h2 style="font-size:30px;margin-top:40px">{h}</h2><p>{t}</p>' for h, t in secs)

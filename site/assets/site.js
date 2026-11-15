@@ -6,6 +6,20 @@
   function aed(n){return 'AED '+Math.round(n).toLocaleString('en-US')}
   /* lead tracking: sends a generate_lead event when Google Analytics is switched on (GA4_ID in gen.py) */
   function lead(m){try{if(window.gtag)gtag('event','generate_lead',{method:m,page_path:location.pathname})}catch(e){}}
+  /* every form enquiry is also emailed to Mark, so a lead is kept even if the visitor never presses Send in WhatsApp */
+  var LEAD_URL='https://formsubmit.co/ajax/mark@palmjebelali-resale.com';
+  function sendLead(fm,msg){
+    var fd=new FormData(),hp=fm.querySelector('input[name="_honey"]');if(hp&&hp.value)return;
+    var nm=fm.querySelector('[name="name"]'),ph=fm.querySelector('[name="phone"]');
+    fd.append('_subject','New website enquiry: '+((nm&&nm.value)||'visitor')+' ('+(document.title.split('|')[0].trim())+')');
+    fd.append('_template','table');fd.append('_captcha','false');
+    fd.append('Name',(nm&&nm.value)||'');fd.append('Phone',(ph&&ph.value)||'');
+    fd.append('Enquiry',msg);fd.append('Page',location.href);
+    try{fetch(LEAD_URL,{method:'POST',body:fd,headers:{'Accept':'application/json'},keepalive:true}).catch(function(){})}catch(e){}
+    lead('form_email');
+    var ok=fm.querySelector('.sent');if(!ok){ok=document.createElement('p');ok.className='small sent full';ok.setAttribute('role','status');ok.style.marginTop='12px';fm.appendChild(ok)}
+    ok.textContent='Thank you. Mark has your details and will contact you shortly. If WhatsApp opened, press Send there for the fastest reply.';
+  }
   function openWA(t){lead('whatsapp_form');window.open(WA+encodeURIComponent(t),'_blank','noopener')}
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href');
     if(h.indexOf('wa.me/')>-1)lead('whatsapp');else if(h.indexOf('tel:')===0)lead('phone');else if(h.indexOf('mailto:')===0)lead('email')});
@@ -33,7 +47,9 @@
     fm.addEventListener('submit',function(e){e.preventDefault();
       var lines=[fm.getAttribute('data-wa')];
       $$('.field',fm).forEach(function(fl){var l=$('label',fl),i=$('input,select,textarea',fl);if(!l||!i)return;var val=(i.value||'').trim();if(val)lines.push(l.textContent.replace(/\s*\*$/,'')+': '+val)});
-      openWA(lines.join('\n'));
+      var msg=lines.join('\n');
+      openWA(msg);
+      sendLead(fm,msg);
     });
   });
 
