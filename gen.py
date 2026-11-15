@@ -43,7 +43,7 @@ INSTAGRAM = "https://www.instagram.com/markdarsy_therealtor/"
 YOUTUBE = "https://www.youtube.com/@MarkDarsy_TheRealtor"
 INDEXNOW_KEY = "6f1d2c8a4b7e4f0e9a3d5c1b8e2f7a64"
 BRN = "52456"  # Mark Darsy's RERA broker registration number (public on his Instagram/LinkedIn)
-GA4_ID = ""  # set to the G-XXXXXXX measurement ID to switch on Google Analytics and lead tracking
+GA4_ID = "G-NTDK9JD9R6"  # set to the G-XXXXXXX measurement ID to switch on Google Analytics and lead tracking
 
 ORG_ID, MARK_ID, SITE_ID, PJA_ID = SITE + "/#business", SITE + "/#mark-darsy", SITE + "/#website", SITE + "/#palm-jebel-ali"
 CREDS = ["AED 200M+ in Palm Jebel Ali transactions advised on",
@@ -983,6 +983,7 @@ def privacy():
     secs = [("Information you may provide", "Your name, telephone number, property interest, budget or asking price, timing and any property details you choose to share."),
             ("How it is used", "To respond to your enquiry, assess suitable property opportunities, discuss a potential sale and coordinate related professional support. Your information is not sold as a contact list."),
             ("WhatsApp and external services", "When you submit an enquiry form, your details are emailed to Mark through a form delivery service (FormSubmit) so your enquiry reaches him, and WhatsApp opens with a prepared message that is shared only if you press Send. External platforms process information under their own terms and privacy policies. This website itself does not store form entries."),
+            ("Website analytics", "This website uses Google Analytics to count visits and enquiry clicks so the site can be improved. It records anonymous usage information such as pages viewed, device type and approximate location, and does not receive the content of your enquiry."),
             ("Accuracy and retention", "Property requirements and availability change. You may ask for your enquiry information to be corrected or deleted, subject to any legitimate transaction, compliance or record-keeping obligations."),
             ("Contact", f'For privacy questions, contact Mark Darsy on <a href="tel:{TEL}">{PHONE}</a>.')]
     s = "".join(f'<h2 style="font-size:30px;margin-top:40px">{h}</h2><p>{t}</p>' for h, t in secs)
