@@ -7,7 +7,7 @@
   /* lead tracking: sends a generate_lead event when Google Analytics is switched on (GA4_ID in gen.py) */
   function lead(m){try{if(window.gtag)gtag('event','generate_lead',{method:m,page_path:location.pathname})}catch(e){}}
   /* every form enquiry is also emailed to Mark, so a lead is kept even if the visitor never presses Send in WhatsApp */
-  var LEAD_URL='https://formsubmit.co/ajax/mark@palmjebelali-resale.com';
+  var LEAD_URL='https://formsubmit.co/ajax/715e5c60acd46c05a631cf518901d219';
   function sendLead(fm,msg){
     var fd=new FormData(),hp=fm.querySelector('input[name="_honey"]');if(hp&&hp.value)return;
     var nm=fm.querySelector('[name="name"]'),ph=fm.querySelector('[name="phone"]');

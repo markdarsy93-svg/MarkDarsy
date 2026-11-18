@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "19"
+VER = "20"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
