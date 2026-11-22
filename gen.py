@@ -36,8 +36,8 @@ NAV = [
 
 WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .9c-.2 1-1.2 1.8-2.3 1.7-3.5-.4-6.2-3.1-6.6-6.6-.1-1.1.7-2.1 1.7-2.3l.9 2-1.2 1Z" fill="currentColor" stroke="none"/></svg>'
 
-UPDATED = "2026-11-05"
-UPDATED_TXT = "5 November 2026"
+UPDATED = "2026-11-22"
+UPDATED_TXT = "22 November 2026"
 EMAIL = "mark@palmjebelali-resale.com"
 INSTAGRAM = "https://www.instagram.com/markdarsy_therealtor/"
 YOUTUBE = "https://www.youtube.com/@MarkDarsy_TheRealtor"
@@ -234,27 +234,26 @@ def continue_links(links):
 # ---------------------------------------------------------------- data
 LISTINGS = [
     # id, frond, beds, title, price, area_label, area, plot, orientation
+    # advertised asking prices; availability unconfirmed (last checked 22 Nov 2026)
     ("n", "N", 6, "Six-bedroom sunset-facing villa", 18_000_000, "Advertised BUA", 7727, "7,429 sq ft", "Sunset"),
-    ("c", "C", 6, "Bluejay · high-number position", 25_000_000, "Built-up area", 8293, "7,374.46 sq ft", "Sunrise"),
-    # added 6 Oct 2026 (advertised asking prices; availability unconfirmed)
-    ("p1", "P", 6, "Blue Horizon · six-bedroom villa", 25_000_000, "Built-up area", 7391, "7,390.72 sq ft", "To confirm"),
+    ("c", "C", 6, "Bluejay · high-number position", 23_750_000, "Built-up area", 8293, "7,374.46 sq ft", "Sunrise"),
+    ("p1", "P", 6, "Blue Horizon · six-bedroom villa", 25_000_000, "Built-up area", 7316, "7,390.72 sq ft", "To confirm"),
     ("l1", "L", 6, "Six-bedroom beach villa", 23_500_000, "Advertised area", 7373, "To confirm", "To confirm"),
     ("b2", "B", 6, "Six-bedroom contemporary villa", 18_600_000, "Advertised area", 7562, "To confirm", "To confirm"),
-    ("k3", "K", 5, "Indigo Ocean · high-number position", 21_500_000, "Advertised area", 7434, "To confirm", "To confirm"),
-    ("c1", "C", 5, "Five-bedroom beach villa", 19_500_000, "Advertised area", 7569, "To confirm", "To confirm"),
     ("c2", "C", 6, "Coral Dune · high-number position", 50_000_000, "Built-up area", None, "20,775 sq ft (advertised)", "Sunset"),
-    ("d1", "D", 6, "Six-bedroom villa · high number", 20_000_000, "Advertised area", 7589, "To confirm", "Sunset"),
-    # added 21 Oct 2026 (advertised asking prices; availability unconfirmed)
+    ("d1", "D", 6, "Six-bedroom villa · high number", 20_000_000, "Built-up area", 8315, "7,589 sq ft", "Sunset"),
     ("a1", "A", 6, "Six-bedroom villa · sunset outlook", 25_000_000, "Advertised area", 7641, "To confirm", "Sunset"),
     ("e1", "E", 5, "Five-bedroom beach villa", 23_000_000, "Advertised area", 7565, "To confirm", "To confirm"),
     ("d2", "D", 5, "Five-bedroom beach villa", 21_990_000, "Advertised area", 7379, "To confirm", "To confirm"),
     ("k4", "K", 5, "Five-bedroom villa · high number", 18_500_000, "Built-up area", 7316, "7,376 sq ft", "To confirm"),
     ("o2", "O", 5, "Five-bedroom beach villa", 21_799_999, "Built-up area", 7883, "7,562 sq ft", "To confirm"),
-    # added 5 Nov 2026 (advertised asking prices; availability unconfirmed)
     ("o3", "O", 7, "Seven-bedroom Coral villa · high number", 32_500_000, "Built-up area", 12155, "13,086 sq ft", "To confirm"),
     ("m3", "M", 7, "Seven-bedroom Coral villa · sunset outlook", 40_000_000, "Built-up area", 11222, "13,465 sq ft", "Sunset"),
-    ("m4", "M", 6, "Six-bedroom villa · sea view", 17_500_000, "Built-up area", 7799, "7,601 sq ft", "To confirm"),
     ("f2", "F", 6, "Bluejay · six-bedroom villa with lift", 23_329_000, "Built-up area", 8293, "To confirm", "To confirm"),
+    # added 22 Nov 2026
+    ("b3", "B", 5, "Baia Luna · mid-high number", 24_500_000, "Built-up area", 8205, "7,562 sq ft", "To confirm"),
+    ("l4", "L", 7, "Coral Living · seven-bedroom beachfront villa", 34_000_000, "Built-up area", 11222, "13,423 sq ft", "To confirm"),
+    ("m5", "M", 5, "Azure Blue · five-bedroom villa", 26_000_000, "Built-up area", 8434, "7,589 sq ft", "To confirm"),
 ]
 PSF = [round(l[4] / l[6]) for l in LISTINGS if l[6]]
 PSF_MIN, PSF_MAX = min(PSF), max(PSF)
