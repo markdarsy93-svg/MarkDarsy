@@ -171,6 +171,21 @@ form{position:relative;overflow:hidden}
 form .btn{width:100%;margin-top:16px}
 .formmsg{font-size:.9rem;margin-top:12px;display:none}.formmsg.ok{display:block;color:var(--ok)}.formmsg.err{display:block;color:var(--err)}
 .hp{position:absolute;left:0;top:0;width:1px;height:1px;min-height:0;padding:0;border:0;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.chips input{position:absolute;left:0;top:0;width:1px;height:1px;min-height:0;opacity:0;pointer-events:none}
+.chips label{margin:0;padding:9px 12px;border:1px solid var(--line);background:var(--ivory);font-size:.82rem;cursor:pointer;min-height:40px;display:flex;align-items:center}
+.chips label:before{content:"";width:14px;height:14px;border:1px solid var(--mut);margin-right:8px;border-radius:2px}
+.chips input:checked+label{border-color:var(--gold);background:#F6EEDD;color:var(--gold-d)}
+.chips input:checked+label:before{background:var(--gold);border-color:var(--gold);box-shadow:inset 0 0 0 2px #F6EEDD}
+.chips input:focus-visible+label{outline:2px solid var(--gold)}
+.packhead{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}.packhead p{color:var(--char);margin:0 0 .6em}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.tile{display:flex;flex-direction:column;gap:6px;padding:26px 22px;background:#fff;border:1px solid var(--line);text-decoration:none;transition:border-color .2s,transform .2s}
+.tile:hover{border-color:var(--gold);transform:translateY(-2px)}
+.tile b{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.6rem;font-weight:500}.tile span{color:var(--mut);font-size:.9rem}
+.tile i{font-style:normal;font-weight:600;font-size:.88rem;color:var(--gold-d);margin-top:10px}
+@media (max-width:960px){.packhead{grid-template-columns:1fr;gap:6px}.tiles{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.tiles{gap:10px}.tile{padding:18px 14px}.tile b{font-size:1.35rem}}
 .facts{background:var(--char);color:#fff}
 .facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
 .facts div{padding:26px 18px;border-left:1px solid rgba(255,255,255,.12)}.facts div:first-child{border-left:0}
@@ -241,7 +256,9 @@ var q=new URLSearchParams(location.search),utm={};
 ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'].forEach(function(k){var v=q.get(k);if(v)utm[k]=v});
 function ga(n,p){try{if(window.gtag)gtag('event',n,p||{})}catch(e){}}
 document.querySelectorAll('[data-intent]').forEach(function(a){a.addEventListener('click',function(){
-  var r=document.querySelector('input[name=intent][value="'+a.getAttribute('data-intent')+'"]');if(r){r.checked=true;r.dispatchEvent(new Event('change'))}})});
+  var r=document.querySelector('input[name=intent][value="'+a.getAttribute('data-intent')+'"]');if(r){r.checked=true;r.dispatchEvent(new Event('change'))}
+  var w=a.getAttribute('data-want');if(w){document.querySelectorAll('input[name=want]').forEach(function(c){c.checked=(c.value===w)})}
+  ga('cta_click',{page:CFG.page,cta:a.textContent.trim()})})});
 document.querySelectorAll('a[href^="https://wa.me"]').forEach(function(a){a.addEventListener('click',function(){ga('whatsapp_click',{page:CFG.page})})});
 document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(){ga('call_click',{page:CFG.page})})});
 var f=document.getElementById('lead');if(!f)return;
@@ -252,11 +269,11 @@ f.querySelectorAll('input[name=intent]').forEach(function(r){r.addEventListener(
 f.addEventListener('submit',function(ev){
   ev.preventDefault();var msg=f.querySelector('.formmsg');msg.className='formmsg';
   if(f._honey.value)return;
-  var d={};new FormData(f).forEach(function(v,k){if(k!=='_honey')d[k]=String(v).trim()});
+  var d={};new FormData(f).forEach(function(v,k){if(k==='_honey')return;v=String(v).trim();d[k]=d[k]?d[k]+', '+v:v});
   var digits=(d.phone||'').replace(/\D/g,'');
   if(!d.name||digits.length<8){msg.textContent='Please add your name and a phone number with country code.';msg.className='formmsg err';return}
   if(!f.consent.checked){msg.textContent='Please tick the box so Mark can contact you.';msg.className='formmsg err';return}
-  if(d.intent==='Buy'){delete d.unit}else if(d.intent==='Sell'){delete d.budget}
+  if(d.intent==='Buy'){delete d.unit}else if(d.intent==='Sell'){delete d.budget;delete d.want}
   d.page=CFG.page;d.url=location.href.split('?')[0];d.submitted=new Date().toISOString();Object.keys(utm).forEach(function(k){d[k]=utm[k]});
   var payload=Object.assign({_subject:'New '+CFG.page+' lead: '+d.intent+' · '+d.name,_template:'table',_captcha:'false'},d);
   try{fetch(CFG.formsubmit,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){})}catch(e){}
@@ -265,7 +282,7 @@ f.addEventListener('submit',function(ev){
   var t='Hello Mark, I am interested in '+CFG.page+'.\n'+
     'Name: '+d.name+'\nI want to: '+d.intent+
     (d.type?'\nType: '+d.type:'')+(d.budget?'\nBudget: '+d.budget:'')+(d.unit?'\nMy unit: '+d.unit:'')+(d.timeline?'\nTimeline: '+d.timeline:'')+
-    '\nPlease send floor plans, prices and payment plan.';
+    (d.intent==='Sell'?'\nPlease send me a free valuation.':'\nPlease send: '+(d.want||'floor plans, prices and payment plan')+'.');
   msg.innerHTML='Thank you, '+d.name.split(' ')[0].replace(/[<>&]/g,'')+'. Mark has your details and will contact you shortly. WhatsApp is opening so you can reach him now.';msg.className='formmsg ok';
   f.querySelector('button[type=submit]').textContent='Sent ✓';
   setTimeout(function(){window.open(CFG.wa+'?text='+encodeURIComponent(t),'_blank','noopener')},350);
@@ -333,7 +350,7 @@ def build(p, inline=False):
    <span class="eyebrow">{esc(p["eyebrow"])}</span>
    <h1>{p["h1"]}</h1>
    <p class="lead">{esc(PITCH)}</p>
-   <div class="btns"><a class="btn btn-gold" href="#enquire" data-intent="Buy">Get floor plans &amp; prices</a><a class="btn btn-line" href="#enquire" data-intent="Sell">Free valuation for owners</a></div>
+   <div class="btns"><a class="btn btn-gold" href="#enquire" data-intent="Buy">Get brochure, floor plans &amp; prices</a><a class="btn btn-line" href="#enquire" data-intent="Sell">Free valuation for owners</a></div>
    <ul class="ticks"><li>Floor plans, prices and payment plan sent on WhatsApp</li><li>Resale and available units in {esc(short)}</li><li>Owners: free valuation and free premium listing</li></ul>
   </div>
   <div class="card" id="enquire">
@@ -356,10 +373,17 @@ def build(p, inline=False):
      <div class="buyonly"><label for="f-budget">Budget</label><select id="f-budget" name="budget">{opts(p["budgets"])}</select></div>
      <div class="sellonly" hidden><label for="f-unit">Your unit / plot no.</label><input id="f-unit" name="unit" placeholder="e.g. villa or plot number"></div>
     </div>
+    <div class="buyonly"><label id="lb-want">Send me</label>
+    <div class="chips" role="group" aria-labelledby="lb-want">
+     <input type="checkbox" id="w1" name="want" value="Brochure" checked><label for="w1">Brochure</label>
+     <input type="checkbox" id="w2" name="want" value="Floor plans" checked><label for="w2">Floor plans</label>
+     <input type="checkbox" id="w3" name="want" value="Price list" checked><label for="w3">Price list</label>
+     <input type="checkbox" id="w4" name="want" value="Payment plan" checked><label for="w4">Payment plan</label>
+    </div></div>
     <label for="f-time">Timeline</label><select id="f-time" name="timeline"><option>Now – within 1 month</option><option>1 – 3 months</option><option>3 – 6 months</option><option>Just researching</option></select>
     <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label class="consent"><input type="checkbox" name="consent" value="yes" checked> I agree that Mark Darsy may contact me by phone, WhatsApp or email about this enquiry.</label>
-    <button class="btn btn-gold" type="submit">Send me floor plans &amp; prices</button>
+    <button class="btn btn-gold" type="submit">Send it to my WhatsApp</button>
     <p class="formmsg" role="status" aria-live="polite"></p>
    </form>
   </div>
@@ -373,6 +397,16 @@ def build(p, inline=False):
  <div>{split_img}</div>
 </div></section>
 
+<section class="s pack"><div class="wrap">
+ <div class="packhead"><div><span class="eyebrow">Free on WhatsApp</span><h2>Get the full <em>{esc(short)}</em> pack.</h2></div>
+ <p>Choose what you need. Mark sends it to your WhatsApp.</p></div>
+ <div class="tiles">
+  <a class="tile" href="#enquire" data-intent="Buy" data-want="Brochure"><b>Brochure</b><span>Developer brochure, PDF</span><i>Get brochure →</i></a>
+  <a class="tile" href="#enquire" data-intent="Buy" data-want="Floor plans"><b>Floor plans</b><span>Every layout and size</span><i>Get floor plans →</i></a>
+  <a class="tile" href="#enquire" data-intent="Buy" data-want="Price list"><b>Price list</b><span>Units available now</span><i>Get price list →</i></a>
+  <a class="tile" href="#enquire" data-intent="Buy" data-want="Payment plan"><b>Payment plan</b><span>Remaining payments by unit</span><i>Get payment plan →</i></a>
+ </div>
+</div></section>
 <section class="s cream"><div class="wrap">
  <span class="eyebrow">Homes</span><h2>Choose your home in <em>{esc(short)}</em>.</h2>
  <p style="max-width:40em;color:var(--char)">{esc(PITCH)}</p>
