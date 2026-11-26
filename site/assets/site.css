@@ -388,6 +388,14 @@ table.sortable th::after{content:" ↕";opacity:.35;font-size:10px}
 .design-table td .small{font-size:11.5px;line-height:1.4;margin-top:2px}
 .design-table tr:target{background:rgba(169,135,79,.12)}
 .design-table td a{color:var(--gold)}
+.mp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.mp-scroll .mp{min-width:640px;max-width:1000px}
+.mp .pin{width:30px;height:30px;font:600 14px/1 var(--serif);text-decoration:none;box-shadow:0 0 0 4px rgba(169,135,79,.35),0 2px 8px rgba(0,0,0,.35);transition:transform .2s ease}
+.mp a.pin:hover,.mp a.pin:focus-visible{transform:translate(-50%,-50%) scale(1.12)}
+.mp .pin i{position:absolute;top:-7px;right:-9px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:var(--ink);color:var(--on-dark);font:600 11px/18px var(--sans);font-style:normal;text-align:center}
+.mp .pin-empty{background:rgba(31,29,26,.55);color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.6)}
+.mp-hint{display:none;margin:8px 0 0;text-align:center;font-size:12.5px;color:var(--muted)}
+@media (max-width:700px){.mp-hint{display:block}}
 /* light KPI row (prices page) */
 .kpis.light{background:var(--line);border-color:var(--line)}
 .kpis.light div{background:var(--cream)}
