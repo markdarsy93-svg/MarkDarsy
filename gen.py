@@ -7,8 +7,9 @@ SITE = "https://palmjebelali-resale.com"
 OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
+VCF = "/mark-darsy.vcf"
 WA = "https://wa.me/971585414999"
-VER = "22"
+VER = "23"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -157,7 +158,7 @@ def footer(extra=""):
    <div>
     <a class="brand" href="/"><span class="mono">MD</span><span><b>Mark Darsy</b><small>Palm Jebel Ali resale specialist</small></span></a>
     <p style="margin-top:22px">Broker registration (BRN) {BRN}<br>{ADDRESS}<br><a href="{MAPS}" target="_blank" rel="noopener">Get directions</a></p>
-    <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a><br><a href="{INSTAGRAM}" target="_blank" rel="noopener me">Instagram</a><br><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube</a></p>
+    <p><a href="tel:{TEL}">{PHONE}</a><br><a href="mailto:mark@palmjebelali-resale.com">mark@palmjebelali-resale.com</a><br><a href="{WA}" target="_blank" rel="noopener">WhatsApp Mark</a><br><a href="{INSTAGRAM}" target="_blank" rel="noopener me">Instagram</a><br><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube</a><br><a href="{VCF}" download>Save contact to your phone</a></p>
    </div>
    <nav aria-label="Villas"><a href="/dubai-property-atlas">Property Atlas</a><a href="/palm-jebel-ali-beachfront-villas">Beachfront villas &amp; mansions</a><a href="/palm-jebel-ali-master-plan">Master plan</a><a href="/palm-jebel-ali-construction-update">Construction update</a><a href="/palm-jebel-ali-fronds">Frond by frond</a><a href="/beach-collection-resale">Beach Villas</a><a href="/coral-collection-resale">Coral Villas</a><a href="/palm-jebel-ali-brochure-floor-plans">Brochure &amp; floor plans</a><a href="/palm-jebel-ali-position-guide">Position Guide</a><a href="/palm-jebel-ali-villa-prices">Villa prices</a></nav>
    <nav aria-label="Services"><a href="/sell-your-palm-jebel-ali-villa">Sell a Villa</a><a href="/palm-jebel-ali-resale-guide">Buyer Guide</a><a href="/palm-jebel-ali-vs-palm-jumeirah">Palm Jebel Ali vs Palm Jumeirah</a><a href="/dubai-prime-villa-market-report">Prime villa market report</a><a href="/nakheel-palm-jebel-ali">Nakheel Palm Jebel Ali</a><a href="/about-mark-darsy">About Mark Darsy</a><a href="/#contact">Request a shortlist</a><a href="/privacy">Privacy</a></nav>
@@ -470,7 +471,8 @@ def home():
   <div class="direct"><span class="small">Direct WhatsApp</span><a href="{WA}" target="_blank" rel="noopener">{PHONE}</a></div>
   <div class="direct"><span class="small">Email</span><p style="margin:6px 0 18px;font:500 22px/1.35 var(--serif)"><a href="mailto:mark@palmjebelali-resale.com" style="font:inherit;display:inline;margin:0">mark@palmjebelali-resale.com</a></p></div>
   <div class="direct"><span class="small">Office</span><p style="margin:6px 0 4px;font:500 22px/1.35 var(--serif)">Regalia Tower, 1st Floor<br>Business Bay, Dubai, UAE</p><a class="link" href="{MAPS}" target="_blank" rel="noopener" style="font:600 13px var(--sans);display:inline-block;margin:6px 0 0">Get directions</a></div>
-  <div class="btns" style="margin-top:26px"><a class="btn btn-line" href="tel:{TEL}">Call Mark</a></div>
+  <div class="btns" style="margin-top:26px"><a class="btn btn-line" href="tel:{TEL}">Call Mark</a><a class="btn btn-gold" href="{VCF}" download>Save Mark's contact</a></div>
+  <figure class="vqr"><img src="/images/mark-darsy-contact-qr.svg" alt="QR code with Mark Darsy's contact card" loading="lazy" width="120" height="120"><figcaption class="small">On a computer? Scan with your phone camera to save Mark's number.</figcaption></figure>
  </div>
  <form class="form reveal" data-wa="Hello Mark, here is my Palm Jebel Ali brief:">
   {field("Your name", '<input name="name" autocomplete="name" required>')}

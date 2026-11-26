@@ -433,3 +433,9 @@ table.sortable th::after{content:" ↕";opacity:.35;font-size:10px}
 .film-frame{margin:0;position:relative;border:1px solid rgba(201,169,110,.35);padding:10px;background:#0E0D0B}
 .film-frame video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#141310}
 @media (max-width:860px){.film{grid-template-columns:1fr}.film-frame{max-width:420px;width:100%;margin:0 auto;padding:8px}}
+
+/* Save-contact QR (desktop only) */
+.vqr{display:flex;align-items:center;gap:16px;margin:22px 0 0}
+.vqr img{width:120px;height:120px;background:#fff;padding:8px;border:1px solid var(--line,#ddd)}
+.vqr figcaption{max-width:240px}
+@media (max-width:720px){.vqr{display:none}}
