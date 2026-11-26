@@ -306,13 +306,24 @@ def build(p, inline=False):
     wa_sell = wa(f"Hello Mark, I own a property in {name}. I would like a free valuation.")
     opts = lambda xs: "".join(f"<option>{esc(x)}</option>" for x in xs)
     facts = "".join(f"<div><b>{esc(a)}</b><span>{esc(b)}</span></div>" for a, b in p["facts"])
-    units = "".join(f'<div class="unit"><span class="beds">{esc(b)}</span><h3>{esc(t)}</h3><p>{esc(d)}</p><a href="#enquire" data-intent="Buy">Floor plans &amp; prices →</a></div>' for t, b, d in p["units"])
+    def unit(u):
+        t, b, d = u[:3]
+        link = f'<a href="{u[3]}">View {esc(t)} →</a>' if len(u) > 3 else '<a href="#enquire" data-intent="Buy">Floor plans &amp; prices →</a>'
+        return f'<div class="unit"><span class="beds">{esc(b)}</span><h3>{esc(t)}</h3><p>{esc(d)}</p>{link}</div>'
+    units = "".join(unit(u) for u in p["units"])
+    links = ""
+    if p.get("links"):
+        lh, items = p["links"]
+        links = (f'<section class="s"><div class="wrap"><span class="eyebrow">Explore</span><h2>{lh}</h2><div class="tiles">' +
+                 "".join(f'<a class="tile" href="{h}"><b>{esc(t)}</b><span>{esc(d)}</span><i>View {esc(t)} →</i></a>' for t, d, h in items) +
+                 '</div></div></section>')
     gal = ""
     if p["gallery"]:
         gal = '<div class="gal">' + "".join(f'<img src="{img_src(f, inline)}" alt="{esc(a)}" loading="lazy">' for f, a in p["gallery"]) + "</div>"
     split_img = f'<img src="{img_src(p["split"][0], inline)}" alt="{esc(p["split"][1])}" loading="lazy">' if p.get("split") else \
         f'<div class="unit" style="background:var(--char);color:#fff;border:0"><span class="beds">Owners &amp; buyers</span><h3 style="color:#fff">Looking for a specific phase or size?</h3><p style="color:rgba(255,255,255,.75)">Tell Mark the phase, bedrooms and budget you want. He will send the homes available now, with floor plans and payment plan.</p><a href="#enquire" data-intent="Buy" style="color:var(--gold)">Send my requirements →</a></div>'
     gal_sec = f'<section class="s" style="padding-top:0"><div class="wrap">{gal}</div></section>' if gal else ""
+    pack = "" if p.get("no_pack") else f'<section class="s pack"><div class="wrap">\n <div class="packhead"><div><span class="eyebrow">Free on WhatsApp</span><h2>Get the full <em>{esc(short)}</em> pack.</h2></div>\n <p>Choose what you need. Mark sends it to your WhatsApp.</p></div>\n <div class="tiles">\n  <a class="tile" href="#enquire" data-intent="Buy" data-want="Brochure"><b>Brochure</b><span>Developer brochure, PDF</span><i>Get brochure →</i></a>\n  <a class="tile" href="#enquire" data-intent="Buy" data-want="Floor plans"><b>Floor plans</b><span>Every layout and size</span><i>Get floor plans →</i></a>\n  <a class="tile" href="#enquire" data-intent="Buy" data-want="Price list"><b>Price list</b><span>Units available now</span><i>Get price list →</i></a>\n  <a class="tile" href="#enquire" data-intent="Buy" data-want="Payment plan"><b>Payment plan</b><span>Remaining payments by unit</span><i>Get payment plan →</i></a>\n </div>\n</div></section>\n'
     svc = "".join(f"<div><b>{esc(a)}</b><p>{esc(b)}</p></div>" for a, b in SERVICES)
     creds = ""
     if p["creds"]:
@@ -330,7 +341,7 @@ def build(p, inline=False):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(p["short"] + " Landing Preview") if inline else esc(p["title"])}</title>
 <meta name="description" content="{esc(p["desc"])}">
-<meta name="robots" content="noindex, follow">
+<meta name="robots" content="{p.get("robots", "noindex, follow")}">{p.get("head_extra", "")}
 <meta name="theme-color" content="#1E1D1B">
 <meta property="og:title" content="{esc(p["title"])}">
 <meta property="og:description" content="{esc(p["desc"])}">
@@ -340,8 +351,8 @@ def build(p, inline=False):
 </head>
 <body>
 <header class="top"><div class="wrap">
- <a class="brand" href="#top" aria-label="Mark Darsy, Villa Specialist"><span class="mono">MD</span><span><b>Mark Darsy</b><small>Villa Specialist · BRN {BRN}</small></span></a>
- <nav class="toplinks"><a class="btn btn-line" href="tel:{TEL}">{PHONE}</a><a class="btn btn-wa" href="{wa_buy}" target="_blank" rel="noopener">{WA_ICON}WhatsApp</a></nav>
+ <a class="brand" href="{p.get("home_href", "#top")}" aria-label="Mark Darsy, Villa Specialist"><span class="mono">MD</span><span><b>Mark Darsy</b><small>Villa Specialist · BRN {BRN}</small></span></a>
+ {p.get("nav", "")}<nav class="toplinks"><a class="btn btn-line" href="tel:{TEL}">{PHONE}</a><a class="btn btn-wa" href="{wa_buy}" target="_blank" rel="noopener">{WA_ICON}WhatsApp</a></nav>
 </div></header>
 <main id="top">
 <section class="{hero_cls}"{hero_style} role="img" aria-label="{esc(p["hero_alt"])}">
@@ -397,23 +408,14 @@ def build(p, inline=False):
  <div>{split_img}</div>
 </div></section>
 
-<section class="s pack"><div class="wrap">
- <div class="packhead"><div><span class="eyebrow">Free on WhatsApp</span><h2>Get the full <em>{esc(short)}</em> pack.</h2></div>
- <p>Choose what you need. Mark sends it to your WhatsApp.</p></div>
- <div class="tiles">
-  <a class="tile" href="#enquire" data-intent="Buy" data-want="Brochure"><b>Brochure</b><span>Developer brochure, PDF</span><i>Get brochure →</i></a>
-  <a class="tile" href="#enquire" data-intent="Buy" data-want="Floor plans"><b>Floor plans</b><span>Every layout and size</span><i>Get floor plans →</i></a>
-  <a class="tile" href="#enquire" data-intent="Buy" data-want="Price list"><b>Price list</b><span>Units available now</span><i>Get price list →</i></a>
-  <a class="tile" href="#enquire" data-intent="Buy" data-want="Payment plan"><b>Payment plan</b><span>Remaining payments by unit</span><i>Get payment plan →</i></a>
- </div>
-</div></section>
-<section class="s cream"><div class="wrap">
- <span class="eyebrow">Homes</span><h2>Choose your home in <em>{esc(short)}</em>.</h2>
+{pack}<section class="s cream"><div class="wrap">
+ <span class="eyebrow">{p.get("units_eyebrow", "Homes")}</span><h2>{p.get("units_h") or "Choose your home in <em>" + esc(short) + "</em>."}</h2>
  <p style="max-width:40em;color:var(--char)">{esc(PITCH)}</p>
  <div class="units">{units}</div>
 </div></section>
+{links}
 {gal_sec.replace('<section class="s" style="padding-top:0">','<section class="s">') if gal_sec else ""}
-<section class="s dark"><div class="wrap center">
+<section class="s dark" id="owners"><div class="wrap center">
  <span class="eyebrow">For owners</span><h2>{esc(p["owner_h"])}<br><em>Sell, rent out or reinvest.</em></h2>
  <p class="narrow" style="color:rgba(255,255,255,.8)">Find out what your home is worth today and how fast it can sell or rent, with no cost and no obligation.</p>
  <div class="svc">{svc}</div>
@@ -431,7 +433,7 @@ def build(p, inline=False):
  <p><b style="color:#fff">Mark Darsy, Villa Specialist</b> · BRN {BRN} · <a href="tel:{TEL}">{PHONE}</a> · <a href="{WA}" target="_blank" rel="noopener">WhatsApp</a></p>
  <p class="permit">{permit}</p>
  <p>Independent broker marketing. {name} is developed by its master developer; this page is not affiliated with or endorsed by the developer. Availability, prices, specifications, payment plans and handover dates must be verified against the selected property's documents before any decision. {esc(p["img_note"])}</p>
- <p>Your details are used only to answer your enquiry and are never sold. Reply STOP on WhatsApp at any time to opt out. <a href="https://palmjebelali-resale.com/privacy">Privacy</a></p>
+ <p>Your details are used only to answer your enquiry and are never sold. Reply STOP on WhatsApp at any time to opt out. <a href="{p.get("privacy", "https://palmjebelali-resale.com/privacy")}">Privacy</a></p>
  <p>© 2026 Mark Darsy</p>
 </div></footer>
 <nav class="cbar" aria-label="Contact Mark"><a class="btn btn-line" href="tel:{TEL}">Call Mark</a><a class="btn btn-wa" href="{wa_buy}" target="_blank" rel="noopener">{WA_ICON}WhatsApp</a></nav>
