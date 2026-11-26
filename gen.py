@@ -8,7 +8,7 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 PHONE = "+971 58 541 4999"
 TEL = "+971585414999"
 WA = "https://wa.me/971585414999"
-VER = "21"
+VER = "22"
 ADDRESS = "Regalia Tower, 1st Floor, Business Bay, Dubai, UAE"
 MAPS = "https://www.google.com/maps/search/?api=1&query=Regalia+Tower+Business+Bay+Dubai"
 
@@ -415,6 +415,22 @@ def home():
   <div><b>AED 13bn+</b><span>in construction and infrastructure contracts awarded</span></div>
  </div>
  <p class="note">Browse <a href="/palm-jebel-ali-beachfront-villas">beachfront villas and mansions for sale</a>, compare <a href="/palm-jebel-ali-vs-palm-jumeirah">Palm Jebel Ali vs Palm Jumeirah</a>, read about <a href="/nakheel-palm-jebel-ali">Nakheel</a> and the <a href="/palm-jebel-ali-construction-update">construction update and completion date</a>, explore the <a href="/palm-jebel-ali-master-plan">master plan</a> or go straight to a frond: {" · ".join(f'<a href="/palm-jebel-ali-fronds/frond-{x.lower()}">Frond {x}</a>' for x in FRONDS_ALL)}.</p>
+</div></section>
+
+<section class="sec-dark film-sec" id="film"><div class="wrap film">
+ <div class="reveal">
+  <span class="eyebrow">The film</span>
+  <h2>Palm Jebel Ali, <em>from the air.</em></h2>
+  <p class="lead">Sixteen seconds across the island: where the new palm sits beside Palm Jumeirah, the fronds seen from a helicopter, and villas rising on the water's edge.</p>
+  <p class="small">Aerial footage and official Nakheel imagery. Silent, looping.</p>
+  <div class="btns"><a class="btn btn-gold" href="/dubai-property-atlas">Browse villa listings</a><a class="btn btn-line" href="/palm-jebel-ali-fronds">Explore the fronds</a></div>
+ </div>
+ <figure class="film-frame reveal">
+  <video muted loop playsinline preload="none" poster="/images/palm-jebel-ali-film-poster.webp" aria-label="Palm Jebel Ali aerial film: the island beside Palm Jumeirah, its fronds from the air and villas on the waterfront" data-inview>
+   <source src="/videos/palm-jebel-ali-film.webm" type="video/webm">
+   <source src="/videos/palm-jebel-ali-film.mp4" type="video/mp4">
+  </video>
+ </figure>
 </div></section>
 
 <section class="sec-cream"><div class="wrap loc">
