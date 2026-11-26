@@ -474,7 +474,7 @@ def home():
  </form>
 </div></section>
 '''
-    return page("/", "Palm Jebel Ali Villas & Property Resale | Mark Darsy",
+    return page("/", "Palm Jebel Ali Resale Villas: Prices, Fronds & Listings | Mark Darsy",
                 "Palm Jebel Ali resale villas compared by frond, orientation, plot, outlook and remaining developer payments. A private shortlist of up to three options with Mark Darsy.",
                 "palm-jebel-ali-villa.webp", body, home=True, faq=faqs()["home"])
 
@@ -640,7 +640,7 @@ def atlas():
 </div></section>
 '''
     bar = f'''<div class="shortbar" role="region" aria-label="Your shortlist"><div class="wrap"><div><b>Your shortlist</b><span id="bar-n">0 villas selected</span></div><button class="btn btn-gold" id="bar-send" type="button">Send to Mark</button></div></div>'''
-    return page("/dubai-property-atlas", "Palm Jebel Ali Villas for Sale | Resale Listings | Mark Darsy",
+    return page("/dubai-property-atlas", f"Palm Jebel Ali Villas for Sale: {len(LISTINGS)} Resale Villas from {m(PRICE_MIN)}",
                 "Palm Jebel Ali villas for resale by frond, bedrooms and asking price. Shortlist villas, estimate purchase costs and confirm remaining developer payments with Mark Darsy.",
                 "palm-jebel-ali-villa.webp", body, extra=bar, faq=faqs()["atlas"], ld=listing_ld("/dubai-property-atlas"), crumb="Villa listings")
 
@@ -1247,7 +1247,7 @@ def master_plan():
 <!--FAQ-->
 {cta_band("Read the plan with someone who has bought on it.", "Mark Darsy has advised on more than AED 200M of Palm Jebel Ali transactions. Tell him your budget and preferred side, and receive up to three villas compared on frond, position and payment structure.", msg)}
 """
-    return page("/palm-jebel-ali-master-plan", "Palm Jebel Ali Master Plan: Fronds, Villas & Progress | Mark Darsy",
+    return page("/palm-jebel-ali-master-plan", "Palm Jebel Ali Master Plan: Map of Fronds A–P, Villas & Progress",
                 f"The Palm Jebel Ali master plan explained: the spine, twelve villa fronds (A–F, K–P), 1,272 villas, construction status and resale villas from {m(S['pmin'])}. Updated {UPDATED_TXT}.",
                 "pja-fronds-masterplan.webp", body, faq=fq, crumb="Master plan")
 
@@ -1318,7 +1318,7 @@ def beachfront():
 <!--FAQ-->
 {cta_band("Find the right beachfront home.", "Mark Darsy has advised on more than AED 200M of Palm Jebel Ali transactions and has VIP access to selected Nakheel stock. Tell him your budget and bedrooms.", msg)}
 """
-    return page("/palm-jebel-ali-beachfront-villas", "Beachfront Villas & Mansions for Sale in Dubai | Palm Jebel Ali",
+    return page("/palm-jebel-ali-beachfront-villas", f"Beachfront Villas for Sale in Dubai from {m(S['pmin'])} | Palm Jebel Ali",
                 f"Luxury beachfront villas and mansions for sale on Palm Jebel Ali, Dubai: {S['n']} resale villas from {m(S['pmin'])} to {m(S['pmax'])}, five to seven bedrooms. Updated {UPDATED_TXT}.",
                 "palm-jebel-ali-beach-villas.webp", body, faq=fq, crumb="Beachfront villas")
 
@@ -1370,7 +1370,7 @@ def vs_jumeirah():
 <!--FAQ-->
 {cta_band("Weighing the two palms?", "Tell Mark your budget, timing and how you will use the home. He will show you where Palm Jebel Ali fits, with up to three villas compared on position and payment structure.", msg)}
 """
-    return page("/palm-jebel-ali-vs-palm-jumeirah", "Palm Jebel Ali vs Palm Jumeirah: Villas Compared | Mark Darsy",
+    return page("/palm-jebel-ali-vs-palm-jumeirah", "Palm Jebel Ali vs Palm Jumeirah: Villa Prices, Sizes & Status Compared",
                 f"Palm Jebel Ali vs Palm Jumeirah for villa buyers: status, villa sizes, prices from {m(S['pmin'])}, location and Golden Visa. Both by Nakheel. Updated {UPDATED_TXT}.",
                 "pja-aerial-progress-overview-v1.webp", body, faq=fq, crumb="Palm Jebel Ali vs Palm Jumeirah")
 
@@ -1583,7 +1583,7 @@ def construction():
 <!--FAQ-->
 {cta_band("Buying before handover?", "Mark Darsy checks each villa's contracted completion date, the instalments left and the cash due at transfer, and compares up to three villas for you.", msg)}
 """
-    return page("/palm-jebel-ali-construction-update", "Palm Jebel Ali Completion Date & Construction Update (October 2026)",
+    return page("/palm-jebel-ali-construction-update", "When Will Palm Jebel Ali Be Finished? Completion Date & Construction Update",
                 f"When will Palm Jebel Ali be finished? Phased villa handover from late 2026 through 2027; Fronds K–P in finishing, A–F under construction. Frond-by-frond status, updated {UPDATED_TXT}.",
                 "pja-aerial-progress-overview-v1.webp", body, faq=fq, crumb="Construction update")
 
