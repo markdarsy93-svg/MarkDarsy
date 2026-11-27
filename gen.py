@@ -1794,7 +1794,7 @@ def frond_e():
   <div class="price" style="font:500 clamp(34px,4.4vw,52px)/1.1 var(--serif);color:var(--gold);margin:18px 0 4px">AED {FE_PRICE:,}</div>
   <p class="small" style="margin:0 0 18px">Below the original Nakheel price · plus DLD and transfer costs</p>
   <div class="btns"><a class="btn btn-gold" href="{wa(msg)}" target="_blank" rel="noopener">WhatsApp Mark</a><a class="btn btn-line" href="tel:{TEL}">Call {PHONE}</a></div></div>
- <figure class="reveal">{img("pja-frond-e-crystal-springs-exterior-evening.webp", "Developer CGI of a Palm Jebel Ali Beach Collection Crystal Springs villa at dusk", eager=True)}</figure>
+ <figure class="reveal" style="margin:0;display:flex;justify-content:center"><video src="/video/pja-frond-e-beach-villa-reel.mp4" poster="/images/pja-frond-e-reel-poster.jpg" autoplay muted loop playsinline controls preload="metadata" aria-label="Video walkthrough of the Palm Jebel Ali Frond E Crystal Springs beach villa" style="display:block;width:100%;max-width:400px;aspect-ratio:9/16;object-fit:cover;background:#111"></video></figure>
 </div></section>
 
 <section class="sec-dark"><div class="wrap">
