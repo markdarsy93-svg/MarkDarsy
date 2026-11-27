@@ -328,7 +328,7 @@ def build(p, inline=False):
     creds = ""
     if p["creds"]:
         creds = '<ul class="creds">' + "".join(f"<li>{esc(c)}</li>" for c in p["creds"]) + "</ul>"
-    permit = f"DLD advertising permit (Trakheesi): {esc(PERMIT)}" if PERMIT else "DLD advertising permit (Trakheesi): <b>[PERMIT NUMBER + QR TO ADD BEFORE ADS RUN]</b>"
+    permit = f"DLD advertising permit (Trakheesi): {esc(PERMIT)}" if PERMIT else ""
     fonts = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
              '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">') if inline else ""
     ga = "" if inline else (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
@@ -431,7 +431,7 @@ def build(p, inline=False):
 </main>
 <footer class="foot"><div class="wrap">
  <p><b style="color:#fff">Mark Darsy, Villa Specialist</b> · BRN {BRN} · <a href="tel:{TEL}">{PHONE}</a> · <a href="{WA}" target="_blank" rel="noopener">WhatsApp</a></p>
- <p class="permit">{permit}</p>
+ {("<p class=\"permit\">" + permit + "</p>") if permit else ""}
  <p>Independent broker marketing. {name} is developed by its master developer; this page is not affiliated with or endorsed by the developer. Availability, prices, specifications, payment plans and handover dates must be verified against the selected property's documents before any decision. {esc(p["img_note"])}</p>
  <p>Your details are used only to answer your enquiry and are never sold. Reply STOP on WhatsApp at any time to opt out. <a href="{p.get("privacy", "https://palmjebelali-resale.com/privacy")}">Privacy</a></p>
  <p>© 2026 Mark Darsy</p>
