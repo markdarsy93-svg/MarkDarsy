@@ -1792,9 +1792,9 @@ def frond_e():
  <div class="reveal"><span class="eyebrow">Palm Jebel Ali · Frond E · Beach Collection</span><h1>Five-bedroom beach villa with a family room and roof terrace.</h1>
   <p class="lead">Crystal Springs design (Type O), G+2. Built-up area 8,465 sq ft on a 7,563 sq ft plot. Off-plan resale on the Nakheel payment plan, with 45% already paid and the balance due to completion.</p>
   <div class="price" style="font:500 clamp(34px,4.4vw,52px)/1.1 var(--serif);color:var(--gold);margin:18px 0 4px">AED {FE_PRICE:,}</div>
-  <p class="small" style="margin:0 0 18px">Below the original Nakheel price · plus DLD and transfer costs</p>
+  <p class="small" style="margin:0 0 18px">AED 3,000,000 discount from cost</p>
   <div class="btns"><a class="btn btn-gold" href="{wa(msg)}" target="_blank" rel="noopener">WhatsApp Mark</a><a class="btn btn-line" href="tel:{TEL}">Call {PHONE}</a></div></div>
- <figure class="reveal">{img("pja-frond-e-crystal-springs-exterior-evening.webp", "Developer CGI of a Palm Jebel Ali Beach Collection Crystal Springs villa at dusk", eager=True)}</figure>
+ <figure class="reveal" style="margin:0;display:flex;justify-content:center"><video src="/video/pja-frond-e-beach-villa-reel.mp4" poster="/images/pja-frond-e-reel-poster.jpg" autoplay muted loop playsinline controls preload="metadata" aria-label="Video walkthrough of the Palm Jebel Ali Frond E Crystal Springs beach villa" style="display:block;width:100%;max-width:400px;aspect-ratio:9/16;object-fit:cover;background:#111"></video></figure>
 </div></section>
 
 <section class="sec-dark"><div class="wrap">
